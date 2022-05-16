@@ -1,0 +1,22 @@
+{
+  "name": "game-hub",
+  "version": "1.0.0",
+  "description": "game library",
+  "main": "server/server.js",
+  "scripts": {
+    "install": "cd server && npm i && cd ../client && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jennyrae818/game-hub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jennyrae818/game-hub/issues"
+  },
+  "homepage": "https://github.com/jennyrae818/game-hub#readme",
+  "devDependencies": {
+    "concurrently": "^7.2.0"
+  }
+}
