@@ -23,13 +23,13 @@ const userSchema = new Schema(
         games: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "game"
+                ref: "Game"
             }
         ]
     }
 );
 
 // Uses mongoose.model to create a model named user, based on schema named userSchema
-const User = model("user", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;
