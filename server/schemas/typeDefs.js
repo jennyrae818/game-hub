@@ -32,6 +32,11 @@ const typeDefs = gql`
         createdAt: String
     }
 
+    type Auth {
+        token: ID!
+        user: User
+    }
+
     type Query {
         categories: [Category]
         games: [Game]
