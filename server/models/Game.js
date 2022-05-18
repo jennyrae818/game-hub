@@ -52,6 +52,11 @@ gameSchema.virtual(usersPlaying)
         return this.users.length;
     });
 
+gameSchema.virtual(rating)
+    .get(function() {
+        return this.thumbsUp * 100 / this.users.length;
+    });
+
 // Uses mongoose.model to create a model named Game, based on schema named gameSchema
 const Game = model("Game", gameSchema);
 
