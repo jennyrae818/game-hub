@@ -27,9 +27,26 @@ const typeDefs = gql`
 
     type Review {
         reviewId: ID,
-        reviewbody: String,
+        reviewBody: String,
         username: String,
         createdAt: String
+    }
+
+    type Query {
+        categories: [Category]
+        games: [Game]
+        user(id: ID!): User
+        category(id: ID!): Category
+        game(id: ID!): Game
+    }
+
+    type Mutation {
+        createGame(gameName: String!, description: String!, categories: [Category]!): Game
+        CreateUser(username: String!, email: String!, password: String!): User
+        addGameToUser(userId: ID!, gameId: ID!): User
+        UpdateGame(gameId: ID!, usersPlaying: Number, thumbsUp: Number, thumbsDown: Number): Game
+        addReview(gameId: ID!, reviewBody: String!, username: String!): Game
+        removeReview(gameId: ID!, reviewId: ID!): Game
     }
 `;
 
