@@ -22,10 +22,12 @@ const gameSchema = new Schema(
             required: true
         },
         thumbsUp: {
-            type: Number
+            type: Number,
+            default: 0
         },
         thumbsDown: {
-            type: Number
+            type: Number,
+            default: 0
         },
         categories: [
             {
