@@ -17,12 +17,10 @@ const gameSchema = new Schema(
             maxlength: 400
         },
         // The list of user who created this game and also all users who added this game to their profile
-        users: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "User"
-            }
-        ],
+        usersPlaying: {
+            type: Number,
+            required: true
+        },
         thumbsUp: {
             type: Number
         },
@@ -32,6 +30,7 @@ const gameSchema = new Schema(
         categories: [
             {
                 type: Schema.Types.ObjectId,
+                required: true,
                 ref: "Category"
             }
         ],
@@ -47,14 +46,10 @@ const gameSchema = new Schema(
     }
 );
 
-gameSchema.virtual(usersPlaying)
-    .get(function() {
-        return this.users.length;
-    });
-
+// Creates a virtual named rating that retrieves the rating of the game on query
 gameSchema.virtual(rating)
     .get(function() {
-        return this.thumbsUp * 100 / this.users.length;
+        return this.thumbsUp * 100 / this.usersPlaying;
     });
 
 // Uses mongoose.model to create a model named Game, based on schema named gameSchema
