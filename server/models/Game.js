@@ -16,7 +16,7 @@ const gameSchema = new Schema(
             minlength: 4,
             maxlength: 400
         },
-        // The list of user who created this game and also all users who added this game to their profile
+        // No of users who have added this game to their profile
         usersPlaying: {
             type: Number,
             required: true
