@@ -1,14 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from "./components/Layout.js";
-import Home from './components/home.js';
-import AddGame from './components/AddGame.js';
-import Category from './components/Category.js';
-import Game from './components/Game.js';
-import LogIn from './components/LogIn.js';
-import Profile from './components/Profile.js';
-import Register from './components/Register.js';
-import Search from './components/Search.js';
+import './App.css';
+import {
+  Header,
+  Navbar,
+  Footer
+} from './components';
+import {
+  AddGame,
+  Home,
+  Category,
+  Game,
+  LogIn,
+  Profile,
+  Register,
+  Search
+} from './pages';
 
 //FOR LATER
 //import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
@@ -18,18 +25,20 @@ function App() {
   return (
     <Router>
     <>
-      <Routes>
-        <Route path='/' element={<Layout />}/>
+      <Header />
+      <Navbar />
+      <Routes>       
         <Route index element={<Home />} />
         <Route path="addgame" element={<AddGame />} />
-          <Route path="category" element={<Category />} />
-          <Route path="game" element={<Game />} />
-          <Route path="login" element={<LogIn />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="register" element={<Register />} />
-          <Route path="search" element={<Search />} />
+        <Route path="category" element={<Category />} />
+        <Route path="game" element={<Game />} />
+        <Route path="login" element={<LogIn />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="register" element={<Register />} />
+        <Route path="search" element={<Search />} />
         <Route/>
       </Routes>
+      <Footer />
     </>
   </Router>
   );
