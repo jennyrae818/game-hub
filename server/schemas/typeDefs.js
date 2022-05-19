@@ -50,8 +50,9 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         createGame(gameName: String!, description: String!, categories: [Category]!): Game  
         addGameToUser(userId: ID!, gameId: ID!): User
-        UpdateGame(gameId: ID!, usersPlaying: Number, thumbsUp: Number, thumbsDown: Number): Game
-        addReview(gameId: ID!, reviewBody: String!, username: String!): Game
+        thumbsUpGame(gameId: ID!): Game
+        thumbsDownGame(gameId: ID!): Game
+        addReview(gameId: ID!, reviewBody: String!): Game
         removeReview(gameId: ID!, reviewId: ID!): Game
     }
 `;
