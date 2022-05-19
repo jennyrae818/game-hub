@@ -46,8 +46,9 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        createGame(gameName: String!, description: String!, categories: [Category]!): Game
-        CreateUser(username: String!, email: String!, password: String!): User
+        CreateUser(username: String!, email: String!, password: String!): Auth
+        login(email: String!, password: String!): Auth
+        createGame(gameName: String!, description: String!, categories: [Category]!): Game  
         addGameToUser(userId: ID!, gameId: ID!): User
         UpdateGame(gameId: ID!, usersPlaying: Number, thumbsUp: Number, thumbsDown: Number): Game
         addReview(gameId: ID!, reviewBody: String!, username: String!): Game
