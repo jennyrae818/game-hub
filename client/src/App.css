@@ -1,38 +1,400 @@
-.App {
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+:root {
+  --ming: #16697aff;
+  --pacific-blue: #489fb5ff;
+  --middle-blue: #82c0ccff;
+  --isabelline: #ede7e3ff;
+  --orange-peel: #ffa62bff;
+  --gruppo: 'gruppo';
+  --licorice: 'licorice';
+  --montserrat: 'montserrat';
+  --mont-alts: 'montserrat alternates';
+  }
+
+  
+
+/*HEADER*/
+.header {
+  background: var(--ming);
+  height: auto;
+}
+
+.header h1 {
+  margin: 0;
+  padding: 40px 20px 40px 20px;
+  text-align: center;
+  color: white;
+  font-family: var(--mont-alts);
+  font-weight: 400;
+  font-size: 60px;
+}
+
+.header h1:hover {
+  color: var(--orange-peel);
+
+}
+
+
+
+  /*NAV BAR*/
+.navbar{
+    background: var(--pacific-blue);
+    text-align: center;
+}
+
+.navbar li {
+    display: inline-block;
+    font-family: var(--mont-alts);
+    font-size: 1.5rem;
+    text-decoration: none;
+    line-height: 3;
+    margin: 0px 10px 0px 10px;
+}
+  
+.navbar a:hover {
+    color: var(--orange-peel)
+}
+
+
+
+
+/*ADD GAME*/
+.addGame {
+  background: var(--isabelline);
+  padding: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.addGame h2 {
+  text-align: center;
+  font-family: var(--mont-alts);
+  font-weight: 400;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.addGame form {
+  display: inline-block;
+  background-color:var(--middle-blue);
+  width: 400px;
+  border: none;
+  border-radius: 4px;
+  margin: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+fieldset {
+  border: 2px solid var(--ming);
+  border-radius: 4px;
 }
 
-.App-link {
-  color: #61dafb;
+input {
+  width: 100%;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type=text]:focus {
+  border: 3px solid var(--ming);
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid var(--ming);
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+button {
+  background-color: var(--pacific-blue);
+  border: 1px solid var(--ming);
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--orange-peel);
+}
+
+
+
+/*CATEGORY/SearchResults PAGE*/
+.category {
+  background: var(--isabelline);
+  padding: 20px;
+
+}
+
+.category h2 {
+  text-align: center;
+  font-family: var(--mont-alts);
+  font-weight: 400;
+}
+
+
+
+
+
+/*GAME PAGE*/
+.game {
+  background: var(--isabelline);
+  padding: 20px;
+
+}
+
+.game h2 {
+  text-align: center;
+  font-family: var(--mont-alts);
+  font-weight: 400;
+}
+
+
+
+
+
+/*HOME PAGE*/
+.resume {
+  background: var(--isabelline);
+  padding: 20px;
+
+}
+
+.resume h2 {
+  text-align: center;
+  font-family: var(--mont-alts);
+  font-weight: 400;
+}
+
+
+
+
+
+
+/*LOG IN PAGE*/
+.login {
+  background: var(--isabelline);
+  padding: 20px;
+  text-align: center;
+}
+
+.login h2 {
+  text-align: center;
+  font-family: var(--mont-alts);
+  font-weight: 400;
+}
+
+.login form {
+  display: inline-block;
+  background-color:var(--middle-blue);
+  width: 400px;
+  border: none;
+  border-radius: 4px;
+  margin: 20px;
+}
+
+fieldset {
+  border: 2px solid var(--ming);
+  border-radius: 4px;
+}
+
+input {
+  width: 100%;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=text]:focus {
+  border: 3px solid var(--ming);
+}
+
+button {
+  background-color: var(--pacific-blue);
+  border: 1px solid var(--ming);
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--orange-peel);
+}
+
+
+
+
+
+/*PROFILE PAGE*/
+.profile {
+  background: var(--isabelline);
+  padding: 20px;
+
+}
+
+.profile h2 {
+  text-align: center;
+  font-family: var(--mont-alts);
+  font-weight: 400;
+}
+
+
+
+
+
+
+/*REGISTER PAGE*/
+.register {
+  background: var(--isabelline);
+  padding: 20px;
+  text-align: center;
+}
+
+.register h2 {
+  text-align: center;
+  font-family: var(--mont-alts);
+  font-weight: 400;
+}
+
+.register form {
+  display: inline-block;
+  background-color:var(--middle-blue);
+  width: 400px;
+  border: none;
+  border-radius: 4px;
+  margin: 20px;
+}
+
+fieldset {
+  border: 2px solid var(--ming);
+  border-radius: 4px;
+}
+
+input {
+  width: 100%;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=text]:focus {
+  border: 3px solid var(--ming);
+}
+
+button {
+  background-color: var(--pacific-blue);
+  border: 1px solid var(--ming);
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--orange-peel);
+}
+
+
+
+
+
+
+/*SEARCH PAGE*/
+.search {
+  background: var(--isabelline);
+  padding: 20px;
+  text-align: center;
+}
+
+.search h2 {
+  text-align: center;
+  font-family: var(--mont-alts);
+  font-weight: 400;
+}
+
+.search form {
+  display: inline-block;
+  background-color:var(--middle-blue);
+  width: 400px;
+  border: none;
+  border-radius: 4px;
+  margin: 20px;
+}
+
+fieldset {
+  border: 2px solid var(--ming);
+  border-radius: 4px;
+}
+
+input {
+  width: 100%;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=text]:focus {
+  border: 3px solid var(--ming);
+}
+
+button {
+  background-color: var(--pacific-blue);
+  border: 1px solid var(--ming);
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--orange-peel);
+}
+
+
+
+
+
+/* FOOTER */
+
+.footer {
+  font-size: 36px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  position:relative;
+  bottom: 0;
+  width: 100%;
+  margin: 10px;
+}
+
+.fa {
+  display: inline-block;
+  margin: 10px;
 }
