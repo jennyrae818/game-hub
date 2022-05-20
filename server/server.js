@@ -29,9 +29,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // HEROKU
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
 
 // APPLY SERVER
 const startApolloServer = async (typeDefs, resolvers) => {
@@ -40,11 +40,11 @@ const startApolloServer = async (typeDefs, resolvers) => {
 
     db.once('open', () => {
         app.listen(PORT, () => {
-            console.log(`Listening on localhost:${PORT}`)
-            console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`)
-        })
+            console.log(`Listening on localhost:${PORT}`);
+            console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+        });
     });
-}
+};
 
 // CALL SERVER FUNCTION
 startApolloServer(typeDefs, resolvers);
