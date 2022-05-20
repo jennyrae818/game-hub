@@ -19,13 +19,16 @@ const gameSchema = new Schema(
         // No of users who have added this game to their profile
         usersPlaying: {
             type: Number,
-            required: true
+            required: true,
+            default: 1
         },
         thumbsUp: {
-            type: Number
+            type: Number,
+            default: 0
         },
         thumbsDown: {
-            type: Number
+            type: Number,
+            default: 0
         },
         categories: [
             {
