@@ -21,5 +21,8 @@
   "homepage": "https://github.com/jennyrae818/game-hub#readme",
   "devDependencies": {
     "concurrently": "^7.2.0"
+  },
+  "dependencies": {
+    "eslint": "^8.15.0"
   }
 }
