@@ -18,9 +18,9 @@ const typeDefs = gql`
         _id: ID,
         gameName: String,
         description: String,
-        usersPlaying: Number,
-        thumbsUp: Number,
-        thumbsDown: Number,
+        usersPlaying: Int,
+        thumbsUp: Int,
+        thumbsDown: Int,
         categories: [Category],
         reviews: [Review]
     }
@@ -45,10 +45,16 @@ const typeDefs = gql`
         game(id: ID!): Game
     }
 
+    input GameData {
+        gameName: String!
+        description: String!
+        categories: [String]!
+    }
+
     type Mutation {
         CreateUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        createGame(gameName: String!, description: String!, categories: [Category]!): Game  
+        createGame(input: GameData!): Game  
         addGameToUser(userId: ID!, gameId: ID!): User
         thumbsUpGame(gameId: ID!): Game
         thumbsDownGame(gameId: ID!): Game
