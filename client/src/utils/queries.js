@@ -58,7 +58,7 @@ export const QUERY_CATEGORIES = gql`
 `;
 
 export const QUERY_SINGLE_CATEGORY = gql`
-    query getSingeCategory($categoryId: ID!) {
+    query getSingleCategory($categoryId: ID!) {
         category(categoryId: $categoryId) {
             _id,
             categoryName
