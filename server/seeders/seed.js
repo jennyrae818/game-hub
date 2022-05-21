@@ -7,11 +7,11 @@ db.once("open", async () => {
     try {
         await Category.deleteMany({});
 
-        await Category.create(categorySeeds);
+        await Category.insertMany(categorySeeds);
 
         console.log("----CATEGORIES SEEDED----");
-
-        await Game.deleteMany();
+        console.log(categorySeeds);
+        await Game.deleteMany({});
 
         await Game.insertMany(gameSeeds);
 
