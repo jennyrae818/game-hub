@@ -93,7 +93,11 @@ button:hover {
 
   /*NAV BAR*/
 .navbar {
+<<<<<<< HEAD
     background: var(--pacific-blue);
+=======
+    background: var(--orange);
+>>>>>>> 2cf9ce8cb5cce11ad22bd570fe5c8b2df5ebb62b
     text-align: center;
  
 }

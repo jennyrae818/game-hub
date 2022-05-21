@@ -11,15 +11,16 @@ function Register() {
       <fieldset>
          <label>
            <p>Username:</p>
-           <input name="name" />
+           <input name="name" placeholder="Unique Username" />
          </label>
          <label>
            <p>Email:</p>
-           <input email="email" />
+           <input email="email" placeholder="Enter Email" />
          </label>
          <label>
            <p>Password:</p>
-           <input pwd="pwd" />
+           <input id="psw" type="password" minlength="8" placeholder="Enter Password" name="psw" required/>
+           <p className="pswcrit">*Password must contain letters and numbers and be a minimum of 8 characters</p>
          </label>
        
        <button type="submit">Submit</button>
