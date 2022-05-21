@@ -95,7 +95,6 @@ button:hover {
 .navbar {
     background: var(--orange);
     text-align: center;
- 
 }
 
 .navbar a {
@@ -168,11 +167,27 @@ textarea {
 
 
 
+
 /*CATEGORY/SEARCH PAGE*/
 .category {
+  font-family: var(--alt);
+  font-weight: bold;
+  font-size: 16px;
   padding: 20px;
-  background: var(--black);
+}
 
+.category table, th, td {
+  width: auto;
+  text-align: center;
+  color: var(--blue);
+  border: solid var(--red);
+  padding: 8px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category th {
+  font-size: 30px;
 }
 
 
@@ -182,10 +197,44 @@ textarea {
 
 /*GAME PAGE*/
 .game {
-  background: var(--isabelline);
   padding: 20px;
-
+  text-align: center;
+  font-family: var(--alt);
+  font-weight: 800;
+  color: var(--blue);
 }
+
+.game p {
+  margin: 0 0 0 0;
+}
+
+.game form {
+  display: inline-block;
+  background-color:var(--black);
+  width: 400px;
+  border: 2px solid red;
+  border-radius: 4px;
+  margin: 20px;
+  padding: 10px;
+}
+
+fieldset {
+  border: 2px solid var(--alt);
+  border-radius: 4px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-family: var(--alt);
+}
+
+input[type=text]:focus {
+  border: 3px solid var(--alt);
+}
+
 
 
 
@@ -265,10 +314,26 @@ input[type=text]:focus {
 
 /*PROFILE PAGE*/
 .profile {
-  background: var(--isabelline);
+  font-family: var(--alt);
+  font-weight: bold;
+  font-size: 16px;
   padding: 20px;
-
 }
+
+.profile table, th, td {
+  width: auto;
+  text-align: center;
+  color: var(--blue);
+  border: solid var(--red);
+  padding: 8px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile th {
+  font-size: 30px;
+}
+
 
 
 
@@ -334,7 +399,6 @@ input[type=text]:focus {
   text-align: center;
   color: var(--blue);
 }
-
 
 .searchform {
   font-family: var(--alt);
