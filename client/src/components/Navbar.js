@@ -6,13 +6,13 @@ import React from 'react';
 import Auth from "../utils/auth";
 import { LogIn } from "../pages";
 import { Register } from "../pages";
-import { Nav } from "../App.css";
+//import { Nav } from "../App.css";
 
-
+//test
 function NavBar() {
   return (
     
-    <Nav className="nav navbar">
+    <nav className="nav navbar">
         <ul className="nav navbar">
           
             <li><Link as={Link} to="/">Home</Link></li>
@@ -32,7 +32,7 @@ function NavBar() {
             <li><Link to="/login">Log-In</Link></li>
             <li><Link to="/register">Register</Link></li>
         </ul>
-      </Nav>
+      </nav>
      
     
   );
