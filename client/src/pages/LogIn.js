@@ -11,11 +11,11 @@ function LogIn() {
       <fieldset>
          <label>
            <p>Email:</p>
-           <input email="email" />
+           <input email="email" placeholder="Enter Email" />
          </label>
          <label>
            <p>Password:</p>
-           <input pwd="pwd" />
+           <input pwd="pwd" placeholder="Enter Password" />
          </label>
        
        <button type="submit">Submit</button>
