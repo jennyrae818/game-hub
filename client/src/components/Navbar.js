@@ -6,7 +6,7 @@ import React from 'react';
 import Auth from "../utils/auth";
 import { LogIn } from "../pages";
 import { Register } from "../pages";
-//import { Nav } from "../App.css";
+import { Nav } from "../App.css";
 
 
 function NavBar() {
