@@ -1,75 +1,77 @@
+const categorySeeds = require("./categorySeeds.js");
+
 const gameSeeds = [
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
     {
         gameName: "",
         description: "",
-        usersPlaying: "",
-        categories: categories[0]._id
+        usersPlaying: 0,
+        categories: categorySeeds[0]._id
     },
 ];
 
