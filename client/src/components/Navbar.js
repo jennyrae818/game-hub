@@ -18,10 +18,11 @@ function NavBar() {
           <li>
             <Link as={Link} to="/search">Search</Link>
           </li>
+          {}
           {Auth.loggedIn() ? (
               <>
-              <Link as={Link} to="/AddGame"></Link>
-              <Link as={Link} to="/Profile"></Link>
+              <Link as={Link} to="/AddGame">Add-Game</Link>
+              <Link as={Link} to="/Profile">Profile</Link>
               <Link onClick={Auth.logout}>Logout</Link>
               </>
               ) : (
