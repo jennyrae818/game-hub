@@ -52,12 +52,12 @@ code {
 
 
   /*NAV BAR*/
-.navbar{
+.navbar {
     background: var(--pacific-blue);
     text-align: center;
 }
 
-.navbar li {
+Link {
     display: inline-block;
     font-family: var(--mont-alts);
     font-size: 1.5rem;
