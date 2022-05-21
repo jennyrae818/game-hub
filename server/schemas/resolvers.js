@@ -70,7 +70,7 @@ const resolvers = {
             await Game.findOneAndUpdate(
                 { _id: gameId },
                 { usersPlaying: usersPlaying + 1 }
-            )
+            );
 
             return user;
         },
