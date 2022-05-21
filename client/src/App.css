@@ -1,4 +1,5 @@
 body {
+  background: black;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -15,59 +16,103 @@ code {
 
 
 :root {
-  --ming: #16697aff;
-  --pacific-blue: #489fb5ff;
-  --middle-blue: #82c0ccff;
-  --isabelline: #ede7e3ff;
-  --orange-peel: #ffa62bff;
-  --gruppo: 'gruppo';
-  --licorice: 'licorice';
+  --black: #0000;
+  --white: #ffff;
+  --red: #FD0000;
+  --orange: #FFB852;
+  --pink: #ffb8ff;
+  --blue: #00ffff;
+
+  --press: 'Press Start 2P';
+  --alt: 'Rajdhani';
   --montserrat: 'montserrat';
   --mont-alts: 'montserrat alternates';
   }
 
-  
+/* ALL PAGES */
+h2 {
+  text-align: center;
+  font-family: var(--press);
+  font-size: 20px;
+  color: var(--blue);
+  font-weight: 800;
+}
+
+button {
+  background-color: var(--orange);
+  border: 1px solid var(--red);
+  font-family: var(--alt);
+  font-weight: 800;
+  padding: 10px 20px;
+  text-decoration: none;
+  margin: 4px 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--red);
+}
+
+
+
+
+
 
 /*HEADER*/
 .header {
-  background: var(--ming);
   height: auto;
 }
 
 .header h1 {
   margin: 0;
-  padding: 40px 20px 40px 20px;
+  padding: 40px 20px 10px 20px;
   text-align: center;
-  color: white;
-  font-family: var(--mont-alts);
+  color: var(--blue);
+  font-family: var(--press);
   font-weight: 400;
-  font-size: 60px;
+  font-size: 50px;
 }
 
 .header h1:hover {
-  color: var(--orange-peel);
+  color: var(--red);
 
 }
+
+.header h3 {
+  font-family: var(--press);
+  color: var(--pink);
+  font-size: 10px;
+  text-align: center;
+  margin: 0px 0px 40px 0px;
+}
+
+
 
 
 
   /*NAV BAR*/
 .navbar {
-    background: var(--pacific-blue);
+    background: var(--orange);
     text-align: center;
 }
 
-Link {
+.navbar a {
+  text-decoration: none;
+  color: navy;
+}
+
+.navbar li {
     display: inline-block;
-    font-family: var(--mont-alts);
-    font-size: 1.5rem;
+    font-family: var(--press);
+    font-size: 12px;
     text-decoration: none;
     line-height: 3;
-    margin: 0px 10px 0px 10px;
+    margin: 0px 50px 0px 50px;
 }
   
 .navbar a:hover {
-    color: var(--orange-peel)
+    color: var(--red)
 }
 
 
@@ -78,12 +123,6 @@ Link {
   background: var(--isabelline);
   padding: 20px;
   text-align: center;
-}
-
-.addGame h2 {
-  text-align: center;
-  font-family: var(--mont-alts);
-  font-weight: 400;
 }
 
 .addGame form {
@@ -123,34 +162,34 @@ textarea {
   resize: none;
 }
 
-button {
-  background-color: var(--pacific-blue);
-  border: 1px solid var(--ming);
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: var(--orange-peel);
-}
 
 
 
-/*CATEGORY/SearchResults PAGE*/
+
+
+
+/*CATEGORY/SEARCH PAGE*/
 .category {
-  background: var(--isabelline);
+  font-family: var(--alt);
+  font-weight: bold;
+  font-size: 16px;
   padding: 20px;
-
 }
 
-.category h2 {
+.category table, th, td {
+  width: auto;
   text-align: center;
-  font-family: var(--mont-alts);
-  font-weight: 400;
+  color: var(--blue);
+  border: solid var(--red);
+  padding: 8px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.category th {
+  font-size: 30px;
+}
+
 
 
 
@@ -158,34 +197,71 @@ button:hover {
 
 /*GAME PAGE*/
 .game {
-  background: var(--isabelline);
   padding: 20px;
-
-}
-
-.game h2 {
   text-align: center;
-  font-family: var(--mont-alts);
-  font-weight: 400;
+  font-family: var(--alt);
+  font-weight: 800;
+  color: var(--blue);
 }
+
+.game p {
+  margin: 0 0 0 0;
+}
+
+.game form {
+  display: inline-block;
+  background-color:var(--black);
+  width: 400px;
+  border: 2px solid red;
+  border-radius: 4px;
+  margin: 20px;
+  padding: 10px;
+}
+
+fieldset {
+  border: 2px solid var(--alt);
+  border-radius: 4px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-family: var(--alt);
+}
+
+input[type=text]:focus {
+  border: 3px solid var(--alt);
+}
+
+
 
 
 
 
 
 /*HOME PAGE*/
-.resume {
-  background: var(--isabelline);
+.home {
+  font-family: var(--alt);
+  font-weight: bold;
+  font-size: 16px;
   padding: 20px;
-
 }
 
-.resume h2 {
+.home table, th, td {
+  width: auto;
   text-align: center;
-  font-family: var(--mont-alts);
-  font-weight: 400;
+  color: var(--blue);
+  border: solid var(--red);
+  padding: 8px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.home th {
+  font-size: 30px;
+}
 
 
 
@@ -193,56 +269,44 @@ button:hover {
 
 /*LOG IN PAGE*/
 .login {
-  background: var(--isabelline);
   padding: 20px;
   text-align: center;
+  font-family: var(--alt);
+  font-weight: 800;
+  color: var(--blue);
 }
 
-.login h2 {
-  text-align: center;
-  font-family: var(--mont-alts);
-  font-weight: 400;
+.login p {
+  margin: 0 0 0 0;
 }
 
 .login form {
   display: inline-block;
-  background-color:var(--middle-blue);
+  background-color:var(--black);
   width: 400px;
-  border: none;
+  border: 2px solid red;
   border-radius: 4px;
   margin: 20px;
+  padding: 10px;
 }
 
 fieldset {
-  border: 2px solid var(--ming);
+  border: 2px solid var(--alt);
   border-radius: 4px;
 }
 
 input {
   width: 100%;
-  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  font-family: var(--alt);
 }
 
 input[type=text]:focus {
-  border: 3px solid var(--ming);
+  border: 3px solid var(--alt);
 }
 
-button {
-  background-color: var(--pacific-blue);
-  border: 1px solid var(--ming);
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: var(--orange-peel);
-}
 
 
 
@@ -250,16 +314,28 @@ button:hover {
 
 /*PROFILE PAGE*/
 .profile {
-  background: var(--isabelline);
+  font-family: var(--alt);
+  font-weight: bold;
+  font-size: 16px;
   padding: 20px;
-
 }
 
-.profile h2 {
+.profile table, th, td {
+  width: auto;
   text-align: center;
-  font-family: var(--mont-alts);
-  font-weight: 400;
+  color: var(--blue);
+  border: solid var(--red);
+  padding: 8px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.profile th {
+  font-size: 30px;
+}
+
+
+
 
 
 
@@ -268,56 +344,49 @@ button:hover {
 
 /*REGISTER PAGE*/
 .register {
-  background: var(--isabelline);
   padding: 20px;
   text-align: center;
+  font-family: var(--alt);
+  font-weight: 800;
+  color: var(--blue);
 }
 
-.register h2 {
-  text-align: center;
-  font-family: var(--mont-alts);
-  font-weight: 400;
+.register p {
+  margin: 0 0 0 0;
+}
+
+.pswcrit {
+  font-size: 12px;
+  padding-bottom: 20px;
 }
 
 .register form {
   display: inline-block;
-  background-color:var(--middle-blue);
+  background-color:var(--black);
   width: 400px;
-  border: none;
+  border: 2px solid red;
   border-radius: 4px;
   margin: 20px;
+  padding: 10px;
 }
 
 fieldset {
-  border: 2px solid var(--ming);
+  border: 2px solid var(--alt);
   border-radius: 4px;
 }
 
 input {
   width: 100%;
-  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  font-family: var(--alt);
 }
 
 input[type=text]:focus {
-  border: 3px solid var(--ming);
+  border: 3px solid var(--alt);
 }
 
-button {
-  background-color: var(--pacific-blue);
-  border: 1px solid var(--ming);
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: var(--orange-peel);
-}
 
 
 
@@ -326,63 +395,50 @@ button:hover {
 
 /*SEARCH PAGE*/
 .search {
-  background: var(--isabelline);
   padding: 20px;
   text-align: center;
+  color: var(--blue);
 }
 
-.search h2 {
-  text-align: center;
-  font-family: var(--mont-alts);
-  font-weight: 400;
+.searchform {
+  font-family: var(--alt);
+  font-weight: 800;
+  font-size: 20px;
 }
 
 .search form {
   display: inline-block;
-  background-color:var(--middle-blue);
+  background-color:var(--black);
   width: 400px;
-  border: none;
+  border: 2px solid red;
   border-radius: 4px;
   margin: 20px;
+  padding: 10px;
 }
 
 fieldset {
-  border: 2px solid var(--ming);
+  border: 2px solid var(--alt);
   border-radius: 4px;
 }
 
 input {
   width: 100%;
-  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  font-family: var(--alt);
 }
 
 input[type=text]:focus {
-  border: 3px solid var(--ming);
+  border: 3px solid var(--alt);
 }
 
-button {
-  background-color: var(--pacific-blue);
-  border: 1px solid var(--ming);
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: var(--orange-peel);
-}
 
 
 
 
 
 /* FOOTER */
-
 .footer {
   font-size: 36px;
   text-align: center;
