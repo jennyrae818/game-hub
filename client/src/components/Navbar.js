@@ -3,7 +3,7 @@ import React from 'react';
 //import './styles/style.css';
 //import LogIn from "../pages/LogIn";
 
-import {AuthService} from "../utils/auth";
+import Auth from "../utils/auth";
 import { LogIn } from "../pages";
 import { Register } from "../pages";
 import { Nav } from "../App.css";
@@ -13,25 +13,25 @@ function NavBar() {
   return (
     
     <Nav className="nav navbar">
-        <NavBar className="nav navbar">
+        <ul className="nav navbar">
           
-            <Link as={Link} to="/">Home</Link>
-            <Link as={Link} to="/search">Search</Link>
+            <li><Link as={Link} to="/">Home</Link></li>
+            <li><Link as={Link} to="/search">Search</Link></li>
           {}
-          {AuthService.loggedIn() ? (
+          {Auth.loggedIn() ? (
               <>
-              <Link as={Link} to="/AddGame">Add-Game</Link>
-              <Link as={Link} to="/Profile">Profile</Link>
-              <Link onClick={AuthService.logout}>Logout</Link>
+              <li><Link as={Link} to="/AddGame">Add-Game</Link></li>
+              <li><Link as={Link} to="/Profile">Profile</Link></li>
+              <li><Link onClick={Auth.logout}>Logout</Link></li>
               </>
               ) : (
-                <Link onClick={() => LogIn(true)}>Login</Link>
+                <li><Link  onClick={() => LogIn(true)}>Login</Link></li>
               )  (
-                <Link onClick={() => Register(true)}>Register</Link>
+                <li><Link onClick={() => Register(true)}>Register</Link></li>
               )} 
-            <Link to="/login">Log-In</Link>
-            <Link to="/register">Register</Link>
-        </NavBar>
+            <li><Link to="/login">Log-In</Link></li>
+            <li><Link to="/register">Register</Link></li>
+        </ul>
       </Nav>
      
     
