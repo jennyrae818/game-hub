@@ -1,4 +1,4 @@
-[
+const gameSeeds = [
     {
         gameName: "",
         description: "",
@@ -72,3 +72,5 @@
         categories: categories[0]._id
     },
 ];
+
+module.exports = gameSeeds;
