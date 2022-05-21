@@ -3,7 +3,7 @@ import React from 'react';
 //import './styles/style.css';
 //import LogIn from "../pages/LogIn";
 
-import {AuthService} from "../utils/auth";
+import Auth from "../utils/auth";
 import { LogIn } from "../pages";
 import { Register } from "../pages";
 import { Nav } from "../App.css";
@@ -18,11 +18,11 @@ function NavBar() {
             <Link as={Link} to="/">Home</Link>
             <Link as={Link} to="/search">Search</Link>
           {}
-          {AuthService.loggedIn() ? (
+          {Auth.loggedIn() ? (
               <>
               <Link as={Link} to="/AddGame">Add-Game</Link>
               <Link as={Link} to="/Profile">Profile</Link>
-              <Link onClick={AuthService.logout}>Logout</Link>
+              <Link onClick={Auth.logout}>Logout</Link>
               </>
               ) : (
                 <Link onClick={() => LogIn(true)}>Login</Link>
