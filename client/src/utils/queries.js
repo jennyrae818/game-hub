@@ -48,3 +48,21 @@ export const QUERY_SINGLE_GAME = gql`
     }
 `;
 
+export const QUERY_CATEGORIES = gql`
+    query getCategories {
+        categories {
+            _id,
+            categoryName
+        }
+    }
+`;
+
+export const QUERY_SINGLE_CATEGORY = gql`
+    query getSingleCategory($categoryId: ID!) {
+        category(categoryId: $categoryId) {
+            _id,
+            categoryName
+        }
+    }
+`;
+
