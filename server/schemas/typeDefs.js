@@ -1,21 +1,22 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-    type User {
-        _id: ID!,
-        username: String!,
-        email: String!,
-        password: String!,
-        games: [Game]
-    }
+type User {
+    _id: ID!,
+    username: String!,
+    email: String!,
+    password: String!,
+    games: [Game]
+}
 
-    type Category {
-        _id: ID,
-        categoryName: String
-    }
 
-    type Game {
-        _id: ID,
+type Category {
+    _id: ID,
+    categoryName: String
+}
+
+type Game {
+    _id: ID,
         gameName: String,
         description: String,
         usersPlaying: Int,
@@ -24,19 +25,19 @@ const typeDefs = gql`
         categories: [Category],
         reviews: [Review]
     }
-
+    
     type Review {
         reviewId: ID,
         reviewBody: String,
         username: String,
         createdAt: String
     }
-
+    
     type Auth {
         token: ID!
         user: User
     }
-
+    
     type Query {
         categories: [Category]
         games: [Game]
@@ -44,7 +45,11 @@ const typeDefs = gql`
         category(id: ID!): Category
         game(id: ID!): Game
     }
-
+    
+    type Query {
+        me: User
+    }
+    
     input GameData {
         gameName: String!
         description: String!
