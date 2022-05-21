@@ -44,9 +44,6 @@ type Game {
         user(id: ID!): User
         category(id: ID!): Category
         game(id: ID!): Game
-    }
-    
-    type Query {
         me: User
     }
     
