@@ -1,20 +1,22 @@
-[
+const categorySeeds = [
     {
-        "categoryName": "Activity"
+        categoryName: "Activity"
     },
     {
-        "categoryName": "Arcade"
+        categoryName: "Arcade"
     },
     {
-        "categoryName": "Board"
+        categoryName: "Board"
     },
     {
-        "categoryName": "Card"
+        categoryName: "Card"
     },
     {
-        "categoryName": "Outdoor"
+        categoryName: "Outdoor"
     },
     {
-        "categoryName": "Video"
+        categoryName: "Video"
     },
 ];
+
+module.exports = categorySeeds;
