@@ -3,41 +3,36 @@ import React from 'react';
 //import './styles/style.css';
 //import LogIn from "../pages/LogIn";
 
-import Auth from "../utils/auth";
-import LogIn from "../pages/LogIn";
+import {AuthService} from "../utils/auth";
+import { LogIn } from "../pages";
+import { Register } from "../pages";
+import { Nav } from "../App.css";
 
 
 function NavBar() {
   return (
     
-    <nav className="nav navbar">
-        <ul className="nav navbar">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
+    <Nav className="nav navbar">
+        <NavBar className="nav navbar">
+          
+            <Link as={Link} to="/">Home</Link>
             <Link as={Link} to="/search">Search</Link>
-          </li>
           {}
-          {Auth.loggedIn() ? (
+          {AuthService.loggedIn() ? (
               <>
               <Link as={Link} to="/AddGame">Add-Game</Link>
               <Link as={Link} to="/Profile">Profile</Link>
-              <Link onClick={Auth.logout}>Logout</Link>
+              <Link onClick={AuthService.logout}>Logout</Link>
               </>
               ) : (
-                <Link onClick={() => LogIn(true)}
+                <Link onClick={() => LogIn(true)}>Login</Link>
+              )  (
+                <Link onClick={() => Register(true)}>Register</Link>
               )} 
-           /*  <li>
             <Link to="/login">Log-In</Link>
-          </li> */
-          <li>
             <Link to="/register">Register</Link>
-          </li>
-        
-    
-        </ul>
-      </nav>
+        </NavBar>
+      </Nav>
      
     
   );
