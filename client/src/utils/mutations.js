@@ -38,13 +38,13 @@ export const CREATE_GAME = gql`
 export const ADD_REVIEW = gql`
   mutation addReview($gameId: ID!, $reviewBody: String!) {
     addReview(gameId: $gameId, reviewBody: $reviewBody) {
-        _id,
-        gameName,
-        description,
-        usersPlaying,
-        thumbsUp,
-        thumbsDown,
-        categories,
+        _id
+        gameName
+        description
+        usersPlaying
+        thumbsUp
+        thumbsDown
+        categories
         reviews
     }
   }

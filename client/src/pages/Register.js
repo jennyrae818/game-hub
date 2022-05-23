@@ -1,29 +1,35 @@
 import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import { CREATE_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
 
 
-function Register() {
+function Register(props) {
 
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
-  
   //mutation
-  const [addUser] = useMutation(ADD_USER)
+  const [createUser] = useMutation(CREATE_USER);
+
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(createUser({...userFormData}));
     try {
-      const { data } = await addUser({
+      const newUser = await createUser({
         variables: { ...userFormData },
       });
 
-      console.log(data);
-      Auth.login(data.addUser.token);
+      console.log(newUser);
+      const token = newUser.data.createUser.token;
+      Auth.login(token);
+
     } catch (err) {
       console.error(err);
     }
@@ -36,21 +42,22 @@ function Register() {
   };
 
   return (
+    <>
     <div className="register">
     <h2>Register Here!</h2>
       <form onSubmit={handleSubmit}>
       <fieldset>
          <label>
            <p>Username:</p>
-           <input value={userFormData.username} name="name" placeholder="Unique Username" />
+           <input onChange={handleInput} name="username" type="username" placeholder="Unique Username" required />
          </label>
          <label>
            <p>Email:</p>
-           <input value={userFormData.email} email="email" placeholder="Enter Email" />
+           <input onChange={handleInput} name="email" type="email" placeholder="Enter Email" />
          </label>
          <label>
            <p>Password:</p>
-           <input value={userFormData.password} id="psw" type="password" minlength="8" placeholder="Enter Password" name="psw" required/>
+           <input onChange={handleInput} id="psw" name="password" type="password" minLength="8" placeholder="Enter Password" required/>
            <p className="pswcrit">*Password must contain letters and numbers and be a minimum of 8 characters</p>
          </label>
        
@@ -58,6 +65,7 @@ function Register() {
        </fieldset>
       </form>
     </div>
+    </>
       );
     }
     
