@@ -35,7 +35,7 @@ const typeDefs = gql`
         
     type Auth {
         token: ID!
-        user: Usergit 
+        user: User
     }
 
     type Query {
