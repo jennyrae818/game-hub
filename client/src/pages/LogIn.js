@@ -29,7 +29,7 @@ function LogIn() {
       });
 
       console.log(user);
-      const token = user.data.createUser.token;
+      const token = user.data.login.token;
       Auth.login(token);
 
     } catch (err) {
@@ -38,9 +38,8 @@ function LogIn() {
     }
 
     setUserFormData({
-      username: '',
       email: '',
-      password: '',
+      password: ''
     });
   };
 
