@@ -28,7 +28,7 @@ query getGames {
             usersPlaying
             thumbsUp
             thumbsDown
-             categories {
+            categories {
                 _id
                 categoryName
               }
