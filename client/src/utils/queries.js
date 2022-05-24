@@ -21,14 +21,17 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_GAMES = gql`
-    query getGames {
+query getGames {
         games {
             _id
             gameName
             usersPlaying
             thumbsUp
             thumbsDown
-            categories
+            categories {
+                _id
+                categoryName
+              }
         }
     }
 `;

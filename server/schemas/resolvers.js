@@ -18,7 +18,7 @@ const resolvers = {
             return await Category.find();
         },
         games: async () => {
-            return await Game.find().populate("categories").sort("rating", "descending");
+            return await Game.find().populate("categories").sort("rating");
         },
         user: async (parent, { username }) => {
             return await User.findOne({ username }).populate("games");
