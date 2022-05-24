@@ -1,10 +1,17 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
 //import './styles/style.css';
 
+import { QUERY_GAMES } from '../utils/queries';
+
 function Home() {
+  const { loading, data } = useQuery(QUERY_GAMES);
+  const games = data?.games || [];
+  console.log(data);
+
   return (
     <section className="home">
-    
+
       <h2>  Popular Games  </h2>
       <table>
         <tr>
@@ -13,20 +20,16 @@ function Home() {
           <th># Users Playing</th>
           <th>Rating</th>
         </tr>
-        <tr>
-          <td>Sorry</td>
-          <td>Board</td>
-          <td>26</td>
-          <td>86%</td>
-       </tr>
-       <tr>
-         <td>Cribbage</td>
-          <td>Cards</td>
-          <td>5</td>
-          <td>100%</td>
-        </tr>
+        {games && games.map(game => (
+          <tr>
+            <td>{game.gameName}</td>
+            <td>{game.categories[0].categoryName}</td>
+            <td>{game.usersPlaying}</td>
+            <td>{game.rating}</td>
+          </tr>
+        ))}
       </table>
-               
+
     </section>
   );
 }
