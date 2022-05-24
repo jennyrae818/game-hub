@@ -10,6 +10,7 @@ import Auth from '../utils/auth';
 function Register(props) {
 
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
+  
   //mutation
   const [createUser] = useMutation(CREATE_USER);
 
@@ -21,7 +22,7 @@ function Register(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(userFormData);
-    console.log(createUser({...userFormData}));
+    console.log(createUser);
     try {
       const newUser = await createUser({
         variables: { ...userFormData },

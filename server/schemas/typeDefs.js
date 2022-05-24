@@ -9,7 +9,6 @@ type User {
     games: [Game]
 }
 
-
 type Category {
     _id: ID
     categoryName: String
