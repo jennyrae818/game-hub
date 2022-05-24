@@ -45,6 +45,7 @@ export const ADD_REVIEW = gql`
         thumbsUp
         thumbsDown
         categories
+<<<<<<< HEAD
         reviews
     }
   }
@@ -100,6 +101,8 @@ export const THUMBSDOWN_GAME = gql`
         thumbsUp
         thumbsDown
         categories
+=======
+>>>>>>> b73edb526bd8133715852d75953a972e51b02273
         reviews
     }
   }
