@@ -23,7 +23,7 @@ function Home() {
         {games && games.map(game => (
           <tr>
             <td>{game.gameName}</td>
-            <td>{game.categories[0].categoryName}</td>
+            <td><ul>{game.categories.map(category => (<li>{category.categoryName}</li>))}</ul></td>
             <td>{game.usersPlaying}</td>
             <td>{game.rating}</td>
           </tr>
