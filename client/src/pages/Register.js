@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
-
-import Auth from '../utils/auth';
-
-import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
@@ -25,6 +20,7 @@ function Register(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(userFormData);
     console.log(createUser({...userFormData}));
     try {
       const newUser = await createUser({
