@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import React from 'react';
+
+import Auth from '../utils/auth';
 //import './styles/style.css';
 
 
@@ -14,13 +16,22 @@ function NavBar() {
           <li>
             <Link to="/search">Search</Link>
           </li>
-            <li>
-            <Link to="/login">Log-In</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-        
+          {Auth.loggedIn() ? (
+            <>
+              <li>
+                <Link onClick={Auth.logout} to="/">Logout</Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">Log-In</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          )}
     
         </ul>
       </nav>
