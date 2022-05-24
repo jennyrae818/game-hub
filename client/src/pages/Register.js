@@ -21,8 +21,7 @@ function Register(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(userFormData);
-    console.log(createUser);
+  
     try {
       const newUser = await createUser({
         variables: { ...userFormData },
