@@ -24,8 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // PRODUCTION (BUILD STATIC)
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/build')));
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
 // HEROKU
@@ -38,7 +38,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
     await server.start();
     server.applyMiddleware({ app });
 
-    db.once('open', () => {
+    db.once("open", () => {
         app.listen(PORT, () => {
             console.log(`Listening on localhost:${PORT}`);
             console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
