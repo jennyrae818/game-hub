@@ -11,6 +11,10 @@ function Search() {
 
   const navigate = useNavigate();
 
+  // const getInitialState = () => {
+  //   return categories[0]._id;
+  // };
+
   const [currentCategoryId, setCategory] = useState();
 
   const handleClick = () => {
@@ -25,6 +29,7 @@ function Search() {
         <div className="container">
           <label for="category">Select a category</label>
           <select id="selectedCategory" name="dropdown" value={currentCategoryId} on onChange={(e) => setCategory(e.target.value)}>
+            <option>All</option>
             {categories && categories.map(category => (
               <option key={category._id} value={category._id}>{category.categoryName}</option>
             ))}
