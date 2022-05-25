@@ -26,7 +26,7 @@ function AddGame() {
          </label>
          <label>
            <p>Rating:</p>
-           <p> &#9787; or &#9785; </p>
+           <button> &#9787; </button> <button> &#9785;</button>
          </label>
        
        <button type="submit">Submit</button>
