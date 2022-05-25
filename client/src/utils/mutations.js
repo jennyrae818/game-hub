@@ -25,12 +25,14 @@ export const CREATE_USER = gql`
 `;
 
 export const CREATE_GAME = gql`
-  mutation createGame($gameName: String!, $description: String!, $categories: [Category]!) {
+  mutation createGame($gameName: String!, $description: String!, $categories: [ID]!) {
     createGame(gameName: $gameName, description: $description, categories: $categories) {
       _id
       gameName
       description
-      categories
+      categories {
+        _id
+      }
     }
   }
 `;
