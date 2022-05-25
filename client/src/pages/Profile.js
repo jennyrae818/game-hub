@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
 
 function Profile() {
-  const { userId } = useParams;
+  const { userId } = useParams();
 
   const { loading, data } = useQuery(
     userId ? QUERY_SINGLE_USER : QUERY_ME,
@@ -17,7 +17,7 @@ function Profile() {
   );
   
   const user = data?.me || data?.user || {}; 
-
+  console.log(userId);
   if (Auth.loggedIn() && Auth.getProfile().data._id === userId) {
     return <Navigate to="/profile" />;
   }
@@ -26,13 +26,14 @@ function Profile() {
     return <div>LOADING</div>;
   }
 
-  if (!user?.username) {
-    return (
-      <h2>
-        Please sign-up or register to view this page!
-      </h2>
-    );
-  }
+  console.log(user);
+  // if (!user?.username) {
+  //   return (
+  //     <h2>
+  //       Please sign-up or register to view this page!
+  //     </h2>
+  //   );
+  // }
   
   return (
     <section className="profile">
