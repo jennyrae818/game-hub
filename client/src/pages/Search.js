@@ -11,10 +11,6 @@ function Search() {
 
   const navigate = useNavigate();
 
-  // const getInitialState = () => {
-  //   return categories[0]._id;
-  // };
-
   const [currentCategoryId, setCategory] = useState();
 
   const handleClick = () => {
@@ -39,7 +35,6 @@ function Search() {
         </div>
       </form>
     </div>
-
   );
 } 
 

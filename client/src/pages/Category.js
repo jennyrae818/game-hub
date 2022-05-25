@@ -41,17 +41,6 @@ function Category() {
           <td>{game.rating}</td>
        </tr>
         ))}
-
-        {/* <tr>
-          <td>Sorry</td>
-          <td>26</td>
-          <td>86%</td>
-       </tr>
-       <tr>
-         <td>Cribbage</td>
-          <td>5</td>
-          <td>100%</td>
-        </tr> */}
       </table>
                
     </section>
