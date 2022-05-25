@@ -11,6 +11,7 @@ import LogIn from "../pages/LogIn";
 
 
 const  NavBar = () => {
+  
   return (
     
     <nav className="nav navbar">
