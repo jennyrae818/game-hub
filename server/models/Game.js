@@ -14,7 +14,7 @@ const gameSchema = new Schema(
             type: String,
             required: true,
             minlength: 4,
-            maxlength: 400
+            maxlength: 700
         },
         // No of users who have added this game to their profile
         usersPlaying: {
