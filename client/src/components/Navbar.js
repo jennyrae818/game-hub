@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import React from 'react';
+
 //import './styles/style.css';
 //import LogIn from "../pages/LogIn";
 
 import Auth from "../utils/auth";
 import LogIn from "../pages/LogIn";
-import Register from "../pages/Register";
+//import Register from "../pages/Register";
 //import {'.nav '} from "../App.css";
 
 
@@ -26,11 +27,10 @@ const  NavBar = () => {
               </>
               ) : (
                 <li><Link onClick={() => LogIn(true)}>Login</Link></li>
-              )  (
-                <li><Link onClick={() => Register(true)}>Register</Link></li>
-              )} 
-            <li><Link to="/login">Log-In</Link></li>
-            <li><Link to="/register">Register</Link></li>
+              ) 
+            } 
+            <li><Link to="/Login">Login</Link></li>
+            <li><Link to="/Register">Register</Link></li>
         </ul>
       </nav>
      
