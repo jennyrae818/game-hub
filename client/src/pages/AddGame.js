@@ -74,6 +74,7 @@ function AddGame() {
 
           <button type="submit">Submit</button>
         </fieldset>
+
       </form>
     </div>
   );

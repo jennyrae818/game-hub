@@ -133,7 +133,7 @@ button:hover {
   display: inline-block;
   background-color:var(--middle-blue);
   width: 400px;
-  border: none;
+  border: 2px solid red;
   border-radius: 4px;
   margin: 20px;
 }
@@ -251,6 +251,7 @@ input[type=text]:focus {
   font-weight: bold;
   font-size: 16px;
   padding: 20px;
+  text-align: center;
 }
 
 .home table, th, td {
@@ -258,15 +259,31 @@ input[type=text]:focus {
   text-align: center;
   color: var(--blue);
   border: solid var(--red);
-  padding: 8px;
+  padding: 0px;
   margin-left: auto;
   margin-right: auto;
+  word-wrap: break-word;
+  max-width: 50%;
+  border-radius: 4px;
 }
 
 .home th {
+  text-decoration: underline;
   font-size: 30px;
+  padding: 5px;
 }
 
+.home td {
+  font-size: 20px;
+  padding: 2px;
+}
+
+
+.home li {
+  list-style-type: none;
+  text-align: center;
+  margin-left: -30px;
+}
 
 
 
@@ -329,13 +346,29 @@ input[type=text]:focus {
   text-align: center;
   color: var(--blue);
   border: solid var(--red);
-  padding: 8px;
+  padding: 0px;
   margin-left: auto;
   margin-right: auto;
+  word-wrap: break-word;
+  max-width: 50%;
+  border-radius: 4px;
 }
 
 .profile th {
+  text-decoration: underline;
   font-size: 30px;
+  padding: 5px;
+}
+
+.profile td {
+  font-size: 20px;
+  padding: 2px;
+}
+
+.profile li {
+  list-style-type: none;
+  text-align: center;
+  margin-left: -30px;
 }
 
 
@@ -401,13 +434,14 @@ input[type=text]:focus {
 .search {
   padding: 20px;
   text-align: center;
+  font-family: var(--alt);
+  font-size: 24px;
+  font-weight: 800;
   color: var(--blue);
 }
 
-.searchform {
-  font-family: var(--alt);
-  font-weight: 800;
-  font-size: 20px;
+.search p {
+  margin: 0 20 0 0;
 }
 
 .search form {
@@ -424,19 +458,6 @@ fieldset {
   border: 2px solid var(--alt);
   border-radius: 4px;
 }
-
-input {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  font-family: var(--alt);
-}
-
-input[type=text]:focus {
-  border: 3px solid var(--alt);
-}
-
 
 
 
