@@ -4,12 +4,12 @@ import React from 'react';
 //import LogIn from "../pages/LogIn";
 
 import Auth from "../utils/auth";
-import { LogIn } from "../pages";
-import { Register } from "../pages";
+import LogIn from "../pages/LogIn";
+import Register from "../pages/Register";
 //import {'.nav '} from "../App.css";
 
 
-function NavBar() {
+const  NavBar = () => {
   return (
     
     <nav className="nav navbar">
@@ -25,7 +25,7 @@ function NavBar() {
               <li><Link onClick={Auth.logout}>Logout</Link></li>
               </>
               ) : (
-                <li><Link  onClick={() => LogIn(true)}>Login</Link></li>
+                <li><Link onClick={() => LogIn(true)}>Login</Link></li>
               )  (
                 <li><Link onClick={() => Register(true)}>Register</Link></li>
               )} 
