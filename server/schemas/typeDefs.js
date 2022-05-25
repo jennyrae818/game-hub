@@ -45,6 +45,14 @@ type Query {
     game(id: ID!): Game
     me: User
 }
+    
+input GameData {
+    _id: ID!
+    gameName: String!
+    usersPlaying: Int
+    thumbsUp: Int
+    thumbsDown: Int
+}
 
 type Mutation {
     createUser(username: String!, email: String!, password: String!): Auth
