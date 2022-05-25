@@ -42,7 +42,7 @@ type Query {
     games: [Game]
     user(id: ID!): User
     category(id: ID!): Category
-    game(id: ID!): Game
+    game(_id: ID!): Game
     me: User
 }
     

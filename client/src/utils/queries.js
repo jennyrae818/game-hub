@@ -37,16 +37,23 @@ query getGames {
 `;
 
 export const QUERY_SINGLE_GAME = gql`
-    query getSingleGame($gameId: ID!) {
-        game(gameId: $gameId) {
+    query getSingleGame($_id: ID!) {
+        game(_id: $_id) {
             _id
             gameName
             description
             usersPlaying
             thumbsUp
             thumbsDown
-            categories
-            reviews
+            categories {
+                _id
+              }
+            reviews {
+                reviewId
+                reviewBody
+                username
+                createdAt
+            }
         }
     }
 `;
