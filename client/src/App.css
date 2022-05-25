@@ -401,13 +401,14 @@ input[type=text]:focus {
 .search {
   padding: 20px;
   text-align: center;
+  font-family: var(--alt);
+  font-size: 24px;
+  font-weight: 800;
   color: var(--blue);
 }
 
-.searchform {
-  font-family: var(--alt);
-  font-weight: 800;
-  font-size: 20px;
+.search p {
+  margin: 0 20 0 0;
 }
 
 .search form {
@@ -424,19 +425,6 @@ fieldset {
   border: 2px solid var(--alt);
   border-radius: 4px;
 }
-
-input {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  font-family: var(--alt);
-}
-
-input[type=text]:focus {
-  border: 3px solid var(--alt);
-}
-
 
 
 

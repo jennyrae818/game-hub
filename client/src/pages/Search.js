@@ -20,20 +20,23 @@ function Search() {
   return (
     <div className="search">
       <h2> Search by Category </h2>
-
-      <form className="searchform">
-        <div className="container">
-          <label for="category">Select a category</label>
+      <div className="search_categories">
+      <form>   
+      <fieldset>
+    
+          <label for="category"><p>Select a category:</p></label>
           <select id="selectedCategory" name="dropdown" value={currentCategoryId} on onChange={(e) => setCategory(e.target.value)}>
-            <option>All</option>
+            <option><p> All </p></option>
             {categories && categories.map(category => (
               <option key={category._id} value={category._id}>{category.categoryName}</option>
             ))}
           </select>
 
-          <button type="submit" className="searchbtn" onClick={handleClick}>Submit</button>
-        </div>
+         <p> <button type="submit" className="searchbtn" onClick={handleClick}>Submit</button> </p>
+        </fieldset>
+    
       </form>
+    </div>
     </div>
   );
 } 
