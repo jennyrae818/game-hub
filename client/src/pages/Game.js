@@ -1,10 +1,9 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom'
 import { useQuery } from '@apollo/client';
-
-
 import { QUERY_SINGLE_GAME } from '../utils/queries';
 import { QUERY_GAME_USERS } from '../utils/queries';
+import Auth from '../utils/auth';
 
 function Game() {
   const location = useLocation();
@@ -31,18 +30,17 @@ function Game() {
       <h3> &#9787; : {game.thumbsUp}</h3>
       <h3> &#9785; : {game.thumbsDown}</h3>
       <h3> # Users playing: {game.usersPlaying}</h3>
-      
       <table>
         <tr>
           <th>Username</th>
           {/* <th># Times Played</th>
-          <th>Rating</th> */}
+                <th>Rating</th> */}
         </tr>
         {users.map(user => (
           <tr key={user._id}>
             <td>{user.username}</td>
             {/* <td>40</td>
-            <td> &#9787; </td> */}
+                  <td> &#9787; </td> */}
           </tr>
         ))}
       </table>
