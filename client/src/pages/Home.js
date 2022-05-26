@@ -12,16 +12,13 @@ function Home() {
   const games = data?.games || [];
   const { data: me } = useQuery(QUERY_ME);
   const thisUser = me?.me || [];
-  console.log(games);
-  console.log(thisUser._id);
+  
   
   const [addGame] = useMutation(ADD_GAME_TO_USER);
 
 
   const handleGameAdd = async (gameId) => {
     const gameFound = data?.games.find((game) => game._id === gameId);
-    console.log(gameId);
-    console.log(gameFound, 'gameFound');
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -30,9 +27,9 @@ function Home() {
     }
     
     const gameAddId = gameFound._id;
-    console.log(gameAddId, 'gameAddId');
+    
     const idUser = thisUser._id;
-    console.log(idUser, 'idUser')
+    
 
     try {
       const gameAdd = await addGame({
