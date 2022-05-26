@@ -124,14 +124,33 @@ button:hover {
 
 /*ADD GAME*/
 .addGame {
-  background: var(--isabelline);
   padding: 20px;
   text-align: center;
+  color: var(--blue);
+  font-family: var(--alt);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+
+
+.addGame p {
+  color: var(--blue);
+  font-family: var(--alt);
+  font-size: 20px;
+  font-weight: 800;
+  margin: 10px;
+}
+
+.addGame label {
+  color: var(--blue);
+  font-family: var(--alt);
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .addGame form {
   display: inline-block;
-  background-color:var(--middle-blue);
   width: 400px;
   border: 2px solid red;
   border-radius: 4px;
@@ -139,20 +158,24 @@ button:hover {
 }
 
 fieldset {
-  border: 2px solid var(--ming);
+  border: 2px solid var(--alt);
   border-radius: 4px;
 }
 
-input {
-  width: 100%;
+
+.addGame input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  border-radius: 4px;
+  font-family: var(--alt);
+  font-size: 16px;
+  font-weight: 800;
 }
 
-input[type=text]:focus {
-  border: 3px solid var(--ming);
+.addGame input[type=text]:focus {
+  border: 3px solid var(--alt);
 }
 
 textarea {
@@ -160,11 +183,18 @@ textarea {
   height: 150px;
   padding: 12px 20px;
   box-sizing: border-box;
-  border: 2px solid var(--ming);
+  border: 2px solid var(--alt);
   border-radius: 4px;
   background-color: #f8f8f8;
   resize: none;
+  font-family: var(--alt);
+  font-size: 16px;
+  font-weight: 800;
 }
+ 
+ .rating input {
+   width: auto;
+ }
 
 
 
@@ -222,12 +252,12 @@ textarea {
   padding: 10px;
 }
 
-fieldset {
+.game fieldset {
   border: 2px solid var(--alt);
   border-radius: 4px;
 }
 
-input {
+.game input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -235,7 +265,7 @@ input {
   font-family: var(--alt);
 }
 
-input[type=text]:focus {
+.game input[type=text]:focus {
   border: 3px solid var(--alt);
 }
 
@@ -278,7 +308,6 @@ input[type=text]:focus {
   padding: 2px;
 }
 
-
 .home li {
   list-style-type: none;
   text-align: center;
@@ -316,7 +345,7 @@ fieldset {
   border-radius: 4px;
 }
 
-input {
+.login input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -324,7 +353,7 @@ input {
   font-family: var(--alt);
 }
 
-input[type=text]:focus {
+.login input[type=text]:focus {
   border: 3px solid var(--alt);
 }
 
@@ -412,7 +441,7 @@ fieldset {
   border-radius: 4px;
 }
 
-input {
+.register input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -420,7 +449,7 @@ input {
   font-family: var(--alt);
 }
 
-input[type=text]:focus {
+.register input[type=text]:focus {
   border: 3px solid var(--alt);
 }
 
