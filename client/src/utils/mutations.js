@@ -46,8 +46,12 @@ export const ADD_REVIEW = gql`
         usersPlaying
         thumbsUp
         thumbsDown
-        categories
-        reviews
+        categories {
+          _id
+        }
+        reviews {
+          reviewBody
+        }
     }
   }
 `;
