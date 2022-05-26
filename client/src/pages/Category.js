@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import {useLocation} from 'react-router-dom';
-//import './styles/style.css';
+import { Link } from 'react-router-dom';
 
 import { QUERY_GAMES } from '../utils/queries';
 
@@ -36,7 +36,7 @@ function Category() {
 
         {filterProducts().map(game => (
           <tr>
-          <td>{game.gameName}</td>
+          <td><Link to="/game" state={{ gameId: game._id }}>{game.gameName}</Link></td>
           <td>{game.usersPlaying}</td>
           <td>{game.rating}</td>
        </tr>
