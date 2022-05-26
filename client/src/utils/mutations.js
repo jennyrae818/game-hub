@@ -72,7 +72,10 @@ export const ADD_GAME_TO_USER = gql`
     addGameToUser(userId: $userId, gameId: $gameId) {
       _id
       username
-      games
+      games {
+        _id
+        usersPlaying
+      }
     }
   }
 `;

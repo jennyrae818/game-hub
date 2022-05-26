@@ -69,25 +69,22 @@ const resolvers = {
             }
             throw new AuthenticationError("You need to be logged in!");
         },
-        addGameToUser: async (parent, args, context) => {
-            console.log(args);
+        addGameToUser: async (parent, { userId, gameId }, context) => {
             // Adds the game to user profile
             if (context.user) {
-                console.log(context.user);
-                const updatedUser = await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    { $addToSet: { games: args.input } },
-                    { new: true, runValidators: true }
+                const user = await User.findOneAndUpdate(
+                    { _id: userId },
+                    { $addToSet: { games: gameId } },
                 );
-                return updatedUser;
+            
+                // Increments the number of users playing the game by 1
+                await Game.findOneAndUpdate(
+                    { _id: gameId },
+                    { usersPlaying: + 1 }
+                );
+
+                return user;
             }
-
-            // Increments the number of users playing the game by 1
-            // await Game.findOneAndUpdate(
-            //     { _id: args._id },
-            //     { usersPlaying: usersPlaying + 1 }
-            // );
-
         },
         thumbsUpGame: async (parent, { gameId }) => {
             return await Game.findOneAndUpdate(

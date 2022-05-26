@@ -15,7 +15,17 @@ export const QUERY_ME = gql`
         me {
             _id
             username
-            games
+            games {
+                _id
+                gameName
+                usersPlaying
+                thumbsUp
+                thumbsDown
+                categories {
+                    _id
+                    categoryName
+                }
+            }
         }
     }
 `;
