@@ -23,10 +23,26 @@ function Game() {
          <td>wonderman43</td>
           <td>2</td>
           <td> &#9785; </td>
-
         </tr>
       </table>
-           
+      
+      
+      <form>
+        <fieldset>
+        <label>
+            <p>Add Your Own Review:</p>
+            {/* <input value={} name="userreview" placeholder="Start your review here..." onChange={handleInput} /> */}
+        </label>
+        <button type="addreview">Add Review</button>
+        </fieldset>
+      </form>
+
+
+      <div className="container">
+      <h3>Reviews</h3>
+      <p>Username: Reviews to display here </p>
+      </div>
+     
     </section>
   );
 }

@@ -52,13 +52,16 @@ function AddGame() {
       <h2> Add A Game!  </h2>
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <label for="category"></label>
+          <label for="category">
+            <p>Select a Cateogry:</p>
+            <p>(or multiple)</p>
+          </label>
+      
           <select value={gameFormData.categories} id="selectedCategory" name="categories" multiple={true} onChange={handleInput}>
             {categories && categories.map(category => (
               <option key={category._id} value={category._id}>{category.categoryName}</option>
             ))}
           </select>
-
           <label>
             <p>Game Name:</p>
             <input value={gameFormData.gameName} name="gameName" placeholder="Game Name" onChange={handleInput} />
@@ -69,8 +72,16 @@ function AddGame() {
           </label>
           <label>
             <p>Rating:</p>
-            <p> &#9787; or &#9785; </p>
+            <div className="rating">
+            <input type="radio" id="like" className="like" value="like" /> 
+            <label for="like"> &#9787; Like </label>
+            <input type="radio" id="dislike" className="dislike" value="dislike" />
+            <label for="dislike"> &#9785; Dislike </label>
+            </div>
+             
+              
           </label>
+          <p></p>
 
           <button type="submit">Submit</button>
         </fieldset>
