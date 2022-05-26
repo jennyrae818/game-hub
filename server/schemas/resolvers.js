@@ -62,10 +62,10 @@ const resolvers = {
 
             return { token, user };
         },
-        createGame: async (parent, { gameName, description, categories }, context) => {
+        createGame: async (parent, { gameName, description, thumbsUp, thumbsDown, categories }, context) => {
             if (context.user) {
                 const game = await Game.create({
-                    gameName, description, categories
+                    gameName, description, categories, thumbsUp, thumbsDown
                 });
 
                 await User.findOneAndUpdate(
@@ -73,6 +73,7 @@ const resolvers = {
                     { $addToSet: { games: game._id } }
                 );
 
+                console.log(game);
                 return game;
             }
             throw new AuthenticationError("You need to be logged in!");
