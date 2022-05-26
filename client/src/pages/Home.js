@@ -21,9 +21,9 @@ function Home() {
           <th>Rating</th>
         </tr>
         {games && games.map(game => (
-          <tr>
+          <tr key={game._id}>
             <td><Link to="/game" state={{ gameId: game._id }}>{game.gameName}</Link></td>
-            <td><ul>{game.categories.map(category => (<li>{category.categoryName}</li>))}</ul></td>
+            <td><ul>{game.categories.map(category => (<li key={category._id}>{category.categoryName}</li>))}</ul></td>
             <td>{game.usersPlaying}</td>
             <td>{game.rating}</td>
           </tr>

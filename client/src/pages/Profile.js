@@ -30,9 +30,9 @@ function Profile() {
           <th>Rating</th>
         </tr>
         {user.games && user.games.map(game => (
-          <tr>
+          <tr key={game._id}>
             <td>{game.gameName}</td>
-            <td><ul>{game.categories.map(category => (<li>{category.categoryName}</li>))}</ul></td>
+            <td><ul>{game.categories.map(category => (<li key={category._id}>{category.categoryName}</li>))}</ul></td>
             <td>{game.usersPlaying}</td>
             <td>{game.rating}</td>
           </tr>

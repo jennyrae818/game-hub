@@ -1,5 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Category, Game } = require("../models");
+const { populate } = require("../models/User");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -8,8 +9,14 @@ const resolvers = {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select("-__v -password")
-                    .populate("games");
-                
+                    .populate(
+                        {
+                            path: "games",
+                            populate: {
+                                path: "categories"
+                            }
+                        });
+
                 return userData;
             }
             throw new AuthenticationError("You need to be logged in!");
@@ -109,7 +116,7 @@ const resolvers = {
             if (context.user) {
                 return Game.findOneAndUpdate(
                     { _id: gameId },
-                    { 
+                    {
                         $addToSet: {
                             reviews: { reviewBody, username: context.user.username }
                         }
