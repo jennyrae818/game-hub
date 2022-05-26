@@ -33,10 +33,8 @@ function Game() {
       <table>
         <tr>
           <th>Username</th>
-
           {/* <th># Times Played</th>
                 <th>Rating</th> */}
-
         </tr>
         {users.map(user => (
           <tr key={user._id}>
@@ -46,22 +44,6 @@ function Game() {
           </tr>
         ))}
       </table>
-
-      <form>
-        <fieldset>
-        <label>
-            <p>Add Your Own Review:</p>
-            {/* <input value={} name="userreview" placeholder="Start your review here..." onChange={handleInput} /> */}
-        </label>
-        <button type="addreview">Add Review</button>
-        </fieldset>
-      </form>
-
-
-      <div className="container">
-      <h3>Reviews</h3>
-      <p>Username: Reviews to display here </p>
-      </div>
 
     </section>
   );
