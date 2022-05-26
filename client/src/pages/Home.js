@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useMutation, useQuery } from '@apollo/client';
+import { Link } from 'react-router-dom';
+
 //import './styles/style.css';
 
 import Auth from '../utils/auth';
@@ -63,6 +65,7 @@ function Home() {
           <tr>
             <button onClick={() => handleGameAdd(game._id)}>Add</button>
             <td>{game.gameName}</td>
+            <td><Link to="/game" state={{ gameId: game._id }}>{game.gameName}</Link></td>
             <td><ul>{game.categories.map(category => (<li>{category.categoryName}</li>))}</ul></td>
             <td>{game.usersPlaying}</td>
             <td>{game.rating}</td>

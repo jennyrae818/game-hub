@@ -23,11 +23,19 @@ const resolvers = {
         user: async (parent, { username }) => {
             return await User.findOne({ username }).populate("games");
         },
+        users: async (parent, { games }) => {
+            const params = {};
+            if (games) {
+                params.games = games;
+            }
+
+            return await User.find(params).populate("games");
+        },
         category: async (parent, { categoryId }) => {
             return await Category.findOne({ _id: categoryId });
         },
-        game: async (parent, { gameId }) => {
-            return await Game.findOne({ _id: gameId }).populate("reviews");
+        game: async (parent, { _id }) => {
+            return await Game.findById(_id).populate("reviews");
         },
     },
 
