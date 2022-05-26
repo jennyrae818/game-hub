@@ -10,6 +10,15 @@ export const QUERY_SINGLE_USER = gql`
     }
 `;
 
+export const QUERY_GAME_USERS = gql`
+query getUsers($games: ID) {
+    users(games: $games) {
+      _id
+      username
+    }
+  }  
+`
+
 export const QUERY_ME = gql`
     query me {
         me {
