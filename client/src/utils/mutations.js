@@ -115,3 +115,15 @@ export const THUMBSDOWN_GAME = gql`
     }
   }
 `;
+
+export const REMOVE_GAME_FROM_USER = gql`
+  mutation removeGameFromUser($gameId: ID!) {
+    removeGameFromUser(gameId: $gameId) {
+      _id
+      username
+      games {
+        _id
+      }
+    }
+  }
+`

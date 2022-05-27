@@ -136,6 +136,22 @@ const resolvers = {
                 );
             }
         },
+        removeGameFromUser: async (parent, { gameId }, context) => {
+            if (context.user) {
+
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { games: gameId }},
+                    {
+                        new: true,
+                        runValidators: true
+                    }
+                );
+
+                return updatedUser;
+            }
+            throw new AuthenticationError("You can't do this");
+        },
         removeReview: async (parent, { gameId, reviewId }, context) => {
             // Removes a review from game
             if (context.user) {
@@ -153,7 +169,7 @@ const resolvers = {
                 );
             }
             throw new AuthenticationError("You need to be logged in!");
-        }
+        },
     }
 };
 

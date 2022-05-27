@@ -56,6 +56,7 @@ type Mutation {
     thumbsDownGame(gameId: ID!): Game
     addReview(gameId: ID!, reviewBody: String!): Game
     removeReview(gameId: ID!, reviewId: ID!): Game
+    removeGameFromUser(gameId: ID!): User
 }
 `;
 
