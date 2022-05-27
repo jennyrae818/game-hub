@@ -53,19 +53,40 @@ function Game() {
   }
   return (
     <section className="game">
-
+     
       <h2>  --{game.gameName}--  </h2>
+    <form>
+      <fieldset>
       <h3> Description: </h3>
       <p>{game.description}</p>
       <h3> OverAll Rating: {game.rating}</h3>
-      <h3> &#9787; : {game.thumbsUp}</h3>
-      <h3> &#9785; : {game.thumbsDown}</h3>
-      <h3> # Users playing: {game.usersPlaying}</h3>
+      <p> &#9787; : {game.thumbsUp}</p>
+      <p> &#9785; : {game.thumbsDown}</p>
+      <h3> # Users playing: </h3> <p>{game.usersPlaying}</p>
+      </fieldset>
+    </form>
+
+        <form>
+        <fieldset>
+          <label>
+            <h3>Add Your Own Rating:</h3>
+            <div className="rating">
+              <label>
+                <input type="radio" name="rating" className="like" value="like" onChange={handleInput}/>
+                &#9787; Like </label>
+              <label>
+                <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleInput}/>
+                &#9785; Dislike </label>
+            </div>
+          </label>
+          </fieldset>
+          </form>
+
       {Auth.loggedIn() ? (
         <>
           <form onSubmit={handleSubmit}>
             <label>
-              <p>Your Review:</p>
+              <h3>Enter Your Review Here:</h3>
               <input 
                 type="text"
                 name="reviewBody" 
@@ -86,26 +107,18 @@ function Game() {
         </>
       )}
       <table>
-        <tr>
-          <th>Username</th>
-
-          {/* <th># Times Played</th>
-                <th>Rating</th> */}
-
-        </tr>
         {users.map(user => (
           <tr key={user._id}>
             <td>{user.username}</td>
-            {/* <td>40</td>
-                  <td> &#9787; </td> */}
           </tr>
         ))}
       </table>
+      
 
       <form>
         <fieldset>
         <label>
-            <p>Add Your Own Review:</p>
+            <h3>Reviews</h3>
             {/* <input value={} name="userreview" placeholder="Start your review here..." onChange={handleInput} /> */}
         </label>
         <button type="addreview">Add Review</button>

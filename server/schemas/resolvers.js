@@ -84,20 +84,22 @@ const resolvers = {
             }
             throw new AuthenticationError("You need to be logged in!");
         },
-        addGameToUser: async (parent, { userId, gameId }) => {
+        addGameToUser: async (parent, { userId, gameId }, context) => {
             // Adds the game to user profile
-            const user = await User.findOneAndUpdate(
-                { _id: userId },
-                { $addToSet: { games: gameId } },
-            );
+            if (context.user) {
+                const user = await User.findOneAndUpdate(
+                    { _id: userId },
+                    { $addToSet: { games: gameId } },
+                );
+        
+                // Increments the number of users playing the game by 1
+                await Game.findOneAndUpdate(
+                    { _id: gameId },
+                    { $inc: { usersPlaying: 1 } }
+                );
 
-            // Increments the number of users playing the game by 1
-            await Game.findOneAndUpdate(
-                { _id: gameId },
-                { usersPlaying: usersPlaying + 1 }
-            );
-
-            return user;
+                return user;
+            }
         },
         thumbsUpGame: async (parent, { gameId }) => {
             return await Game.findOneAndUpdate(

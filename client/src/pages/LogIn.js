@@ -14,7 +14,6 @@ function LogIn() {
   const handleInput = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
-    console.log(userFormData);
   };
 
   const handleSubmit = async (event) => {
@@ -34,7 +33,6 @@ function LogIn() {
 
     } catch (err) {
       console.error(err);
-      console.log(JSON.stringify(userFormData));
     }
 
     setUserFormData({
