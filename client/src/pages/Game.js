@@ -14,12 +14,12 @@ function Game() {
     variables: { _id: gameId }
   });
   const game = data?.game || {};
-
+  console.log(game, 'game');
   var { loading, data } = useQuery(QUERY_GAME_USERS, {
     variables: { games: gameId }
   });
   const users = data?.users || [];
-  console.log(users);
+  console.log(users, 'users');
 
   //review
   const [reviewFormData, setReviewFormData] = useState({ reviewBody: '' })
@@ -60,11 +60,28 @@ function Game() {
       <h3> Description: </h3>
       <p>{game.description}</p>
       <h3> OverAll Rating: {game.rating}</h3>
+
       <p> &#9787; : {game.thumbsUp}</p>
       <p> &#9785; : {game.thumbsDown}</p>
       <h3> # Users playing: </h3> <p>{game.usersPlaying}</p>
       </fieldset>
     </form>
+     <table>
+        <tr>
+          <th>Users who play</th>
+
+          {/* <th># Times Played</th>
+                <th>Rating</th> */}
+
+        </tr>
+        {users.map(user => (
+          <tr key={user._id}>
+            <td>{user.username}</td>
+            {/* <td>40</td>
+                  <td> &#9787; </td> */}
+          </tr>
+        ))}
+      </table>
 
         <form>
         <fieldset>
@@ -72,15 +89,16 @@ function Game() {
             <h3>Add Your Own Rating:</h3>
             <div className="rating">
               <label>
-                <input type="radio" name="rating" className="like" value="like" onChange={handleInput}/>
+                <input type="radio" name="rating" className="like" value="like" />
                 &#9787; Like </label>
               <label>
-                <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleInput}/>
+                <input type="radio" name="rating" className="dislike" value="dislike" />
                 &#9785; Dislike </label>
             </div>
           </label>
           </fieldset>
           </form>
+
 
       {Auth.loggedIn() ? (
         <>
@@ -106,29 +124,23 @@ function Game() {
         </h3>
         </>
       )}
-      <table>
-        {users.map(user => (
-          <tr key={user._id}>
-            <td>{user.username}</td>
-          </tr>
-        ))}
-      </table>
-      
-
-      <form>
-        <fieldset>
-        <label>
-            <h3>Reviews</h3>
-            {/* <input value={} name="userreview" placeholder="Start your review here..." onChange={handleInput} /> */}
-        </label>
-        <button type="addreview">Add Review</button>
-        </fieldset>
-      </form>
 
 
       <div className="container">
       <h3>Reviews</h3>
-      <p>Username: Reviews to display here </p>
+      {Object.keys(game).length === 0 ? (
+        <>
+          <p>There is an error getting reviews right now, our apologies!</p>
+        </>
+      ) : (
+        <>
+      <ul>{game.reviews.map(review => (
+        <li key={review.reviewId}>
+          User {review.username} says: {review.reviewBody} created at: {review.createdAt}
+        </li>))}
+      </ul>
+        </>
+      )}
       </div>
 
     </section>
