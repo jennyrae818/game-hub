@@ -76,7 +76,9 @@ function Game() {
         </tr>
         {users.map(user => (
           <tr key={user._id}>
-            <td>{user.username}</td>
+            <Link to={`/profile/${user._id}`}>
+              <td>{user.username}</td>
+            </Link>
             {/* <td>40</td>
                   <td> &#9787; </td> */}
           </tr>

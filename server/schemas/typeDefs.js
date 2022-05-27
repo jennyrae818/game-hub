@@ -40,7 +40,7 @@ type Auth {
 type Query {
     categories: [Category]
     games: [Game]
-    user(id: ID!): User
+    user(userId: ID!): User
     users(games: ID): [User]
     category(id: ID!): Category
     game(_id: ID!): Game

@@ -1,16 +1,20 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-import { QUERY_ME } from '../utils/queries';
+import { QUERY_ME, QUERY_SINGLE_USER } from '../utils/queries';
 
 function Profile() {
-  const { loading, data } = useQuery(QUERY_ME);
+  const { userId: userParam } = useParams();
+
+  const { loading, data } = useQuery(userParam ? QUERY_SINGLE_USER : QUERY_ME, { 
+    variables: { userId: userParam }
+  });
 
   console.log(data);
-
-  const user = data?.me || {}; 
-
+  console.log(userParam);
+  const user = data?.me || data?.user || {}; 
+  console.log(user, 'user');
   if (loading) {
     return <div>LOADING</div>;
   }
@@ -20,7 +24,7 @@ function Profile() {
   return (
     <section className="profile">
 
-      <h2>{`${user.username}`}</h2>
+      <h2>{userParam ? `${user.username}` : 'My Profile'}</h2>
       <h3>My Games</h3>
       <table>
         <tr>
