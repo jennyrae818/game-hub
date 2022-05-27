@@ -114,7 +114,7 @@ function Game() {
         <>
       <ul>{game.reviews.map(review => (
         <li key={review.reviewId}>
-          User {review.username} says: {review.reviewBody}
+          User {review.username} says: {review.reviewBody} created at: {review.createdAt}
         </li>))}
       </ul>
         </>
