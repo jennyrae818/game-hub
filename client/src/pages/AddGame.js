@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { CREATE_GAME } from '../utils/mutations';
-//import '../styles/style.css';
 
 import { QUERY_CATEGORIES } from '../utils/queries';
 
@@ -10,7 +9,7 @@ function AddGame() {
   const { loading, data } = useQuery(QUERY_CATEGORIES);
   const categories = data?.categories || [];
 
-  const [gameFormData, setGameFormData] = useState({ gameName: '', description: '', categories: [] });
+  const [gameFormData, setGameFormData] = useState({ gameName: '', description: '', thumbsUp: 0, thumbsDown: 0, categories: [] });
 
   //mutation
   const [createGame] = useMutation(CREATE_GAME);
@@ -21,15 +20,22 @@ function AddGame() {
       const categoryArr = Array.from(event.target.selectedOptions, option => option.value);
       setGameFormData({ ...gameFormData, [name]: categoryArr });
     }
+    else if (name === "rating") {
+      if (value === "like") {
+        setGameFormData({ ...gameFormData, thumbsUp: 1 });
+      }
+      else {
+        setGameFormData({ ...gameFormData, thumbsDown: 1 });
+      }
+    }
     else {
       setGameFormData({ ...gameFormData, [name]: value });
     }
-    
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       const newGame = await createGame({
         variables: { ...gameFormData },
@@ -38,14 +44,13 @@ function AddGame() {
       console.log(newGame);
 
       setGameFormData({
-        gameName: '', description: '', categories: []
+        gameName: '', description: '', categories: [], thumbsUp: 0, thumbsDown: 0
       });
 
     } catch (err) {
       console.error(err);
     }
   };
-
 
   return (
     <div className="addGame">
@@ -56,7 +61,7 @@ function AddGame() {
             <p>Select a Cateogry:</p>
             <p>(or multiple)</p>
           </label>
-      
+
           <select value={gameFormData.categories} id="selectedCategory" name="categories" multiple={true} onChange={handleInput}>
             {categories && categories.map(category => (
               <option key={category._id} value={category._id}>{category.categoryName}</option>
@@ -73,13 +78,13 @@ function AddGame() {
           <label>
             <p>Rating:</p>
             <div className="rating">
-            <input type="radio" id="like" className="like" value="like" /> 
-            <label for="like"> &#9787; Like </label>
-            <input type="radio" id="dislike" className="dislike" value="dislike" />
-            <label for="dislike"> &#9785; Dislike </label>
+              <label>
+                <input type="radio" name="rating" className="like" value="like" onChange={handleInput}/>
+                &#9787; Like </label>
+              <label>
+                <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleInput}/>
+                &#9785; Dislike </label>
             </div>
-             
-              
           </label>
           <p></p>
 
