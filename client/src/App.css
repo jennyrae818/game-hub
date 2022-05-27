@@ -58,9 +58,6 @@ button:hover {
 
 
 
-
-
-
 /*HEADER*/
 .header {
   height: auto;
@@ -119,8 +116,29 @@ button:hover {
     color: var(--red)
 }
 
+/*dropdown menu*/
 
+.searchform {
+  display: inline-block;
+  background-color:var(--black);
+  width: 400px;
+  border: 2px solid red;
+  border-radius: 4px;
+  margin: 20px;
+  padding: 10px;
+}
 
+option {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-family: var(--alt);
+}
+
+.category {
+  border: 3px solid var(--alt);
+}
 
 /*ADD GAME*/
 .addGame {
