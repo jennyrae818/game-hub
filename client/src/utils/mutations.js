@@ -25,11 +25,13 @@ export const CREATE_USER = gql`
 `;
 
 export const CREATE_GAME = gql`
-  mutation createGame($gameName: String!, $description: String!, $categories: [ID]!) {
-    createGame(gameName: $gameName, description: $description, categories: $categories) {
+  mutation createGame($gameName: String!, $description: String!, $thumbsUp: Int, $thumbsDown: Int, $categories: [ID]!) {
+    createGame(gameName: $gameName, description: $description, thumbsUp: $thumbsUp, thumbsDown: $thumbsDown, categories: $categories) {
       _id
       gameName
       description
+      thumbsUp
+      thumbsDown
       categories {
         _id
       }
@@ -46,8 +48,12 @@ export const ADD_REVIEW = gql`
         usersPlaying
         thumbsUp
         thumbsDown
-        categories
-        reviews
+        categories {
+          _id
+        }
+        reviews {
+          reviewBody
+        }
     }
   }
 `;

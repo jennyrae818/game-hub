@@ -28,8 +28,6 @@ function Home() {
       return false;
     }
     
-    //const gameAddId = gameFound._id;
-    
     const idUser = thisUser._id;
     
 
@@ -61,12 +59,12 @@ function Home() {
           <th># Users Playing</th>
           <th>Rating</th>
         </tr>
+
         {games.map(game => (
           <tr>
             <button onClick={() => handleGameAdd(game._id)}>Add</button>
-            <td>{game.gameName}</td>
             <td><Link to="/game" state={{ gameId: game._id }}>{game.gameName}</Link></td>
-            <td><ul>{game.categories.map(category => (<li>{category.categoryName}</li>))}</ul></td>
+            <td><ul>{game.categories.map(category => (<li key={category._id}>{category.categoryName}</li>))}</ul></td>
             <td>{game.usersPlaying}</td>
             <td>{game.rating}</td>
           </tr>
