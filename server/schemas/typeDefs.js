@@ -40,7 +40,7 @@ type Auth {
 type Query {
     categories: [Category]
     games: [Game]
-    user(id: ID!): User
+    user(userId: ID!): User
     users(games: ID): [User]
     category(id: ID!): Category
     game(_id: ID!): Game
@@ -56,6 +56,7 @@ type Mutation {
     thumbsDownGame(gameId: ID!): Game
     addReview(gameId: ID!, reviewBody: String!): Game
     removeReview(gameId: ID!, reviewId: ID!): Game
+    removeGameFromUser(gameId: ID!): User
 }
 `;
 

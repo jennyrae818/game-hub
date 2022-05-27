@@ -26,8 +26,14 @@ const resolvers = {
         games: async () => {
             return await Game.find().populate("categories").sort("rating");
         },
-        user: async (parent, { username }) => {
-            return await User.findOne({ username }).populate("games");
+        user: async (parent, { userId }) => {
+            return await User.findOne({ _id: userId })
+                .populate({
+                    path: "games",
+                    populate: {
+                        path: "categories"
+                    }
+                });
         },
         users: async (parent, { games }) => {
             const params = {};
@@ -150,6 +156,22 @@ const resolvers = {
                 );
             }
         },
+        removeGameFromUser: async (parent, { gameId }, context) => {
+            if (context.user) {
+
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { games: gameId }},
+                    {
+                        new: true,
+                        runValidators: true
+                    }
+                );
+
+                return updatedUser;
+            }
+            throw new AuthenticationError("You can't do this");
+        },
         removeReview: async (parent, { gameId, reviewId }, context) => {
             // Removes a review from game
             if (context.user) {
@@ -167,7 +189,7 @@ const resolvers = {
                 );
             }
             throw new AuthenticationError("You need to be logged in!");
-        }
+        },
     }
 };
 

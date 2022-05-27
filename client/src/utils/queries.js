@@ -5,7 +5,17 @@ export const QUERY_SINGLE_USER = gql`
         user(userId: $userId) {
             _id
             username
-            games
+            games {
+                _id
+                gameName
+                usersPlaying
+                thumbsUp
+                thumbsDown
+                categories {
+                    _id
+                    categoryName
+                }
+            }
         }
     }
 `;
