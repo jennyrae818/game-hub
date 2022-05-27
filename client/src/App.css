@@ -118,27 +118,59 @@ button:hover {
 
 /*dropdown menu*/
 
-.searchform {
-  display: inline-block;
-  background-color:var(--black);
-  width: 400px;
-  border: 2px solid red;
-  border-radius: 4px;
-  margin: 20px;
-  padding: 10px;
+/* select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  background: white;
+  background-image: none;
+  border: 2px solid black;
 }
 
-option {
+#selectedCategory {
+  position: relative;
+  display: block;
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: white;
+  overflow: hidden;
+  border-radius: .25em;
+}
+
+.option {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  font-family: var(--alt);
+  height: 100%;
+  margin: 0;
+  padding: 0 0 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+
+option::-ms-expand {
+  display: none;
+}
+
+.option::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 1em;
+  background: white;
+  pointer-events: none;
+}
+
+.select:hover::after {
+  color: #F39C12;
 }
 
 .category {
   border: 3px solid var(--alt);
-}
+} */
 
 /*ADD GAME*/
 .addGame {
@@ -514,8 +546,8 @@ fieldset {
 .footer {
   font-size: 36px;
   bottom: 0;
-
-
+  position: fixed;
+  left: 0;
   width: 100%;
   margin: 10px;
 }

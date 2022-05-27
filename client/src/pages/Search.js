@@ -21,14 +21,14 @@ function Search() {
     <div className="search">
       <h2> Search by Category </h2>
       <div className="search_categories">
-      <form>   
+      <form className="searchform">   
       <fieldset>
     
           <label for="category"><p>Select a category:</p></label>
           <select id="selectedCategory" name="dropdown" value={currentCategoryId} on onChange={(e) => setCategory(e.target.value)}>
-            <option><p> All </p></option>
+            <option className='option'><p> All </p></option>
             {categories && categories.map(category => (
-              <option key={category._id} value={category._id}>{category.categoryName}</option>
+              <option className="option" key={category._id} value={category._id}>{category.categoryName}</option>
             ))}
           </select>
 
