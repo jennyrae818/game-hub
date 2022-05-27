@@ -2,8 +2,6 @@ import React from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
 
-//import './styles/style.css';
-
 import Auth from '../utils/auth';
 
 import { QUERY_GAMES, QUERY_ME } from '../utils/queries';
@@ -40,7 +38,6 @@ function Home() {
     });
 
     console.log(gameAdd);
-    window.location.reload();
     
     } catch (err) {
       console.error(err)
@@ -53,7 +50,7 @@ function Home() {
       <h2>  Popular Games  </h2>
       <table>
         <tr>
-          <th>Add</th>
+          <th>Add To Profile</th>
           <th>Game</th>
           <th>Category</th>
           <th># Users Playing</th>
@@ -62,7 +59,7 @@ function Home() {
 
         {games && games.map(game => (
           <tr>
-            <button onClick={() => handleGameAdd(game._id)}>Add</button>
+            <td><button onClick={() => handleGameAdd(game._id)}></button></td>
             <td><Link to="/game" state={{ gameId: game._id }}>{game.gameName}</Link></td>
             <td><ul>{game.categories.map(category => (<li key={category._id}>{category.categoryName}</li>))}</ul></td>
             <td>{game.usersPlaying}</td>

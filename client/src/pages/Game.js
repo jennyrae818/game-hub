@@ -4,7 +4,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_SINGLE_GAME } from '../utils/queries';
 import { QUERY_GAME_USERS } from '../utils/queries';
 import Auth from '../utils/auth';
-import { ADD_REVIEW } from '../utils/mutations';
+import { ADD_REVIEW, THUMBSUP_GAME, THUMBSDOWN_GAME } from '../utils/mutations';
 
 function Game() {
   const location = useLocation();
@@ -14,18 +14,21 @@ function Game() {
     variables: { _id: gameId }
   });
   const game = data?.game || {};
-  console.log(game, 'game');
+
   var { loading, data } = useQuery(QUERY_GAME_USERS, {
     variables: { games: gameId }
   });
   const users = data?.users || [];
-  console.log(users, 'users');
 
   //review
   const [reviewFormData, setReviewFormData] = useState({ reviewBody: '' })
 
+  const [ratingFormData, setRatingFormData] = useState({ thumbsUp: 0, thumbsDown: 0 });
+
   //mutation
   const [addReview] = useMutation(ADD_REVIEW);
+  const [thumbsUpGame] = useMutation(THUMBSUP_GAME);
+  const [thumbsDownGame] = useMutation(THUMBSDOWN_GAME);
 
   const handleInput = (event) => {
     const { name, value } = event.target;
@@ -34,7 +37,6 @@ function Game() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(reviewFormData);
     try {
       const newReview = await addReview({
         variables: {
@@ -43,7 +45,7 @@ function Game() {
         }
       });
 
-      console.log(newReview);
+      // console.log(newReview);
 
       setReviewFormData({ reviewBody: '' });
 
@@ -51,28 +53,65 @@ function Game() {
       console.error(err);
     }
   }
+
+  const handleRatingChange = async (event) => {
+    const { value } = event.target;
+console.log(value);
+    if (value === "like") {
+      setRatingFormData({ ...ratingFormData, thumbsUp: 1 });
+    }
+    else {
+      setRatingFormData({ ...ratingFormData, thumbsDown: 1 });
+      console.log(ratingFormData);
+    }
+  }
+
+  const handleSubmitRating = async (event) => {
+    event.preventDefault();
+
+    try {
+      if (ratingFormData.thumbsUp) {
+        const newGameRating = await thumbsUpGame({
+          variables: {
+            gameId: game._id,
+            ...ratingFormData
+          }
+        });
+      } else if (ratingFormData.thumbsDown) {
+        console.log(ratingFormData);
+        const newGameRating = await thumbsDownGame({
+          variables: {
+            gameId: game._id,
+            ...ratingFormData
+          }
+        });
+      }
+
+      setRatingFormData({ thumbsUp: 0, thumbsDown: 0 });
+
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     <section className="game">
-     
-      <h2>  --{game.gameName}--  </h2>
-    <form>
-      <fieldset>
-      <h3> Description: </h3>
-      <p>{game.description}</p>
-      <h3> OverAll Rating: {game.rating}</h3>
 
-      <p> &#9787; : {game.thumbsUp}</p>
-      <p> &#9785; : {game.thumbsDown}</p>
-      <h3> # Users playing: </h3> <p>{game.usersPlaying}</p>
-      </fieldset>
-    </form>
-     <table>
+      <h2>  --{game.gameName}--  </h2>
+      <form>
+        <fieldset>
+          <h3> Description: </h3>
+          <p>{game.description}</p>
+          <h3> OverAll Rating: {game.rating}</h3>
+
+          <p> &#9787; : {game.thumbsUp}</p>
+          <p> &#9785; : {game.thumbsDown}</p>
+          <h3> # Users playing: </h3> <p>{game.usersPlaying}</p>
+        </fieldset>
+      </form>
+      <table>
         <tr>
           <th>Users who play</th>
-
-          {/* <th># Times Played</th>
-                <th>Rating</th> */}
-
         </tr>
         {users.map(user => (
           <tr key={user._id}>
@@ -85,21 +124,22 @@ function Game() {
         ))}
       </table>
 
-        <form>
+      <form onSubmit={handleSubmitRating}>
         <fieldset>
           <label>
             <h3>Add Your Own Rating:</h3>
             <div className="rating">
               <label>
-                <input type="radio" name="rating" className="like" value="like" />
+                <input type="radio" name="rating" className="like" value="like" onChange={handleRatingChange} />
                 &#9787; Like </label>
               <label>
-                <input type="radio" name="rating" className="dislike" value="dislike" />
+                <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleRatingChange}/>
                 &#9785; Dislike </label>
             </div>
+            <button type="submit">Submit Rating</button>
           </label>
-          </fieldset>
-          </form>
+        </fieldset>
+      </form>
 
 
       {Auth.loggedIn() ? (
@@ -107,42 +147,42 @@ function Game() {
           <form onSubmit={handleSubmit}>
             <label>
               <h3>Enter Your Review Here:</h3>
-              <input 
+              <input
                 type="text"
-                name="reviewBody" 
+                name="reviewBody"
                 onChange={handleInput}
-                placeholder="Enter your review here" 
+                placeholder="Enter your review here"
                 value={reviewFormData.reviewBody}
-              /> 
+              />
             </label>
             <button type="submit">Add Review</button>
           </form>
         </>
       ) : (
         <>
-        <h3>
-          <Link to="/login">Log-In</Link> or 
-          <Link to="/register"> Register</Link> to add a review!
-        </h3>
+          <h3>
+            <Link to="/login">Log-In</Link> or
+            <Link to="/register"> Register</Link> to add a review!
+          </h3>
         </>
       )}
 
 
       <div className="container">
-      <h3>Reviews</h3>
-      {Object.keys(game).length === 0 ? (
-        <>
-          <p>There is an error getting reviews right now, our apologies!</p>
-        </>
-      ) : (
-        <>
-      <ul>{game.reviews.map(review => (
-        <li key={review.reviewId}>
-          User {review.username} says: {review.reviewBody} created at: {review.createdAt}
-        </li>))}
-      </ul>
-        </>
-      )}
+        <h3>Reviews</h3>
+        {Object.keys(game).length === 0 ? (
+          <>
+            <p>There is an error getting reviews right now, our apologies!</p>
+          </>
+        ) : (
+          <>
+            <ul>{game.reviews.map(review => (
+              <li key={review.reviewId}>
+                User {review.username} says: {review.reviewBody} created at: {review.createdAt}
+              </li>))}
+            </ul>
+          </>
+        )}
       </div>
 
     </section>
