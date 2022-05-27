@@ -13,7 +13,7 @@ function Home() {
   const { data: me } = useQuery(QUERY_ME);
   const thisUser = me?.me || [];
   
-  
+  //mutation
   const [addGame] = useMutation(ADD_GAME_TO_USER);
 
 
@@ -50,7 +50,9 @@ function Home() {
       <h2>  Popular Games  </h2>
       <table>
         <tr>
-          <th>Add To Profile</th>
+          {Auth.loggedIn() ? (
+            <th>Add To Profile</th>
+          ) : null}
           <th>Game</th>
           <th>Category</th>
           <th># Users Playing</th>
@@ -59,7 +61,15 @@ function Home() {
 
         {games && games.map(game => (
           <tr>
-            <td><button onClick={() => handleGameAdd(game._id)}></button></td>
+          
+            {Auth.loggedIn() ? ( 
+              <td>
+                <button
+                  disabled={me?.me.games.some((gameId) => gameId._id === game._id)}
+                  onClick={() => handleGameAdd(game._id)}>
+                </button>
+              </td>
+            ) : null}
             <td><Link to="/game" state={{ gameId: game._id }}>{game.gameName}</Link></td>
             <td><ul>{game.categories.map(category => (<li key={category._id}>{category.categoryName}</li>))}</ul></td>
             <td>{game.usersPlaying}</td>
