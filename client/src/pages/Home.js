@@ -18,7 +18,7 @@ function Home() {
 
 
   const handleGameAdd = async (gameId) => {
-    const gameFound = data?.games.find((game) => game._id === gameId);
+    //const gameFound = data?.games.find((game) => game._id === gameId);
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -26,7 +26,7 @@ function Home() {
       return false;
     }
     
-    const gameAddId = gameFound._id;
+    //const gameAddId = gameFound._id;
     
     const idUser = thisUser._id;
     
@@ -35,7 +35,7 @@ function Home() {
       const gameAdd = await addGame({
         variables: {
           userId: idUser,
-          gameId: gameAddId
+          gameId: gameId
         }
     });
 

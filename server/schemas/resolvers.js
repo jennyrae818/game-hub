@@ -76,11 +76,11 @@ const resolvers = {
                     { _id: userId },
                     { $addToSet: { games: gameId } },
                 );
-            
+        
                 // Increments the number of users playing the game by 1
                 await Game.findOneAndUpdate(
                     { _id: gameId },
-                    { usersPlaying: + 1 }
+                    { $inc: { usersPlaying: 1 } }
                 );
 
                 return user;
