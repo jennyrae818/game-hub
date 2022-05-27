@@ -55,17 +55,21 @@ function Profile() {
       <h3>My Games</h3>
       <table>
         <tr>
-          {Auth.loggedIn() ? (
-            <th>Remove?</th>
-          ) : null}
-          <th>My Games</th>
+          {user === data?.me ? (
+            <>
+              <th>Remove?</th>
+              <th>My Games</th>
+            </>
+          ) : (
+            <th>Games</th>
+          )}
           <th>Category</th>
           <th># Users Playing</th>
           <th>Rating</th>
         </tr>
         {user.games && user.games.map(game => (
           <tr key={game._id}>
-            {Auth.loggedIn() ? (
+            {user === data?.me ? (
               <td>
                 <button onClick={() => handleDeleteGame(game._id)}>
                   Remove
