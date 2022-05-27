@@ -115,9 +115,11 @@ console.log(value);
         </tr>
         {users.map(user => (
           <tr key={user._id}>
-            <Link to={`/profile/${user._id}`}>
-              <td>{user.username}</td>
-            </Link>
+            <td>
+              <Link to={`/profile/${user._id}`}>
+                {user.username}
+              </Link>
+            </td>
             {/* <td>40</td>
                   <td> &#9787; </td> */}
           </tr>
