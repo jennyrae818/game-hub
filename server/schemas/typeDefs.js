@@ -47,18 +47,10 @@ type Query {
     me: User
 }
     
-input GameData {
-    _id: ID!
-    gameName: String!
-    usersPlaying: Int
-    thumbsUp: Int
-    thumbsDown: Int
-}
-
 type Mutation {
     createUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    createGame(gameName: String!, description: String!, categories: [ID]!, thumbsUp: Int, thumbsDown: Int): Game  
+    createGame(gameName: String!, description: String!, categories: [ID]!): Game  
     addGameToUser(userId: ID!, gameId: ID!): User
     thumbsUpGame(gameId: ID!): Game
     thumbsDownGame(gameId: ID!): Game

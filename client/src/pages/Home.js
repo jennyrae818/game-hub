@@ -60,7 +60,7 @@ function Home() {
           <th>Rating</th>
         </tr>
 
-        {games.map(game => (
+        {games && games.map(game => (
           <tr>
             <button onClick={() => handleGameAdd(game._id)}>Add</button>
             <td><Link to="/game" state={{ gameId: game._id }}>{game.gameName}</Link></td>
