@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-//import './styles/style.css';
+import { Link } from 'react-router-dom';
 
 import { QUERY_ME } from '../utils/queries';
 
@@ -30,9 +30,9 @@ function Profile() {
           <th>Rating</th>
         </tr>
         {user.games && user.games.map(game => (
-          <tr>
-            <td>{game.gameName}</td>
-            <td><ul>{game.categories.map(category => (<li>{category.categoryName}</li>))}</ul></td>
+          <tr key={game._id}>
+            <td><Link to="/game" state={{ gameId: game._id }}>{game.gameName}</Link></td>
+            <td><ul>{game.categories.map(category => (<li key={category._id}>{category.categoryName}</li>))}</ul></td>
             <td>{game.usersPlaying}</td>
             <td>{game.rating}</td>
           </tr>
