@@ -13,7 +13,6 @@ function Home() {
   const { data: me } = useQuery(QUERY_ME);
   const thisUser = me?.me || [];
   
-  console.log(me?.me.games);
   //mutation
   const [addGame] = useMutation(ADD_GAME_TO_USER);
 
