@@ -18,7 +18,6 @@ function Home() {
 
 
   const handleGameAdd = async (gameId) => {
-    //const gameFound = data?.games.find((game) => game._id === gameId);
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
