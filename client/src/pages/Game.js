@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom'
 import { useMutation, useQuery } from '@apollo/client';
-import { QUERY_SINGLE_GAME } from '../utils/queries';
+import { QUERY_ME, QUERY_SINGLE_GAME } from '../utils/queries';
 import { QUERY_GAME_USERS } from '../utils/queries';
 import Auth from '../utils/auth';
-import { ADD_REVIEW, THUMBSUP_GAME, THUMBSDOWN_GAME } from '../utils/mutations';
+import { ADD_REVIEW, THUMBSUP_GAME, THUMBSDOWN_GAME, ADD_GAME_TO_USER } from '../utils/mutations';
 
 function Game() {
   const location = useLocation();
@@ -15,10 +15,13 @@ function Game() {
   });
   const game = data?.game || {};
 
-  var { loading, data } = useQuery(QUERY_GAME_USERS, {
+  var { data } = useQuery(QUERY_GAME_USERS, {
     variables: { games: gameId }
   });
   const users = data?.users || [];
+
+  const { data: me } = useQuery(QUERY_ME);
+  const thisUser = me?.me || [];
 
   //review
   const [reviewFormData, setReviewFormData] = useState({ reviewBody: '' })
@@ -29,6 +32,7 @@ function Game() {
   const [addReview] = useMutation(ADD_REVIEW);
   const [thumbsUpGame] = useMutation(THUMBSUP_GAME);
   const [thumbsDownGame] = useMutation(THUMBSDOWN_GAME);
+  const [addGame] = useMutation(ADD_GAME_TO_USER);
 
   const handleInput = (event) => {
     const { name, value } = event.target;
@@ -94,10 +98,45 @@ console.log(value);
     }
   }
 
+  const handleGameAdd = async (gameId) => {
+
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    if (!token) {
+      return false;
+    }
+    
+    const idUser = thisUser._id;
+    
+
+    try {
+      const gameAdd = await addGame({
+        variables: {
+          userId: idUser,
+          gameId: gameId
+        }
+    });
+
+    console.log(gameAdd);
+    window.location.reload();
+
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   return (
     <section className="game">
 
       <h2>  --{game.gameName}--  </h2>
+      {Auth.loggedIn() ? ( 
+              <td>
+                <button
+                  disabled={me?.me.games.some((gameId) => gameId._id === game._id)}
+                  onClick={() => handleGameAdd(game._id)}>
+                </button>
+              </td>
+            ) : null}
       <form>
         <fieldset>
           <h3> Description: </h3>

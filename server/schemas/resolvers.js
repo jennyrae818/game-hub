@@ -94,6 +94,10 @@ const resolvers = {
                 const user = await User.findOneAndUpdate(
                     { _id: userId },
                     { $addToSet: { games: gameId } },
+                    {
+                        new: true,
+                        runValidators: true
+                    }
                 );
         
                 // Increments the number of users playing the game by 1
