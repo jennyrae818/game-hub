@@ -76,7 +76,11 @@ const resolvers = {
 
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { games: game._id } }
+                    { $addToSet: { games: game._id } },
+                    {
+                        new: true,
+                        runValidators: true
+                    }
                 );
 
                 console.log(game);
@@ -95,7 +99,11 @@ const resolvers = {
                 // Increments the number of users playing the game by 1
                 await Game.findOneAndUpdate(
                     { _id: gameId },
-                    { $inc: { usersPlaying: 1 } }
+                    { $inc: { usersPlaying: 1 } },
+                    {
+                        new: true,
+                        runValidators: true
+                    }
                 );
 
                 return user;
@@ -104,13 +112,21 @@ const resolvers = {
         thumbsUpGame: async (parent, { gameId }) => {
             return await Game.findOneAndUpdate(
                 { _id: gameId },
-                { thumbsUp: thumbsUp + 1 }
+                { $inc: { thumbsUp: 1 } },
+                {
+                    new: true,
+                    runValidators: true
+                }
             );
         },
         thumbsDownGame: async (parent, { gameId }) => {
             return await Game.findOneAndUpdate(
                 { _id: gameId },
-                { thumbsDown: thumbsDown + 1 }
+                { $inc: { thumbsDown: 1 } },
+                {
+                    new: true,
+                    runValidators: true
+                }
             );
         },
         addReview: async (parent, { gameId, reviewBody }, context) => {

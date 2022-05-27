@@ -95,8 +95,6 @@ export const THUMBSUP_GAME = gql`
         usersPlaying
         thumbsUp
         thumbsDown
-        categories
-        reviews
     }
   }
 `;
@@ -110,8 +108,6 @@ export const THUMBSDOWN_GAME = gql`
         usersPlaying
         thumbsUp
         thumbsDown
-        categories
-        reviews
     }
   }
 `;
