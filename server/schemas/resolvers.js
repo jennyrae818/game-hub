@@ -8,8 +8,14 @@ const resolvers = {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select("-__v -password")
-                    .populate("games");
-  
+                    .populate(
+                        {
+                            path: "games",
+                            populate: {
+                                path: "categories"
+                            }
+                        });
+
                 return userData;
             }
             throw new AuthenticationError("You need to be logged in!");
@@ -23,11 +29,19 @@ const resolvers = {
         user: async (parent, { username }) => {
             return await User.findOne({ username }).populate("games");
         },
+        users: async (parent, { games }) => {
+            const params = {};
+            if (games) {
+                params.games = games;
+            }
+
+            return await User.find(params).populate("games");
+        },
         category: async (parent, { categoryId }) => {
             return await Category.findOne({ _id: categoryId });
         },
-        game: async (parent, { gameId }) => {
-            return await Game.findOne({ _id: gameId }).populate("reviews");
+        game: async (parent, { _id }) => {
+            return await Game.findById(_id).populate("reviews");
         },
     },
 
@@ -54,10 +68,10 @@ const resolvers = {
 
             return { token, user };
         },
-        createGame: async (parent, { gameName, description, categories }, context) => {
+        createGame: async (parent, { gameName, description, thumbsUp, thumbsDown, categories }, context) => {
             if (context.user) {
                 const game = await Game.create({
-                    gameName, description, categories
+                    gameName, description, categories, thumbsUp, thumbsDown
                 });
 
                 await User.findOneAndUpdate(
@@ -65,6 +79,7 @@ const resolvers = {
                     { $addToSet: { games: game._id } }
                 );
 
+                console.log(game);
                 return game;
             }
             throw new AuthenticationError("You need to be logged in!");

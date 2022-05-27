@@ -10,12 +10,31 @@ export const QUERY_SINGLE_USER = gql`
     }
 `;
 
+export const QUERY_GAME_USERS = gql`
+query getUsers($games: ID) {
+    users(games: $games) {
+      _id
+      username
+    }
+  }  
+`
+
 export const QUERY_ME = gql`
     query me {
         me {
             _id
             username
-            games
+            games {
+                _id
+                gameName
+                usersPlaying
+                thumbsUp
+                thumbsDown
+                categories {
+                    _id
+                    categoryName
+                }
+            }
         }
     }
 `;
@@ -37,16 +56,23 @@ query getGames {
 `;
 
 export const QUERY_SINGLE_GAME = gql`
-    query getSingleGame($gameId: ID!) {
-        game(gameId: $gameId) {
+    query getSingleGame($_id: ID!) {
+        game(_id: $_id) {
             _id
             gameName
             description
             usersPlaying
             thumbsUp
             thumbsDown
-            categories
-            reviews
+            categories {
+                _id
+              }
+            reviews {
+                reviewId
+                reviewBody
+                username
+                createdAt
+            }
         }
     }
 `;

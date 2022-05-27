@@ -41,21 +41,16 @@ type Query {
     categories: [Category]
     games: [Game]
     user(id: ID!): User
+    users(games: ID): [User]
     category(id: ID!): Category
-    game(id: ID!): Game
+    game(_id: ID!): Game
     me: User
-}
-    
-input GameData {
-    gameName: String!
-    description: String!
-    categories: [String]!
 }
 
 type Mutation {
     createUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    createGame(input: GameData!): Game  
+    createGame(gameName: String!, description: String!, categories: [ID]!, thumbsUp: Int, thumbsDown: Int): Game  
     addGameToUser(userId: ID!, gameId: ID!): User
     thumbsUpGame(gameId: ID!): Game
     thumbsDownGame(gameId: ID!): Game
