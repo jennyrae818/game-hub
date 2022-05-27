@@ -106,11 +106,19 @@ function Game() {
 
       <div className="container">
       <h3>Reviews</h3>
+      {Object.keys(game).length === 0 ? (
+        <>
+          <p>There is an error getting reviews right now, our apologies!</p>
+        </>
+      ) : (
+        <>
       <ul>{game.reviews.map(review => (
         <li key={review.reviewId}>
           User {review.username} says: {review.reviewBody}
         </li>))}
       </ul>
+        </>
+      )}
       </div>
 
     </section>
