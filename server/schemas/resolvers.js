@@ -105,7 +105,7 @@ const resolvers = {
                         runValidators: true
                     }
                 );
-        
+
                 // Increments the number of users playing the game by 1
                 await Game.findOneAndUpdate(
                     { _id: gameId },
@@ -144,7 +144,7 @@ const resolvers = {
             if (context.user) {
                 return Game.findOneAndUpdate(
                     { _id: gameId },
-                    { 
+                    {
                         $addToSet: {
                             reviews: { reviewBody, username: context.user.username }
                         }
@@ -161,7 +161,17 @@ const resolvers = {
 
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { games: gameId }},
+                    { $pull: { games: gameId } },
+                    {
+                        new: true,
+                        runValidators: true
+                    }
+                );
+
+                // Decreases the number of users playing the game by 1
+                await Game.findOneAndUpdate(
+                    { _id: gameId },
+                    { $inc: { usersPlaying: -1 } },
                     {
                         new: true,
                         runValidators: true
