@@ -208,6 +208,7 @@ textarea {
   font-weight: bold;
   font-size: 16px;
   padding: 20px;
+  text-align: center;
 }
 
 .category table, th, td {
@@ -215,13 +216,32 @@ textarea {
   text-align: center;
   color: var(--blue);
   border: solid var(--red);
-  padding: 8px;
+  padding: 0px;
   margin-left: auto;
   margin-right: auto;
+  word-wrap: break-word;
+  max-width: 50%;
+  border-radius: 4px;
 }
 
 .category th {
+  text-decoration: underline;
   font-size: 30px;
+  padding: 5px;
+}
+
+.category td {
+  font-size: 20px;
+  padding: 2px;
+}
+
+.category a {
+  text-decoration: none;
+  color: var(--pink);
+}
+
+.category a:hover {
+  opacity: .5;
 }
 
 
@@ -238,14 +258,21 @@ textarea {
   color: var(--blue);
 }
 
+.game h3 {
+  font-family: var(--press);
+  color: var(--pink);
+  font-size: 14px;
+}
+
 .game p {
   margin: 0 0 0 0;
+  font-size: 16px;
 }
 
 .game form {
   display: inline-block;
   background-color:var(--black);
-  width: 400px;
+  width: auto;
   border: 2px solid red;
   border-radius: 4px;
   margin: 20px;
@@ -269,6 +296,9 @@ textarea {
   border: 3px solid var(--alt);
 }
 
+.rating input {
+  width: auto;
+}
 
 
 
@@ -314,6 +344,15 @@ textarea {
   margin-left: -30px;
 }
 
+.home a {
+  text-decoration: none;
+  color: var(--pink);
+}
+
+.home a:hover {
+  opacity: .5;
+}
+
 
 
 
@@ -356,7 +395,7 @@ fieldset {
 .login input[type=text]:focus {
   border: 3px solid var(--alt);
 }
-
+ 
 
 
 
@@ -605,141 +644,4 @@ footer img:hover {
     opacity: 0;
   }
 }
-
-
-
-/* html{
-
-  border-bottom:solid 5px blue;
-  border-top:solid 5px blue; 
-  overflow-x:hidden;
-  padding-bottom:142px;
-}
-
-
-.pacman{
-  margin:40px 10px;
-}
-
-.pacman-top{
-  background-color: var(--pink);
-  height:100px;
-  width:200px;
-  border-radius:100px 100px 0 0;
-  animation: spin1 0.5s infinite linear;
-}
-
-.pacman-bottom{
-background-color: var(--pink);
-  height:100px;
-  width:200px;
-  border-radius:0 0 100px 100px;
-  animation: spin2 0.5s infinite linear;
-}
-
-.feed {
-margin-top: -185px;
-margin-left:15px;
-width: 45px;
-height: 45px;
-border-radius: 30%;
--moz-animation: eat 1s linear 0s infinite;
--webkit-animation: eat 1s linear 0s infinite;
-animation: eat 1s linear 0s infinite;
-}   
-
-/* Animation
-
-@keyframes spin1 {
-	0%  {transform: rotate(0deg);}
-	50%{transform: rotate(-35deg);}
-  
-}
-@keyframes spin2 {
-	0%  {transform: rotate(0deg);}
-  50%{transform: rotate(35deg);}	
-}
-
-@-moz-keyframes spin1 {
-	0%  {transform: rotate(0deg);}
-	50%{transform: rotate(-35deg);}
-  
-}
-@-moz-keyframes spin2 {
-	0%  {transform: rotate(0deg);}
-  50%{transform: rotate(35deg);}	
-}
-
-@-webkit-keyframes spin1 {
-	0%  {transform: rotate(0deg);}
-	50%{transform: rotate(-35deg);}
-  
-}
-@-webkit-keyframes spin2 {
-	0%  {transform: rotate(0deg);}
-  50%{transform: rotate(35deg);}	
-}
-
-@keyframes eat {
-	0% { box-shadow: 
-      100px 65px 0 0 white, 
-      300px 65px 0 0 white, 
-      500px 65px 0 0 white, 
-      700px 65px 0 0 white,
-      900px 65px 0 0 white, 
-      1100px 65px 0 0 white, 
-      1300px 65px 0 0 white;}
-  
-100% { box-shadow: 
-      0px 65px 0 0 white, 
-      100px 65px 0 0 white,
-      300px 65px 0 0 white, 
-      500px 65px 0 0 white, 
-      700px 65px 0 0 white, 
-      900px 65px 0 0 white, 
-      1100px 65px 0 0 white;}
-}
-
-@-moz-keyframes eat {
-	0% { box-shadow: 
-      100px 65px 0 0 white, 
-      300px 65px 0 0 white, 
-      500px 65px 0 0 white, 
-      700px 65px 0 0 white,
-      900px 65px 0 0 white, 
-      1100px 65px 0 0 white, 
-      1300px 65px 0 0 white;}
-  
-100% { box-shadow: 
-      0px 65px 0 0 white, 
-      100px 65px 0 0 white,
-      300px 65px 0 0 white, 
-      500px 65px 0 0 white, 
-      700px 65px 0 0 white, 
-      900px 65px 0 0 white, 
-      1100px 65px 0 0 white;}
-}
-
-
-
-@-webkit-keyframes eat {
-	0% { box-shadow: 
-      100px 65px 0 0 white, 
-      300px 65px 0 0 white, 
-      500px 65px 0 0 white, 
-      700px 65px 0 0 white,
-      900px 65px 0 0 white, 
-      1100px 65px 0 0 white, 
-      1300px 65px 0 0 white;}
-  
-100% { box-shadow: 
-      0px 65px 0 0 white, 
-      100px 65px 0 0 white,
-      300px 65px 0 0 white, 
-      500px 65px 0 0 white, 
-      700px 65px 0 0 white, 
-      900px 65px 0 0 white, 
-      1100px 65px 0 0 white;}
-}
- */
 

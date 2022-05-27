@@ -53,15 +53,20 @@ function Game() {
   }
   return (
     <section className="game">
-
+     
       <h2>  --{game.gameName}--  </h2>
+    <form>
+      <fieldset>
       <h3> Description: </h3>
       <p>{game.description}</p>
       <h3> OverAll Rating: {game.rating}</h3>
-      <h3> &#9787; : {game.thumbsUp}</h3>
-      <h3> &#9785; : {game.thumbsDown}</h3>
-      <h3> # Users playing: {game.usersPlaying}</h3>
-      <table>
+
+      <p> &#9787; : {game.thumbsUp}</p>
+      <p> &#9785; : {game.thumbsDown}</p>
+      <h3> # Users playing: </h3> <p>{game.usersPlaying}</p>
+      </fieldset>
+    </form>
+     <table>
         <tr>
           <th>Users who play</th>
 
@@ -78,11 +83,28 @@ function Game() {
         ))}
       </table>
 
+        <form>
+        <fieldset>
+          <label>
+            <h3>Add Your Own Rating:</h3>
+            <div className="rating">
+              <label>
+                <input type="radio" name="rating" className="like" value="like" />
+                &#9787; Like </label>
+              <label>
+                <input type="radio" name="rating" className="dislike" value="dislike" />
+                &#9785; Dislike </label>
+            </div>
+          </label>
+          </fieldset>
+          </form>
+
+
       {Auth.loggedIn() ? (
         <>
           <form onSubmit={handleSubmit}>
             <label>
-              <p>Your Review:</p>
+              <h3>Enter Your Review Here:</h3>
               <input 
                 type="text"
                 name="reviewBody" 
