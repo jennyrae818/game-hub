@@ -14,12 +14,12 @@ function Game() {
     variables: { _id: gameId }
   });
   const game = data?.game || {};
-
+  console.log(game, 'game');
   var { loading, data } = useQuery(QUERY_GAME_USERS, {
     variables: { games: gameId }
   });
   const users = data?.users || [];
-  console.log(users);
+  console.log(users, 'users');
 
   //review
   const [reviewFormData, setReviewFormData] = useState({ reviewBody: '' })
@@ -61,6 +61,23 @@ function Game() {
       <h3> &#9787; : {game.thumbsUp}</h3>
       <h3> &#9785; : {game.thumbsDown}</h3>
       <h3> # Users playing: {game.usersPlaying}</h3>
+      <table>
+        <tr>
+          <th>Users who play</th>
+
+          {/* <th># Times Played</th>
+                <th>Rating</th> */}
+
+        </tr>
+        {users.map(user => (
+          <tr key={user._id}>
+            <td>{user.username}</td>
+            {/* <td>40</td>
+                  <td> &#9787; </td> */}
+          </tr>
+        ))}
+      </table>
+
       {Auth.loggedIn() ? (
         <>
           <form onSubmit={handleSubmit}>
@@ -85,37 +102,15 @@ function Game() {
         </h3>
         </>
       )}
-      <table>
-        <tr>
-          <th>Username</th>
-
-          {/* <th># Times Played</th>
-                <th>Rating</th> */}
-
-        </tr>
-        {users.map(user => (
-          <tr key={user._id}>
-            <td>{user.username}</td>
-            {/* <td>40</td>
-                  <td> &#9787; </td> */}
-          </tr>
-        ))}
-      </table>
-
-      <form>
-        <fieldset>
-        <label>
-            <p>Add Your Own Review:</p>
-            {/* <input value={} name="userreview" placeholder="Start your review here..." onChange={handleInput} /> */}
-        </label>
-        <button type="addreview">Add Review</button>
-        </fieldset>
-      </form>
 
 
       <div className="container">
       <h3>Reviews</h3>
-      <p>Username: Reviews to display here </p>
+      <ul>{game.reviews.map(review => (
+        <li key={review.reviewId}>
+          User {review.username} says: {review.reviewBody}
+        </li>))}
+      </ul>
       </div>
 
     </section>
