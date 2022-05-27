@@ -52,6 +52,7 @@ button {
 
 button:hover {
   background-color: var(--red);
+  transition: 0.3s all;
 }
 
 
@@ -131,8 +132,6 @@ button:hover {
   font-size: 20px;
   font-weight: 800;
 }
-
-
 
 .addGame p {
   color: var(--blue);
@@ -354,6 +353,53 @@ textarea {
 }
 
 
+.home button {
+    position: relative;
+    background-color: var(--blue);
+    border:none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s all;
+    padding: 0px;
+  }
+
+  /*aligns blus signs*/
+  .home button:before,
+  .home button:after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 4px;
+  }
+
+  /*top right hand of plus sign*/
+  .home button:before {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-left-width: 2px;
+    border-left-style: solid;
+    left: 9px;
+    top: 5px;
+  }
+
+  /*bottom left hand of plus sign*/
+  .home button:after {
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-right-width: 2px;
+    border-right-style: solid;
+    left: 5px;
+    top: 9px;
+  }
+
+button:hover {
+  background-color: var(--red);
+}
+
+
+
 
 
 /*LOG IN PAGE*/
@@ -367,6 +413,7 @@ textarea {
 
 .login p {
   margin: 0 0 0 0;
+  font-size: 20px;
 }
 
 .login form {
@@ -439,6 +486,15 @@ fieldset {
   margin-left: -30px;
 }
 
+.profile a {
+  text-decoration: none;
+  color: var(--pink);
+}
+
+.profile a:hover {
+  opacity: .5;
+}
+
 
 
 
@@ -458,10 +514,11 @@ fieldset {
 
 .register p {
   margin: 0 0 0 0;
+  font-size: 20px;
 }
 
-.pswcrit {
-  font-size: 12px;
+.register .pswcrit {
+  font-size: 16px;
   padding-bottom: 20px;
 }
 
