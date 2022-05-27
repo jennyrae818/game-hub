@@ -2,8 +2,6 @@ import React from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
 
-//import './styles/style.css';
-
 import Auth from '../utils/auth';
 
 import { QUERY_GAMES, QUERY_ME } from '../utils/queries';
@@ -40,7 +38,6 @@ function Home() {
     });
 
     console.log(gameAdd);
-    window.location.reload();
     
     } catch (err) {
       console.error(err)
