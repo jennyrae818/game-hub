@@ -52,7 +52,7 @@ const gameSchema = new Schema(
 // Creates a virtual named rating that retrieves the rating of the game on query
 gameSchema.virtual("rating")
     .get(function() {
-        return Math.floor(this.thumbsUp * 100 / this.usersPlaying);
+        return (this.usersPlaying) ? (Math.floor(this.thumbsUp * 100 / this.usersPlaying)) : 0;
     });
 
 // Uses mongoose.model to create a model named Game, based on schema named gameSchema
