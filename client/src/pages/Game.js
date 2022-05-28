@@ -129,8 +129,9 @@ console.log(value);
 
       <h2>  --{game.gameName}--  </h2>
       <div className="container">
-      <form>
-        <fieldset>
+
+      <div className="subcontainer">
+        <table>
       {Auth.loggedIn() ? ( 
               <td>
                 <button
@@ -139,8 +140,8 @@ console.log(value);
                 </button>
               </td>
             ) : null}
-          </fieldset>
-        </form>
+            </table>
+         </div>
 
         <div className="subcontainer">
           <h3> Description: </h3>
@@ -149,7 +150,7 @@ console.log(value);
 
           <p> &#9787; : {game.thumbsUp}</p>
           <p> &#9785; : {game.thumbsDown}</p>
-          <h3> # Users playing: </h3> <p>{game.usersPlaying}</p>
+          <h3> # Users Playing: </h3> <p>{game.usersPlaying}</p>
         </div>
 
         <div className="subcontainer">
@@ -216,7 +217,7 @@ console.log(value);
 
 
       <div className="subcontainer">
-        <h3>Reviews</h3>
+        <h3>Reviews:</h3>
         {Object.keys(game).length === 0 ? (
           <>
             <p>There is an error getting reviews right now, our apologies!</p>
@@ -225,7 +226,7 @@ console.log(value);
           <>
             <ul>{game.reviews.map(review => (
               <li key={review.reviewId}>
-                User {review.username} says: {review.reviewBody} created at: {review.createdAt}
+                {review.username} says: {review.reviewBody} created at: {review.createdAt}
               </li>))}
             </ul>
           </>

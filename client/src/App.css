@@ -269,7 +269,6 @@ textarea {
 }
 
 .game form {
-
   background-color:var(--black);
   width: auto;
   border: 2px solid red;
@@ -316,6 +315,11 @@ textarea {
   border-radius: 4px;
   margin: 20px;
   padding: 10px;
+}
+
+.game table {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .game a {
