@@ -269,18 +269,13 @@ textarea {
 }
 
 .game form {
-  display: inline-block;
+
   background-color:var(--black);
   width: auto;
   border: 2px solid red;
   border-radius: 4px;
   margin: 20px;
   padding: 10px;
-}
-
-.game fieldset {
-  border: 2px solid var(--alt);
-  border-radius: 4px;
 }
 
 .game input {
@@ -300,7 +295,6 @@ textarea {
 }
 
 .game .container {
-  display: inline-block;
   background-color:var(--black);
   width: auto;
   border: 2px solid red;
@@ -313,6 +307,23 @@ textarea {
   list-style-type: none;
   text-align: center;
   margin-left: -30px;
+}
+
+.game .subcontainer {
+  background-color:var(--black);
+  width: auto;
+  border: 2px solid red;
+  border-radius: 4px;
+  margin: 20px;
+  padding: 10px;
+}
+
+.game a {
+  color: var(--pink);
+}
+
+.game a:hover {
+  opacity: .5;
 }
 
 

@@ -142,7 +142,7 @@ console.log(value);
           </fieldset>
         </form>
 
-        <div className="container">
+        <div className="subcontainer">
           <h3> Description: </h3>
           <p>{game.description}</p>
           <h3> OverAll Rating: {game.rating}</h3>
@@ -152,10 +152,10 @@ console.log(value);
           <h3> # Users playing: </h3> <p>{game.usersPlaying}</p>
         </div>
 
-        <div className="container">
+        <div className="subcontainer">
           <table>
           <tr>
-            <th>Users who play</th>
+            <h3>Users Who Play:</h3>
           </tr>
         {users.map(user => (
           <tr key={user._id}>
@@ -215,7 +215,7 @@ console.log(value);
       )}
 
 
-      <div className="container">
+      <div className="subcontainer">
         <h3>Reviews</h3>
         {Object.keys(game).length === 0 ? (
           <>
