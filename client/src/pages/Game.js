@@ -128,6 +128,10 @@ console.log(value);
     <section className="game">
 
       <h2>  --{game.gameName}--  </h2>
+      <div className="container">
+
+      <div className="subcontainer">
+        <table>
       {Auth.loggedIn() ? ( 
               <td>
                 <button
@@ -136,21 +140,24 @@ console.log(value);
                 </button>
               </td>
             ) : null}
-      <form>
-        <fieldset>
+            </table>
+         </div>
+
+        <div className="subcontainer">
           <h3> Description: </h3>
           <p>{game.description}</p>
           <h3> OverAll Rating: {game.rating}</h3>
 
           <p> &#9787; : {game.thumbsUp}</p>
           <p> &#9785; : {game.thumbsDown}</p>
-          <h3> # Users playing: </h3> <p>{game.usersPlaying}</p>
-        </fieldset>
-      </form>
-      <table>
-        <tr>
-          <th>Users who play</th>
-        </tr>
+          <h3> # Users Playing: </h3> <p>{game.usersPlaying}</p>
+        </div>
+
+        <div className="subcontainer">
+          <table>
+          <tr>
+            <h3>Users Who Play:</h3>
+          </tr>
         {users.map(user => (
           <tr key={user._id}>
             <td>
@@ -163,6 +170,7 @@ console.log(value);
           </tr>
         ))}
       </table>
+      </div>
 
       <form onSubmit={handleSubmitRating}>
         <fieldset>
@@ -208,8 +216,8 @@ console.log(value);
       )}
 
 
-      <div className="container">
-        <h3>Reviews</h3>
+      <div className="subcontainer">
+        <h3>Reviews:</h3>
         {Object.keys(game).length === 0 ? (
           <>
             <p>There is an error getting reviews right now, our apologies!</p>
@@ -218,11 +226,12 @@ console.log(value);
           <>
             <ul>{game.reviews.map(review => (
               <li key={review.reviewId}>
-                User {review.username} says: {review.reviewBody} created at: {review.createdAt}
+                {review.username} says: {review.reviewBody} created at: {review.createdAt}
               </li>))}
             </ul>
           </>
         )}
+      </div>
       </div>
 
     </section>
