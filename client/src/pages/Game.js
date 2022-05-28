@@ -39,6 +39,7 @@ function Game() {
     setReviewFormData({ ...reviewFormData, [name]: value });
   }
 
+  // Event handler for submitting the review
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -60,7 +61,7 @@ function Game() {
 
   const handleRatingChange = async (event) => {
     const { value } = event.target;
-console.log(value);
+    console.log(value);
     if (value === "like") {
       setRatingFormData({ ...ratingFormData, thumbsUp: 1 });
     }
@@ -70,6 +71,7 @@ console.log(value);
     }
   }
 
+  // Event handler for submitting the rating
   const handleSubmitRating = async (event) => {
     event.preventDefault();
 
@@ -98,16 +100,15 @@ console.log(value);
     }
   }
 
+  // Event handler for adding game to user profile
   const handleGameAdd = async (gameId) => {
-
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
     }
-    
+
     const idUser = thisUser._id;
-    
 
     try {
       const gameAdd = await addGame({
@@ -115,9 +116,9 @@ console.log(value);
           userId: idUser,
           gameId: gameId
         }
-    });
+      });
 
-    console.log(gameAdd);
+      console.log(gameAdd);
 
     } catch (err) {
       console.error(err)
@@ -130,18 +131,20 @@ console.log(value);
       <h2>  --{game.gameName}--  </h2>
       <div className="container">
 
-      <div className="subcontainer">
-        <table>
-      {Auth.loggedIn() ? ( 
+
+        {Auth.loggedIn() ? (
+          <div className="subcontainer">
+            <table>
               <td>
                 <button
                   disabled={me?.me.games.some((gameId) => gameId._id === game._id)}
                   onClick={() => handleGameAdd(game._id)}>
                 </button>
               </td>
-            ) : null}
             </table>
-         </div>
+          </div>
+        ) : null}
+
 
         <div className="subcontainer">
           <h3> Description: </h3>
@@ -155,83 +158,83 @@ console.log(value);
 
         <div className="subcontainer">
           <table>
-          <tr>
-            <h3>Users Who Play:</h3>
-          </tr>
-        {users.map(user => (
-          <tr key={user._id}>
-            <td>
-              <Link to={`/profile/${user._id}`}>
-                {user.username}
-              </Link>
-            </td>
-            {/* <td>40</td>
+            <tr>
+              <h3>Users Who Play:</h3>
+            </tr>
+            {users.map(user => (
+              <tr key={user._id}>
+                <td>
+                  <Link to={`/profile/${user._id}`}>
+                    {user.username}
+                  </Link>
+                </td>
+                {/* <td>40</td>
                   <td> &#9787; </td> */}
-          </tr>
-        ))}
-      </table>
-      </div>
+              </tr>
+            ))}
+          </table>
+        </div>
 
-      <form onSubmit={handleSubmitRating}>
-        <fieldset>
-          <label>
-            <h3>Add Your Own Rating:</h3>
-            <div className="rating">
-              <label>
-                <input type="radio" name="rating" className="like" value="like" onChange={handleRatingChange} />
-                &#9787; Like </label>
-              <label>
-                <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleRatingChange}/>
-                &#9785; Dislike </label>
-            </div>
-            <button type="submit">Submit Rating</button>
-          </label>
-        </fieldset>
-      </form>
-
-
-      {Auth.loggedIn() ? (
-        <>
-          <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitRating}>
+          <fieldset>
             <label>
-              <h3>Enter Your Review Here:</h3>
-              <input
-                type="text"
-                name="reviewBody"
-                onChange={handleInput}
-                placeholder="Enter your review here"
-                value={reviewFormData.reviewBody}
-              />
+              <h3>Add Your Own Rating:</h3>
+              <div className="rating">
+                <label>
+                  <input type="radio" name="rating" className="like" value="like" onChange={handleRatingChange} />
+                  &#9787; Like </label>
+                <label>
+                  <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleRatingChange} />
+                  &#9785; Dislike </label>
+              </div>
+              <button type="submit">Submit Rating</button>
             </label>
-            <button type="submit">Add Review</button>
-          </form>
-        </>
-      ) : (
-        <>
-          <h3>
-            <Link to="/login">Log-In</Link> or
-            <Link to="/register"> Register</Link> to add a review!
-          </h3>
-        </>
-      )}
+          </fieldset>
+        </form>
 
 
-      <div className="subcontainer">
-        <h3>Reviews:</h3>
-        {Object.keys(game).length === 0 ? (
+        {Auth.loggedIn() ? (
           <>
-            <p>There is an error getting reviews right now, our apologies!</p>
+            <form onSubmit={handleSubmit}>
+              <label>
+                <h3>Enter Your Review Here:</h3>
+                <input
+                  type="text"
+                  name="reviewBody"
+                  onChange={handleInput}
+                  placeholder="Enter your review here"
+                  value={reviewFormData.reviewBody}
+                />
+              </label>
+              <button type="submit">Add Review</button>
+            </form>
           </>
         ) : (
           <>
-            <ul>{game.reviews.map(review => (
-              <li key={review.reviewId}>
-                {review.username} says: {review.reviewBody} created at: {review.createdAt}
-              </li>))}
-            </ul>
+            <h3>
+              <Link to="/login">Log-In</Link> or
+              <Link to="/register"> Register</Link> to add a review!
+            </h3>
           </>
         )}
-      </div>
+
+
+        <div className="subcontainer">
+          <h3>Reviews:</h3>
+          {Object.keys(game).length === 0 ? (
+            <>
+              <p>There is an error getting reviews right now, our apologies!</p>
+            </>
+          ) : (
+            <>
+              <ul>{game.reviews.map(review => (
+                <li key={review.reviewId}>
+                  {review.username} says: {review.reviewBody} created at: {review.createdAt}
+                </li>))}
+              </ul>
+            </>
+          )}
+        </div>
       </div>
 
     </section>
