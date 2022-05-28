@@ -37,6 +37,7 @@ function Home() {
     });
 
     console.log(gameAdd);
+    window.location.reload();
     
     } catch (err) {
       console.error(err)
