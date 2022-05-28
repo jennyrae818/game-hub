@@ -23,6 +23,7 @@ type Game {
     thumbsDown: Int
     categories: [Category]
     reviews: [Review]
+    rating: Int
 }
     
 type Review {

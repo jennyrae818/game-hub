@@ -11,6 +11,7 @@ export const QUERY_SINGLE_USER = gql`
                 usersPlaying
                 thumbsUp
                 thumbsDown
+                rating
                 categories {
                     _id
                     categoryName
@@ -40,6 +41,7 @@ export const QUERY_ME = gql`
                 usersPlaying
                 thumbsUp
                 thumbsDown
+                rating
                 categories {
                     _id
                     categoryName
@@ -57,6 +59,7 @@ query getGames {
             usersPlaying
             thumbsUp
             thumbsDown
+            rating
             categories {
                 _id
                 categoryName
@@ -74,6 +77,7 @@ export const QUERY_SINGLE_GAME = gql`
             usersPlaying
             thumbsUp
             thumbsDown
+            rating
             categories {
                 _id
               }
