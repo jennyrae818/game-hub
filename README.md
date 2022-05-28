@@ -19,13 +19,13 @@ Game Hub is an application created for users who are interested in games and all
 
 To install the project follow the steps listed below:
 
-Navigate to https://github.com/jennyrae818/game-hub
+Navigate to "https://github.com/jennyrae818/game-hub"
 Either copy the code or pull the repository from the webpage
 If repo code is copied, paste the code into your terminal or program equivlant after the git clone command
 
 ## Usage
 
-Navigate to and enjoy!
+Navigate to "https://game-hub-2022.herokuapp.com/" and enjoy!
 
 ##  Technologies used
 
