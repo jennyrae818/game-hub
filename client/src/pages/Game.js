@@ -128,6 +128,9 @@ console.log(value);
     <section className="game">
 
       <h2>  --{game.gameName}--  </h2>
+      <div className="container">
+      <form>
+        <fieldset>
       {Auth.loggedIn() ? ( 
               <td>
                 <button
@@ -136,8 +139,10 @@ console.log(value);
                 </button>
               </td>
             ) : null}
-      <form>
-        <fieldset>
+          </fieldset>
+        </form>
+
+        <div className="container">
           <h3> Description: </h3>
           <p>{game.description}</p>
           <h3> OverAll Rating: {game.rating}</h3>
@@ -145,12 +150,13 @@ console.log(value);
           <p> &#9787; : {game.thumbsUp}</p>
           <p> &#9785; : {game.thumbsDown}</p>
           <h3> # Users playing: </h3> <p>{game.usersPlaying}</p>
-        </fieldset>
-      </form>
-      <table>
-        <tr>
-          <th>Users who play</th>
-        </tr>
+        </div>
+
+        <div className="container">
+          <table>
+          <tr>
+            <th>Users who play</th>
+          </tr>
         {users.map(user => (
           <tr key={user._id}>
             <td>
@@ -163,6 +169,7 @@ console.log(value);
           </tr>
         ))}
       </table>
+      </div>
 
       <form onSubmit={handleSubmitRating}>
         <fieldset>
@@ -223,6 +230,7 @@ console.log(value);
             </ul>
           </>
         )}
+      </div>
       </div>
 
     </section>

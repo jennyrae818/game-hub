@@ -299,6 +299,21 @@ textarea {
   width: auto;
 }
 
+.game .container {
+  display: inline-block;
+  background-color:var(--black);
+  width: auto;
+  border: 2px solid red;
+  border-radius: 4px;
+  margin: 20px;
+  padding: 10px;
+}
+
+.game .container ul {
+  list-style-type: none;
+  text-align: center;
+  margin-left: -30px;
+}
 
 
 
