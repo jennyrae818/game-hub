@@ -58,7 +58,7 @@ function AddGame() {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <label for="category">
-            <p>Select a Cateogry:</p>
+            <h3>Select a Cateogry:</h3>
             <p>(or multiple)</p>
           </label>
 
@@ -68,22 +68,22 @@ function AddGame() {
             ))}
           </select>
           <label>
-            <p>Game Name:</p>
+            <h3>Game Name:</h3>
             <input value={gameFormData.gameName} name="gameName" placeholder="Game Name" onChange={handleInput} />
           </label>
           <label>
-            <p>Description:</p>
+            <h3>Description:</h3>
             <textarea value={gameFormData.description} name="description" placeholder="Description" onChange={handleInput} />
           </label>
           <label>
-            <p>Rating:</p>
+            <h3>Rating:</h3>
             <div className="rating">
               <label>
                 <input type="radio" name="rating" className="like" value="like" onChange={handleInput}/>
-                &#9787; Like </label>
+                &nbsp; &#9787; Like &nbsp; &nbsp;</label>
               <label>
                 <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleInput}/>
-                &#9785; Dislike </label>
+                &nbsp; &#9785; Dislike </label>
             </div>
           </label>
           <p></p>
