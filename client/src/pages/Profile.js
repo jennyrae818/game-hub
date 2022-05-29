@@ -72,7 +72,7 @@ function Profile() {
             {user === data?.me ? (
               <td>
                 <button onClick={() => handleDeleteGame(game._id)}>
-                  Remove
+                
                 </button>
               </td>
             ) : null}

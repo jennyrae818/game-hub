@@ -42,6 +42,7 @@ button {
   background-color: var(--orange);
   border: 1px solid var(--red);
   font-family: var(--alt);
+  font-size: 14px;
   font-weight: 800;
   padding: 10px 20px;
   text-decoration: none;
@@ -133,6 +134,27 @@ button:hover {
   font-weight: 800;
 }
 
+.addGame h3 {
+  text-decoration: underline;
+}
+
+.addGame select {
+  font-size: 16px;
+  font-weight: 800;
+  height: 158px;
+  padding: 10px;
+}
+
+.addGame option {
+  color: blue;
+  font-family: var(--alt);
+
+}
+
+.addGame option:checked {
+  background-color: var(--orange);
+}
+
 .addGame p {
   color: var(--blue);
   font-family: var(--alt);
@@ -155,12 +177,6 @@ button:hover {
   border-radius: 4px;
   margin: 20px;
 }
-
-fieldset {
-  border: 2px solid var(--alt);
-  border-radius: 4px;
-}
-
 
 .addGame input {
   width: 100%;
@@ -190,9 +206,12 @@ textarea {
   font-size: 16px;
   font-weight: 800;
 }
- 
- .rating input {
-   width: auto;
+
+ .rating label {
+  width: auto;
+  font-family: var(--alt);
+  font-size: 24px;
+  font-weight: 800;
  }
 
 
@@ -265,7 +284,7 @@ textarea {
 
 .game p {
   margin: 0 0 0 0;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .game form {
@@ -306,6 +325,7 @@ textarea {
   list-style-type: none;
   text-align: center;
   margin-left: -30px;
+  font-size: 20px;
 }
 
 .game .subcontainer {
@@ -317,9 +337,12 @@ textarea {
   padding: 10px;
 }
 
+
 .game table {
   margin-left: auto;
   margin-right: auto;
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .game a {
@@ -329,6 +352,52 @@ textarea {
 .game a:hover {
   opacity: .5;
 }
+
+.game .button {
+  position: relative;
+  background-color: var(--blue);
+  border:none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s all;
+  padding: 0px;
+}
+
+/*aligns blus signs*/
+.game .button:before,
+.game .button:after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 4px;
+}
+
+/*top right hand of plus sign*/
+.game .button:before {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-left-width: 2px;
+  border-left-style: solid;
+  left: 9px;
+  top: 5px;
+}
+
+/*bottom left hand of plus sign*/
+.game .button:after {
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-right-width: 2px;
+  border-right-style: solid;
+  left: 5px;
+  top: 9px;
+}
+
+.button:hover {
+background-color: var(--red);
+}
+
 
 
 
@@ -374,7 +443,6 @@ textarea {
 }
 
 .home a {
-  text-decoration: none;
   color: var(--pink);
 }
 
@@ -517,7 +585,6 @@ fieldset {
 }
 
 .profile a {
-  text-decoration: none;
   color: var(--pink);
 }
 
@@ -526,6 +593,46 @@ fieldset {
 }
 
 
+.profile button {
+  position: relative;
+  background-color: var(--blue);
+  border:none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s all;
+  padding: 0px;
+}
+
+/*aligns blus signs*/
+.profile button:before,
+.profile button:after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 4px;
+}
+
+/*right hand of minus sign*/
+.profile button:before {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  left: 10px;
+  top: 5px;
+}
+
+/*eft hand of minus sign*/
+.profile button:after {
+  border-top-width: 2px;
+  border-top-style: solid;
+  left: 6px;
+  top: 9px;
+}
+
+button:hover {
+background-color: var(--red);
+}
 
 
 
@@ -613,6 +720,24 @@ fieldset {
   border: 2px solid var(--alt);
   border-radius: 4px;
 }
+
+.search select {
+  font-size: 20px;
+  font-weight: 800;
+  font-family: var(--alt);
+  border-color: var(--pink);
+
+}
+
+/* .search select option p {
+  color: blue;
+  font-family: var(--alt);
+} */
+
+.search option:checked {
+  background-color: var(--orange);
+}
+
 
 
 
