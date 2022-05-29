@@ -25,7 +25,8 @@ const resolvers = {
             return await Category.find();
         },
         games: async () => {
-            return await Game.find().populate("categories");
+            // Sorts the games in the descending order of users playing
+            return await Game.find().populate("categories").sort({ usersPlaying: "desc"});
         },
         user: async (parent, { userId }) => {
             return await User.findOne({ _id: userId })
