@@ -5,6 +5,7 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {
+            // Populate the games and categories when querying for the user who is logged in
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select("-__v -password")
@@ -24,7 +25,7 @@ const resolvers = {
             return await Category.find();
         },
         games: async () => {
-            return await Game.find().populate("categories").sort("rating");
+            return await Game.find().populate("categories");
         },
         user: async (parent, { userId }) => {
             return await User.findOne({ _id: userId })
@@ -51,6 +52,7 @@ const resolvers = {
         },
     },
 
+    // Defines the functions that will fulfill the mutations
     Mutation: {
         createUser: async (parent, args) => {
             const user = await User.create(args);
@@ -80,6 +82,7 @@ const resolvers = {
                     gameName, description, categories, thumbsUp, thumbsDown
                 });
 
+                // The id of the new game that is created is also added to the User.
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { games: game._id } },
@@ -120,6 +123,7 @@ const resolvers = {
             }
         },
         thumbsUpGame: async (parent, { gameId }) => {
+            // Increments the thumbs up of a game by 1
             return await Game.findOneAndUpdate(
                 { _id: gameId },
                 { $inc: { thumbsUp: 1 } },
@@ -130,6 +134,7 @@ const resolvers = {
             );
         },
         thumbsDownGame: async (parent, { gameId }) => {
+            // Increments the thumbs down of a game by 1
             return await Game.findOneAndUpdate(
                 { _id: gameId },
                 { $inc: { thumbsDown: 1 } },
@@ -158,7 +163,6 @@ const resolvers = {
         },
         removeGameFromUser: async (parent, { gameId }, context) => {
             if (context.user) {
-
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $pull: { games: gameId } },
