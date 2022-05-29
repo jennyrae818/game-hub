@@ -1,13 +1,12 @@
 import React from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
-
-import Auth from '../utils/auth';
-
 import { QUERY_GAMES, QUERY_ME } from '../utils/queries';
 import { ADD_GAME_TO_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 function Home() {
+  //query games and query me
   const { data } = useQuery(QUERY_GAMES);
   const games = data?.games || [];
   const { data: me } = useQuery(QUERY_ME);
@@ -16,7 +15,7 @@ function Home() {
   //mutation
   const [addGame] = useMutation(ADD_GAME_TO_USER);
 
-
+  //event handler for adding game to user profile
   const handleGameAdd = async (gameId) => {
 
     // get token
@@ -25,18 +24,19 @@ function Home() {
       return false;
     }
     
+    //get _id of the user from me query
     const idUser = thisUser._id;
     
-
+    //awaiting add game to user
     try {
-      const gameAdd = await addGame({
+      await addGame({
         variables: {
           userId: idUser,
           gameId: gameId
         }
     });
 
-    console.log(gameAdd);
+    //reload window to update properly
     window.location.reload();
     
     } catch (err) {
@@ -46,9 +46,9 @@ function Home() {
 
   return (
     <section className="home">
-
       <h2>  Popular Games  </h2>
       <table>
+        {/* IF LOGGED-IN SHOW EXTRA TABLE SECTION */}
         <tr>
           {Auth.loggedIn() ? (
             <th>Add To Profile</th>
@@ -60,8 +60,8 @@ function Home() {
         </tr>
 
         {games && games.map(game => (
-          <tr>
-          
+          <tr key={game._id}>
+            {/* IF LOGGED-IN SHOW ADD-GAME BUTTON */}
             {Auth.loggedIn() ? ( 
               <td>
                 <button
@@ -77,7 +77,6 @@ function Home() {
           </tr>
         ))}
       </table>
-
     </section>
   );
 }

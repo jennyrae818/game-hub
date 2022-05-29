@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
-import { QUERY_ME, QUERY_SINGLE_GAME } from "../utils/queries";
-import { QUERY_GAME_USERS } from "../utils/queries";
-import Auth from "../utils/auth";
+import { QUERY_ME, QUERY_SINGLE_GAME, QUERY_GAME_USERS } from "../utils/queries";
 import { ADD_REVIEW, THUMBSUP_GAME, THUMBSDOWN_GAME, ADD_GAME_TO_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 function Game() {
   //use location to figure out gameId for page
