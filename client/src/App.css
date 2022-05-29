@@ -585,7 +585,6 @@ fieldset {
 }
 
 .profile a {
-  text-decoration: none;
   color: var(--pink);
 }
 
