@@ -80,7 +80,7 @@ function AddGame() {
             <div className="rating">
               <label>
                 <input type="radio" name="rating" className="like" value="like" onChange={handleInput}/>
-                &nbsp; &#9787; Like &nbsp; &nbsp;</label>
+                &nbsp; &#9786; Like &nbsp; &nbsp;</label>
               <label>
                 <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleInput}/>
                 &nbsp; &#9785; Dislike </label>

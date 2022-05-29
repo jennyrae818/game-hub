@@ -24,7 +24,9 @@ function Search() {
       <form>   
       <fieldset>
     
-          <label for="category"><p>Select a Category:</p></label>
+          <label for="category"><p>Select a›
+            
+             Category:</p></label>
           <select id="selectedCategory" name="dropdown" value={currentCategoryId} on onChange={(e) => setCategory(e.target.value)}>
             <option><p> All </p></option>
             {categories && categories.map(category => (

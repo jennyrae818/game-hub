@@ -154,7 +154,7 @@ function Game() {
           <h3> Description: </h3>
           <p>{game.description}</p>
           <h3> OverAll Rating: {game.rating}</h3>
-          <p> &#9787; : {game.thumbsUp}</p>
+          <p> &#9786; : {game.thumbsUp}</p>
           <p> &#9785; : {game.thumbsDown}</p>
           <h3> # Users Playing: </h3> <p>{game.usersPlaying}</p>
         </div>
@@ -165,11 +165,11 @@ function Game() {
           <table>
             {users.map(user => (
               <tr key={user._id}>
-                <td>
+                
                   <Link to={`/profile/${user._id}`}>
-                    {user.username}
+                  &#9827; {user.username} &#9827;
                   </Link>
-                </td>               
+                           
               </tr>
             ))}
           </table>
@@ -183,7 +183,7 @@ function Game() {
               <div className="rating">
                 <label>
                   <input type="radio" name="rating" className="like" value="like" onChange={handleRatingChange} />
-                  &nbsp; &#9787; Like  &nbsp;  &nbsp; 
+                  &nbsp; &#9786; Like  &nbsp;  &nbsp; 
                 </label>
                 <label>
                   <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleRatingChange} />
