@@ -134,14 +134,11 @@ function Game() {
 
         {Auth.loggedIn() ? (
           <div className="subcontainer">
-            <table>
-              <td>
-                <button
+           <h3>Add to Profile:</h3>
+                <button className="button"
                   disabled={me?.me.games.some((gameId) => gameId._id === game._id)}
                   onClick={() => handleGameAdd(game._id)}>
                 </button>
-              </td>
-            </table>
           </div>
         ) : null}
 
@@ -182,10 +179,10 @@ function Game() {
               <div className="rating">
                 <label>
                   <input type="radio" name="rating" className="like" value="like" onChange={handleRatingChange} />
-                  &#9787; Like </label>
+                  &nbsp; &#9787; Like  &nbsp;  &nbsp; </label>
                 <label>
                   <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleRatingChange} />
-                  &#9785; Dislike </label>
+                  &nbsp; &#9785; Dislike </label>
               </div>
               <button type="submit">Submit Rating</button>
             </label>
@@ -229,7 +226,7 @@ function Game() {
             <>
               <ul>{game.reviews.map(review => (
                 <li key={review.reviewId}>
-                  {review.username} says: {review.reviewBody} created at: {review.createdAt}
+                  &#9827; {review.username} says: {review.reviewBody} &#9830; Created at: {review.createdAt}
                 </li>))}
               </ul>
             </>
