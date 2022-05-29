@@ -1,12 +1,12 @@
 /* MAIN PACKAGES */
-const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
-const path = require('path');
+const express = require("express");
+const { ApolloServer } = require("apollo-server-express");
+const path = require("path");
 
 /* CONNECTION TO FILES */
-const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
-const { authMiddleware } = require('./utils/auth');
+const { typeDefs, resolvers } = require("./schemas");
+const db = require("./config/connection");
+const { authMiddleware } = require("./utils/auth");
 
 /* DECLARATIONS */
 const app = express();
@@ -29,12 +29,12 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // HEROKU
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 // APPLY SERVER
-const startApolloServer = async (typeDefs, resolvers) => {
+const startApolloServer = async () => {
     await server.start();
     server.applyMiddleware({ app });
 
@@ -47,4 +47,4 @@ const startApolloServer = async (typeDefs, resolvers) => {
 };
 
 // CALL SERVER FUNCTION
-startApolloServer(typeDefs, resolvers);
+startApolloServer();
