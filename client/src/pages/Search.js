@@ -24,10 +24,10 @@ function Search() {
         <form>
           <fieldset>
             <label for="category"><p>Select a Category:</p></label>
-            <select id="selectedCategory" name="dropdown" value={currentCategoryId} on onChange={(e) => setCategory(e.target.value)}>
-              <option><p> All </p></option>
+            <select className="styleDrop" id="selectedCategory" name="dropdown" value={currentCategoryId} on onChange={(e) => setCategory(e.target.value)}>
+              <option className="styleDrop"><p> All </p></option>
               {categories && categories.map(category => (
-                <option key={category._id} value={category._id}>{category.categoryName}</option>
+                <option className="styleDrop" key={category._id} value={category._id}>{category.categoryName}</option>
               ))}
             </select>
 

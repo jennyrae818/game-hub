@@ -60,7 +60,7 @@ function AddGame() {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <label for="category">
-            <h3>Select a Cateogry:</h3>
+            <h3>Select a Category:</h3>
             <p>(or multiple)</p>
           </label>
           <select value={gameFormData.categories} id="selectedCategory" name="categories" multiple={true} onChange={handleInput}>
