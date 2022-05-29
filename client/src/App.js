@@ -49,6 +49,7 @@ function App() {
     <>
       <Header />
       <Navbar />
+      <main>
       <Routes>       
         <Route index element={<Home />} />
         <Route path="addgame" element={<AddGame />} />
@@ -61,6 +62,7 @@ function App() {
         <Route path="search" element={<Search />} />
         <Route/>
       </Routes>
+      </main>
       <Footer />
     </>
     </Router>
