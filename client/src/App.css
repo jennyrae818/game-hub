@@ -625,7 +625,7 @@ fieldset {
 .footer {
   font-size: 36px;
   bottom: 0;
-  position: fixed;
+  position: sticky;
   width: 100%;
   background-color: black;
 
