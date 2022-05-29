@@ -1,57 +1,64 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom'
-import { useMutation, useQuery } from '@apollo/client';
-import { QUERY_ME, QUERY_SINGLE_GAME } from '../utils/queries';
-import { QUERY_GAME_USERS } from '../utils/queries';
-import Auth from '../utils/auth';
-import { ADD_REVIEW, THUMBSUP_GAME, THUMBSDOWN_GAME, ADD_GAME_TO_USER } from '../utils/mutations';
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useMutation, useQuery } from "@apollo/client";
+import { QUERY_ME, QUERY_SINGLE_GAME } from "../utils/queries";
+import { QUERY_GAME_USERS } from "../utils/queries";
+import Auth from "../utils/auth";
+import { ADD_REVIEW, THUMBSUP_GAME, THUMBSDOWN_GAME, ADD_GAME_TO_USER } from "../utils/mutations";
 
 function Game() {
+  //use location to figure out gameId for page
   const location = useLocation();
   const { gameId } = location.state;
 
-  var { loading, data } = useQuery(QUERY_SINGLE_GAME, {
+  //single game data
+  const { data } = useQuery(QUERY_SINGLE_GAME, {
     variables: { _id: gameId }
   });
   const game = data?.game || {};
 
-  var { data } = useQuery(QUERY_GAME_USERS, {
+  //user data to see who plays
+  const { data: user } = useQuery(QUERY_GAME_USERS, {
     variables: { games: gameId }
   });
-  const users = data?.users || [];
+  const users = user?.users || [];
 
+  //data for user logged in
   const { data: me } = useQuery(QUERY_ME);
   const thisUser = me?.me || [];
 
-  //review
+  //set review state
   const [reviewFormData, setReviewFormData] = useState({ reviewBody: '' })
 
+  //set thumbs up/down state
   const [ratingFormData, setRatingFormData] = useState({ thumbsUp: 0, thumbsDown: 0 });
 
-  //mutation
+  //mutations
   const [addReview] = useMutation(ADD_REVIEW);
   const [thumbsUpGame] = useMutation(THUMBSUP_GAME);
   const [thumbsDownGame] = useMutation(THUMBSDOWN_GAME);
   const [addGame] = useMutation(ADD_GAME_TO_USER);
 
+  //handle review body input
   const handleInput = (event) => {
     const { name, value } = event.target;
     setReviewFormData({ ...reviewFormData, [name]: value });
   }
 
-  // Event handler for submitting the review
+  //event handler for submitting the review
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    //await addReview before setting the review body
     try {
-      const newReview = await addReview({
+      await addReview({
         variables: {
           gameId: game._id,
           ...reviewFormData
         }
       });
 
-      // console.log(newReview);
-
+      //reset form data
       setReviewFormData({ reviewBody: '' });
 
     } catch (err) {
@@ -59,33 +66,32 @@ function Game() {
     }
   }
 
+  //handle thumbs up and thumbs down
   const handleRatingChange = async (event) => {
     const { value } = event.target;
-    console.log(value);
+    //if like then thumbs up if dislike then thumbs down
     if (value === "like") {
       setRatingFormData({ ...ratingFormData, thumbsUp: 1 });
     }
     else {
       setRatingFormData({ ...ratingFormData, thumbsDown: 1 });
-      console.log(ratingFormData);
     }
   }
 
-  // Event handler for submitting the rating
+  //event handler for submitting the rating
   const handleSubmitRating = async (event) => {
     event.preventDefault();
 
     try {
       if (ratingFormData.thumbsUp) {
-        const newGameRating = await thumbsUpGame({
+        await thumbsUpGame({
           variables: {
             gameId: game._id,
             ...ratingFormData
           }
         });
       } else if (ratingFormData.thumbsDown) {
-        console.log(ratingFormData);
-        const newGameRating = await thumbsDownGame({
+        await thumbsDownGame({
           variables: {
             gameId: game._id,
             ...ratingFormData
@@ -93,6 +99,7 @@ function Game() {
         });
       }
 
+      //reset form data
       setRatingFormData({ thumbsUp: 0, thumbsDown: 0 });
 
     } catch (err) {
@@ -100,25 +107,27 @@ function Game() {
     }
   }
 
-  // Event handler for adding game to user profile
+  //event handler for adding game to user profile
   const handleGameAdd = async (gameId) => {
+    
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
+    //if no token (or invalid) function will return false
     if (!token) {
       return false;
     }
 
+    //get _id of the user from me query
     const idUser = thisUser._id;
 
+    //await adding game to user
     try {
-      const gameAdd = await addGame({
+      await addGame({
         variables: {
           userId: idUser,
           gameId: gameId
         }
       });
-
-      console.log(gameAdd);
 
     } catch (err) {
       console.error(err)
@@ -127,14 +136,13 @@ function Game() {
 
   return (
     <section className="game">
-
       <h2>  --{game.gameName}--  </h2>
       <div className="container">
 
-
+        {/* IF LOGGED-IN SHOW ADD-GAME BUTTON */}
         {Auth.loggedIn() ? (
           <div className="subcontainer">
-           <h3>Add to Profile:</h3>
+          <h3>Add to Profile:</h3>
                 <button className="button"
                   disabled={me?.me.games.some((gameId) => gameId._id === game._id)}
                   onClick={() => handleGameAdd(game._id)}>
@@ -142,36 +150,33 @@ function Game() {
           </div>
         ) : null}
 
-
+        {/* GAME INFO */}
         <div className="subcontainer">
           <h3> Description: </h3>
           <p>{game.description}</p>
           <h3> OverAll Rating: {game.rating}</h3>
-
           <p> &#9787; : {game.thumbsUp}</p>
           <p> &#9785; : {game.thumbsDown}</p>
           <h3> # Users Playing: </h3> <p>{game.usersPlaying}</p>
         </div>
 
+        {/* USERS PLAYING GAME */}
         <div className="subcontainer">
+          <h3>Users Who Play:</h3>
           <table>
-            <tr>
-              <h3>Users Who Play:</h3>
-            </tr>
             {users.map(user => (
               <tr key={user._id}>
                 <td>
                   <Link to={`/profile/${user._id}`}>
                     {user.username}
                   </Link>
-                </td>
-                {/* <td>40</td>
-                  <td> &#9787; </td> */}
+                </td>               
               </tr>
             ))}
           </table>
         </div>
 
+        {/* RATING */}
         <form onSubmit={handleSubmitRating}>
           <fieldset>
             <label>
@@ -179,17 +184,19 @@ function Game() {
               <div className="rating">
                 <label>
                   <input type="radio" name="rating" className="like" value="like" onChange={handleRatingChange} />
-                  &nbsp; &#9787; Like  &nbsp;  &nbsp; </label>
+                  &nbsp; &#9787; Like  &nbsp;  &nbsp; 
+                </label>
                 <label>
                   <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleRatingChange} />
-                  &nbsp; &#9785; Dislike </label>
+                  &nbsp; &#9785; Dislike 
+                </label>
               </div>
               <button type="submit">Submit Rating</button>
             </label>
           </fieldset>
         </form>
 
-
+        {/* IF LOGGED-IN ADD A REVIEW */}
         {Auth.loggedIn() ? (
           <>
             <form onSubmit={handleSubmit}>
@@ -215,7 +222,7 @@ function Game() {
           </>
         )}
 
-
+        {/* REVIEWS DISPLAY */}
         <div className="subcontainer">
           <h3>Reviews:</h3>
           {Object.keys(game).length === 0 ? (
