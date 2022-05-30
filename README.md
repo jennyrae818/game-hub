@@ -44,19 +44,19 @@ then the user is presented with the home page containing the website title, link
 
 ![home](./client/public/images/screenshots/homeBeforeLogin.png)
 
-When the user chooses to sign up by clicking on the Register link.
+When the user chooses to sign up by clicking on the Register link,
 then the user will be taken to a page to enter in their email along with their desired username and password.
 
 ![regiser](./client/public/images/screenshots/gameHubRegister.png)
 
-When the user finishes signing up by clicking the sign up button.
+When the user finishes signing up by clicking the sign up button,
 then the user’s credentials are saved and they are logged into the site with a token and redirected to a modified home page that shows add game, view-profile and logout links.
 
 ![modified home](./client/public/images/screenshots/homePageAfterLogin.png)
 
-When the user revisits the site at a later time and chooses to login.
+When the user revisits the site at a later time and chooses to login,
 then the user is prompted to enter their username and password.
-When the user clicks to login to the website with their username and password
+When the user clicks to login to the website with their username and password,
 then the user will be redirected to the modified home page.
 
 ![login](./client/public/images/screenshots/Login.png)
@@ -83,7 +83,7 @@ When the unauthorized user views a game
 then there is a link that can take them to register or login. User needs to login inorder to add reviews.
 
 When an authorized user views a game
-then they can add the game to their profile if not already added. they can also like (thumbs up) or dislike (thumbs down) a game.
+then they can add the game to their profile if not already added. They can also like (thumbs up) or dislike (thumbs down) a game.
 
 ![modified game](./client/public/images/screenshots/gamePageAfterLogin.png)
 
