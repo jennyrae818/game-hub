@@ -5,7 +5,7 @@
 ## Table of Contents 
 
 - [Description](#description)
-- [What we learned](#learned)
+- [What we learned](#what-we-learned)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
