@@ -36,7 +36,9 @@ function AddGame() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Since mutation function is async, wrap in a 'try...catch' to catch any network errors from throwing due to a failed request
     try {
+      // Execute mutation and pass in defined parameter data as variables
       const newGame = await createGame({
         variables: { ...gameFormData },
       });
@@ -61,7 +63,6 @@ function AddGame() {
             <h3>Select a Category:</h3>
             <p>(or multiple)</p>
           </label>
-
           <select value={gameFormData.categories} id="selectedCategory" name="categories" multiple={true} onChange={handleInput}>
             {categories && categories.map(category => (
               <option key={category._id} value={category._id}>{category.categoryName}</option>
@@ -82,7 +83,7 @@ function AddGame() {
                 <input type="radio" name="rating" className="like" value="like" onChange={handleInput}/>
                 &nbsp; &#9786; Like &nbsp; &nbsp;</label>
               <label>
-                <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleInput}/>
+                <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleInput} />
                 &nbsp; &#9785; Dislike </label>
             </div>
           </label>
@@ -90,7 +91,6 @@ function AddGame() {
 
           <button type="submit">Submit</button>
         </fieldset>
-
       </form>
     </div>
   );
