@@ -108,9 +108,6 @@ then they are brought to a page to add a UNIQUE game into the database(no duplic
 
 ![add game](./client/public/images/screenshots/addGame.png)
 
-When an authorized user tries to add a game that already exists
-then the website will tell them that the game is already within the database
-
 When an authorized user tries to add a UNIQUE game
 then they must fill out the category, name of the game and a description
 
