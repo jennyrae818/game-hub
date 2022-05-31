@@ -117,13 +117,15 @@ then they are redirected to the modified home page
 When a user clicks on the logout link from the modified home page
 then they are logged out and are redirected to the home page
 
+When a user clicks on the ghost image/links at the bottom of the page it will take them to the makers respective github account
+
 ## Credits
 
 See the deployed website at: https://game-hub-2022.herokuapp.com/</br>
 
 Developers | Github
 --- | ---
-Jenny Sacco |
+Jenny Sacco | [jennysacco] (https://github.com/jennyrae818)
 Priyanka Mary Christine | [marycpriyanka](https://github.com/marycpriyanka)
 Anthony Ditore | [aditore](https://github.com/aditore)
 Rebecca Yu |
