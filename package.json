@@ -1,0 +1,29 @@
+{
+  "name": "game-hub",
+  "version": "1.0.0",
+  "description": "game library",
+  "main": "server/server.js",
+  "scripts": {
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build",
+    "start": "cd server && node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jennyrae818/game-hub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jennyrae818/game-hub/issues"
+  },
+  "homepage": "https://github.com/jennyrae818/game-hub#readme",
+  "devDependencies": {
+    "concurrently": "^7.2.0"
+  },
+  "dependencies": {
+    "eslint": "^8.15.0"
+  }
+}
