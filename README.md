@@ -128,7 +128,7 @@ Developers | Github
 Jenny Sacco | [jennysacco] (https://github.com/jennyrae818)
 Priyanka Mary Christine | [marycpriyanka](https://github.com/marycpriyanka)
 Anthony Ditore | [aditore](https://github.com/aditore)
-Rebecca Yu |
+Rebecca Yu | [becca6758] (https://github.com/becca6758)
 
 This app was created with create-react-app</br>
 
