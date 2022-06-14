@@ -280,14 +280,23 @@ button:hover {
   padding: 2px;
 }
 
+.category li {
+  list-style-type: none;
+  text-align: center;
+  margin-left: -30px;
+}
+
 .category a {
-  text-decoration: none;
   color: var(--pink);
 }
 
 .category a:hover {
   opacity: .5;
 }
+
+
+
+
 
 
 
@@ -490,7 +499,7 @@ background-color: var(--red);
     padding: 0px;
   }
 
-  /*aligns blus signs*/
+  /*aligns plus signs*/
   .home button:before,
   .home button:after {
     content: "";
