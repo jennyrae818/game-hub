@@ -12,6 +12,7 @@ const resolvers = {
                     .populate(
                         {
                             path: "games",
+                            options: { sort: { "usersPlaying": -1 } },
                             populate: {
                                 path: "categories"
                             }
@@ -32,6 +33,7 @@ const resolvers = {
             return await User.findOne({ _id: userId })
                 .populate({
                     path: "games",
+                    options: { sort: { "usersPlaying": -1 } },
                     populate: {
                         path: "categories"
                     }
