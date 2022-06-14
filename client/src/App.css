@@ -896,9 +896,9 @@ footer img:hover {
   
   .footer img {
     background-color: transparent;
-    width: 50px;
-    height: 50px;
-    padding: 10px;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
   }
   
   .row {
@@ -908,7 +908,7 @@ footer img:hover {
   .column {
   flex: content;
   background-color: black;
-  padding: 10px;
+  padding: 5px;
   }
   
   footer img:hover {
@@ -919,30 +919,30 @@ footer img:hover {
   /*PAC MAN*/
   
    .pacman {
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background: var(--blue);
     position: relative;
-    margin-top: 20px;
+    margin-top: 5px;
   }
   
   .pacman2 {
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background: var(--pink);
     position: relative;
-    margin-top: 20px;
+    margin-top: 5px;
   }
   
   .pacman__eye {
     position: absolute;
-    width: 5px;
-    height: 5px;
+    width: 2px;
+    height: 2px;
     border-radius: 50%;
-    top: 10px;
-    right: 20px;
+    top: 4px;
+    right: 8px;
     background: #333333;
   }
   
@@ -977,12 +977,12 @@ footer img:hover {
   
   .pacman__food {
     position: absolute;
-    width: 15px;
-    height: 15px;
+    width: 5px;
+    height: 5px;
     background: #fff;
     border-radius: 50%;
     top: 40%;
-    left: 120px;
+    left: 60px;
     animation-name: food;
     animation-duration: 0.7s;
     animation-iteration-count: infinite;
