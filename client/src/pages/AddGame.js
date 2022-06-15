@@ -14,6 +14,7 @@ function AddGame() {
 
   //modal state
   const [show, setShow] = useState(false);
+  
   //mutation
   const [createGame] = useMutation(CREATE_GAME);
 
