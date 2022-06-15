@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Modal from '../components/Modal';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { CREATE_GAME } from '../utils/mutations';
