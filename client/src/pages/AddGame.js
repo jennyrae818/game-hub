@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Modal from '../components/Modal';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { CREATE_GAME } from '../utils/mutations';
@@ -11,6 +12,8 @@ function AddGame() {
 
   const [gameFormData, setGameFormData] = useState({ gameName: '', description: '', thumbsUp: 0, thumbsDown: 0, categories: [] });
 
+  //modal state
+  const [show, setShow] = useState(false);
   //mutation
   const [createGame] = useMutation(CREATE_GAME);
 
@@ -89,9 +92,10 @@ function AddGame() {
           </label>
           <p></p>
 
-          <button type="submit">Submit</button>
+          <button onClick={() => setShow(true)} type="submit">Submit</button>
         </fieldset>
       </form>
+      <Modal show={show} />
     </div>
   );
 }
