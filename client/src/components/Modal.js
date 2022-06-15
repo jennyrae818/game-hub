@@ -4,7 +4,7 @@ const Modal = props => {
     if (!props.show) {
         return null;
     }
-    
+
     return (
         <div className="modal">
             <div className="modalContent">
@@ -15,7 +15,7 @@ const Modal = props => {
                     Thank you for adding a game to our database!
                 </div>
                 <div className="modalFooter">
-                    <button className="modalButton">Close</button>
+                    <button onClick={props.onClose} className="modalButton">Close</button>
                 </div>
             </div>
         </div>

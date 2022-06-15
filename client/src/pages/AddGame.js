@@ -14,7 +14,7 @@ function AddGame() {
 
   //modal state
   const [show, setShow] = useState(false);
-  
+
   //mutation
   const [createGame] = useMutation(CREATE_GAME);
 
@@ -52,6 +52,9 @@ function AddGame() {
       setGameFormData({
         gameName: '', description: '', categories: [], thumbsUp: 0, thumbsDown: 0
       });
+
+      //show modal
+      setShow(true);
 
     } catch (err) {
       console.error(err);
@@ -93,10 +96,10 @@ function AddGame() {
           </label>
           <p></p>
 
-          <button onClick={() => setShow(true)} type="submit">Submit</button>
+          <button type="submit">Submit</button>
         </fieldset>
       </form>
-      <Modal show={show} />
+      <Modal onClose={() => setShow(false)} show={show} />
     </div>
   );
 }
