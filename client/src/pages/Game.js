@@ -154,8 +154,8 @@ function Game() {
           <h3> Description: </h3>
           <p>{game.description}</p>
           <h3> OverAll Rating: {game.rating}</h3>
-          <p> &#9786; : {game.thumbsUp}</p>
-          <p> &#9785; : {game.thumbsDown}</p>
+          <p> &#128077; : {game.thumbsUp}</p>
+          <p> &#128078; : {game.thumbsDown}</p>
           <h3> # Users Playing: </h3> <p>{game.usersPlaying}</p>
         </div>
 
@@ -183,11 +183,11 @@ function Game() {
               <div className="rating">
                 <label>
                   <input type="radio" name="rating" className="like" value="like" onChange={handleRatingChange} />
-                  &nbsp; &#9786; Like  &nbsp;  &nbsp; 
+                  &nbsp; &#128077; Like  &nbsp;  &nbsp; 
                 </label>
                 <label>
                   <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleRatingChange} />
-                  &nbsp; &#9785; Dislike 
+                  &nbsp; &#128078; Dislike 
                 </label>
               </div>
               <button type="submit">Submit Rating</button>
