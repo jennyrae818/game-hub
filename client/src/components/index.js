@@ -4,3 +4,4 @@ export { default as Navbar } from "./Navbar";
 export { default as ModalS } from "./ModalS";
 export { default as ModalF } from "./ModalF";
 export { default as ModalB } from "./ModalB";
+export { default as ModalR } from "./ModelR";

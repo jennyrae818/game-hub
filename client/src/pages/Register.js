@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ModalR from "../components/ModelR";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -9,6 +10,9 @@ function Register() {
   
   //mutation
   const [createUser] = useMutation(CREATE_USER);
+
+  //modal state
+  const [showR, setShowR] = useState(false);
 
   //handle userFormData
   const handleInput = (event) => {
@@ -29,6 +33,9 @@ function Register() {
       //give new user token
       const token = newUser.data.createUser.token;
       Auth.login(token);
+
+      //show modal
+      setShowR(true);
 
     } catch (err) {
       console.error(err);
@@ -64,6 +71,7 @@ function Register() {
           <button type="submit">Submit</button>
         </fieldset>
       </form>
+      <ModalR onClose={() => setShowR(false)} show={showR} />
     </div>
     </>
   );
