@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ModalR from "../components/ModelR";
+import { ModalR } from "../components";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../utils/mutations";
 import Auth from "../utils/auth";

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import ModalS from '../components/ModalS';
-import ModalF from '../components/ModalF';
+import { ModalS, ModalF } from '../components';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { CREATE_GAME } from '../utils/mutations';
