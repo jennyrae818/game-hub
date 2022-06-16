@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { QUERY_ME, QUERY_SINGLE_USER } from "../utils/queries";
 import { REMOVE_GAME_FROM_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 function Profile() {
+  const location = useLocation();
   //get userId from URL
   const { userId: userParam } = useParams();
 
@@ -16,6 +17,13 @@ function Profile() {
 
   const user = data?.me || data?.user || {}; 
   
+  console.log(user);
+  console.log(user.games);
+  //set game state for reviews
+  const [setG, setGame] = useState();
+
+  console.log(setG);
+
   //mutation
   const [removeGameFromUser] = useMutation(REMOVE_GAME_FROM_USER);
 
@@ -72,8 +80,30 @@ function Profile() {
             <td>{game.usersPlaying}</td>
             <td>{game.rating}</td>
           </tr>
-        ))}
+        ))}        
       </table>
+
+      <form>
+        <fieldset>
+          <label for="reviews"><h3>Reviews:</h3></label>
+          <>
+            <select value={setG} on onChange={(e) => setGame( e.target.value )}>
+              {user.games && user.games.map(game => (
+                <option value={game.gameName}>{game.gameName}</option>
+              ))}
+            </select>
+          </>
+        </fieldset>
+      </form>
+      
+      {user.games && user.games.map(game => (
+        <ul>{game.reviews.map(review => (
+          <li key={review.reviewId}>
+            &#9827; {review.username} says: {review.reviewBody} &#9830; Created at: {review.createdAt}
+          </li>))}
+        </ul>
+      ))}
+      
     </section>
   );
 }
