@@ -790,7 +790,7 @@ fieldset {
   bottom: 0;
   position: sticky;
   text-align: center;
-  width: 100%;
+  width: auto;
   background-color: black;
 
 }
@@ -799,7 +799,6 @@ fieldset {
   background-color: transparent;
   width: 50px;
   height: 50px;
-  padding: 10px;
 }
 
 .row {
@@ -807,7 +806,8 @@ fieldset {
 }
 
 .column {
-flex: content;
+flex: auto;
+flex-basis: 5em;
 background-color: black;
 padding: 10px;
 }
@@ -817,94 +817,157 @@ footer img:hover {
 }
 
 
-/*PAC MAN*/
+    /*PAC MAN*/
 
- .pacman {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--blue);
-  position: relative;
-  margin-top: 20px;
-}
+    /*BLUE PACMAN*/
+    .pacman {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--blue);
+      position: relative;
 
-.pacman2 {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--pink);
-  position: relative;
-  margin-top: 20px;
-}
+    }
+          
+    .pacman__eye {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        top: 10px;
+        right: 20px;
+        background: #333333;
+      }
+      
+      .pacman__mouth {
+        background: #000;
+        position: absolute;
+        width: 101%;
+        height: 100%;
+        clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+        animation-name: eat;
+        animation-duration: 0.7s;
+        animation-iteration-count: infinite;
+      }
+    
+    /*PINK PACMAN*/  
+    .pacman2 {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--pink);
+      position: relative;
+      margin-left: 50px;
+    }
 
-.pacman__eye {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  top: 10px;
-  right: 20px;
-  background: #333333;
-}
+    .pacman2_eye {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        top: 10px;
+        right: 25px;
+        background: #333333;
+      }
+      
+      .pacman2_mouth {
+        background: #000;
+        position: absolute;
+        width: 101%;
+        height: 100%;
+        clip-path: polygon(0% 75%, 54% 50%, 0%, 28%);
+        animation-name: eat2;
+        animation-duration: 0.7s;
+        animation-iteration-count: infinite;
+      }
 
-.pacman__mouth {
-  background: #000;
-  position: absolute;
-  width: 101%;
-  height: 100%;
-  clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-  animation-name: eat;
-  animation-duration: 0.7s;
-  animation-iteration-count: infinite;
-}
+   
+    @keyframes eat {
+      0% {
+        clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+      }
+      25% {
+        clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
+      }
+      50% {
+        clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
+      }
+      75% {
+       clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
+      }
+      100% {
+       clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+      }
+    }
 
-@keyframes eat {
-  0% {
-    clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-  }
-  25% {
-    clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
-  }
-  50% {
-    clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
-  }
-  75% {
-   clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
-  }
-  100% {
-   clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-  }
-}
+    @keyframes eat2 {
+        0% {
+          clip-path: polygon(0% 82%, 54% 50%, 0% 26%);
+        }
+        25% {
+          clip-path: polygon(0% 70%, 54% 50%, 0% 34%);
+        }
+        50% {
+          clip-path: polygon(0% 50%, 54% 50%, 0% 50%);
+        }
+        75% {
+         clip-path: polygon(0% 70%, 54% 50%, 0% 34%);
+        }
+        100% {
+         clip-path: polygon(0% 82%, 54% 50%, 0% 26%);
+        }
+      }
+    
+    .pacman__food {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: #fff;
+      border-radius: 50%;
+      top: 40%;
+      left: 120px;
+      animation-name: food;
+      animation-duration: 0.7s;
+      animation-iteration-count: infinite;
+    }
+    
+    .pacman2_food {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: #fff;
+        border-radius: 50%;
+        top: 40%;
+        left: -80px;
+        animation-name: food2;
+        animation-duration: 0.7s;
+        animation-iteration-count: infinite;
+      }
 
-.pacman__food {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  background: #fff;
-  border-radius: 50%;
-  top: 40%;
-  left: 120px;
-  animation-name: food;
-  animation-duration: 0.7s;
-  animation-iteration-count: infinite;
-}
+    @keyframes food {
+      0% {
+        transform: translateX(0);
+          opacity: 1;
+      }
+      100% {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+    }
 
-@keyframes food {
-  0% {
-    transform: translateX(0);
-      opacity: 1;
-  }
-  100% {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-}
 
-.styleDrop {
-  color: #00ffff;
-  background-color: #000;
-}
-
+    @keyframes food2 {
+        0% {
+          transform: translateX(0);
+            opacity: 1;
+        }
+        100% {
+          transform: translateX(50px);
+          opacity: 0;
+        }
+      }
+      
+    
 
 
 
@@ -935,7 +998,8 @@ footer img:hover {
   }
   
   .column {
-  flex: content;
+  flex: auto;
+  flex-basis: 5em;
   background-color: black;
   padding: 5px;
   }
@@ -955,16 +1019,7 @@ footer img:hover {
     position: relative;
     margin-top: 5px;
   }
-  
-  .pacman2 {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--pink);
-    position: relative;
-    margin-top: 5px;
-  }
-  
+    
   .pacman__eye {
     position: absolute;
     width: 2px;
@@ -985,6 +1040,38 @@ footer img:hover {
     animation-duration: 0.7s;
     animation-iteration-count: infinite;
   }
+  
+  .pacman2 {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--pink);
+    position: relative;
+    margin-top: 5px;
+    margin-left: 50px;
+  }
+     
+  .pacman2_eye {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    top: 4px;
+    right: 10px;
+    background: #333333;
+  }
+  
+  .pacman2_mouth {
+    background: #000;
+    position: absolute;
+    width: 101%;
+    height: 100%;
+    clip-path: polygon(0% 75%, 54% 50%, 0%, 28%);
+    animation-name: eat2;
+    animation-duration: 0.7s;
+    animation-iteration-count: infinite;
+  }
+
   
   @keyframes eat {
     0% {
@@ -1016,6 +1103,19 @@ footer img:hover {
     animation-duration: 0.7s;
     animation-iteration-count: infinite;
   }
+
+  .pacman2_food {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+    top: 40%;
+    left: -40px;
+    animation-name: food2;
+    animation-duration: 0.7s;
+    animation-iteration-count: infinite;
+  }
   
   @keyframes food {
     0% {
@@ -1027,12 +1127,6 @@ footer img:hover {
       opacity: 0;
     }
   }
-  
-  .styleDrop {
-    color: #00ffff;
-    background-color: #000;
-  }
-  
 }
 
 /*ANTHONY'S MODAL*/
