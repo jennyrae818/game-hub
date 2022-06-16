@@ -162,7 +162,10 @@ function Game() {
         {/* USERS PLAYING GAME */}
         <div className="subcontainer">
           <h3>Users Who Play:</h3>
-          <table>
+          {users.length === 0 ? (
+            <p>There are currently no users playing this game</p>
+          ) : (
+            <table>
             {users.map(user => (
               <tr key={user._id}>
                 
@@ -173,6 +176,7 @@ function Game() {
               </tr>
             ))}
           </table>
+          )}
         </div>
 
         {/* RATING */}
