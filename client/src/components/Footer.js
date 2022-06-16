@@ -7,7 +7,7 @@ function Footer() {
 
       <div className="row">
 
-        {/* PAC-MAN ANIMATION */}
+        {/* BLUE PAC-MAN ANIMATION */}
         <div className="column">
           <div className="pacman">
             <div className="pacman__eye"></div>
@@ -33,12 +33,12 @@ function Footer() {
           <a href="https://github.com/becca6758" target="_blank" rel="noreferrer noopener"><img src="../images/pacman_red.png" alt="Rebecca Github" className="icon"/></a>
         </div>
     
-        {/* PACMAN ANIMATION */}
+        {/* PINK PACMAN ANIMATION */}
         <div className="column">
-          <div className="pacman2">
-            <div className="pacman__eye"></div>
-            <div className="pacman__mouth"></div>
-            <div className="pacman__food"></div> 
+            <div className="pacman2">
+            <div className="pacman2_food"></div>
+            <div className="pacman2_eye"></div>
+            <div className="pacman2_mouth"></div>
           </div>   
         </div>
 
