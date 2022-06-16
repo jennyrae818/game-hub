@@ -1,5 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Category, Game } = require("../models");
+const { populate } = require("../models/User");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -15,7 +16,7 @@ const resolvers = {
                             options: { sort: { "usersPlaying": -1 } },
                             populate: {
                                 path: "categories"
-                            }
+                            }                           
                         });
 
                 return userData;

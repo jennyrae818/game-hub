@@ -576,6 +576,12 @@ fieldset {
   padding: 20px;
 }
 
+.profile h3 {
+  color: #00ffff;
+  text-align: center;
+  font-size: 35px;
+}
+
 .profile table, th, td {
   width: auto;
   text-align: center;
@@ -604,6 +610,8 @@ fieldset {
   list-style-type: none;
   text-align: center;
   margin-left: -30px;
+  color: #00ffff;
+  font-size: 25px;
 }
 
 .profile a {
