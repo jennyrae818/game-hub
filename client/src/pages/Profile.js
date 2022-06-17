@@ -24,6 +24,18 @@ function Profile() {
 
   console.log(setG);
 
+  function filterReviews() {
+    const currentGame = setG;
+    console.log(currentGame);
+    if (!currentGame) {
+      return user
+    }
+
+    return user.games.filter(game => game.gameName === currentGame)[0].reviews.map(review => review);
+
+  }
+
+  console.log(filterReviews()[0]);
   //mutation
   const [removeGameFromUser] = useMutation(REMOVE_GAME_FROM_USER);
 
@@ -96,13 +108,12 @@ function Profile() {
         </fieldset>
       </form>
       
-      {user.games && user.games.map(game => (
-        <ul>{game.reviews.map(review => (
+      <ul>{filterReviews().map(review => (
           <li key={review.reviewId}>
             &#9827; {review.username} says: {review.reviewBody} &#9830; Created at: {review.createdAt}
           </li>))}
         </ul>
-      ))}
+      ))
       
     </section>
   );
