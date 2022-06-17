@@ -17,25 +17,22 @@ function Profile() {
 
   const user = data?.me || data?.user || {}; 
   
-  console.log(user);
-  console.log(user.games);
   //set game state for reviews
   const [setG, setGame] = useState();
 
-  console.log(setG);
 
+  //filter reviews to get users game reviews
   function filterReviews() {
     const currentGame = setG;
-    console.log(currentGame);
+    
     if (!currentGame || setG === 'Games') {
       return user.games;
     }
 
-    return user.games.filter(game => game.gameName === currentGame)[0].reviews.map(review => review);
-
+    return user.games.filter(game => game.gameName === currentGame)[0].reviews.filter(review => review.username === user.username);
   }
+  
 
-  console.log(filterReviews()[0]);
   //mutation
   const [removeGameFromUser] = useMutation(REMOVE_GAME_FROM_USER);
 
@@ -94,7 +91,8 @@ function Profile() {
           </tr>
         ))}        
       </table>
-
+      
+      {/* Dropdown for reviews */}
       <form>
         <fieldset>
           <label for="reviews"><h3>Reviews:</h3></label>
@@ -108,8 +106,11 @@ function Profile() {
           </>
         </fieldset>
       </form>
-      {setG === undefined || setG === 'Games' ? (
-        null
+      {/* map reviews for user */}
+      {setG === undefined || setG === "Games" ? (
+        <>
+          <h3>Please select a game you wish to see {userParam ? `${user.userName}'s` : 'your'} reviews on!</h3>
+        </>
       ) : (
       <ul>{filterReviews().map(review => (
         <li key={review.reviewId}>
@@ -117,7 +118,7 @@ function Profile() {
         </li>))}
       </ul>
       )}
-      
+        
     </section>
   );
 }
