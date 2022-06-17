@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ModalB } from "../components";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -9,6 +10,9 @@ function LogIn() {
 
   //mutation
   const [login] = useMutation(LOGIN_USER);
+
+  //modal state
+  const [showB, setShowB] = useState(false);
 
   //handle form to login
   const handleInput = (event) => {
@@ -31,6 +35,9 @@ function LogIn() {
       //give token if user logs in
       const token = user.data.login.token;
       Auth.login(token);
+
+      //show modal
+      setShowB(true);
 
     } catch (err) {
       console.error(err);
@@ -60,6 +67,7 @@ function LogIn() {
           <button disabled={!(userFormData.email && userFormData.password)} type="submit">Submit</button>
         </fieldset>
       </form>
+      <ModalB onClose={() => setShowB(false)} show={showB} />
     </div>
     
   );

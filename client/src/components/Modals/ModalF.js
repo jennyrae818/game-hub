@@ -1,6 +1,7 @@
 import React from "react";
 
-const Modal = props => {
+const ModalF = props => {
+    //if state isn't active, don't show modal
     if (!props.show) {
         return null;
     }
@@ -9,10 +10,10 @@ const Modal = props => {
         <div className="modal">
             <div className="modalContent">
                 <div className="modalHeader">
-                    <h4 className="modalTitle">Success!</h4>
+                    <h4 className="modalTitle">Not Successful!</h4>
                 </div>
                 <div className="modalBody">
-                    Thank you for adding a game to our database!
+                    Something is missing in the information provided, please try again.
                 </div>
                 <div className="modalFooter">
                     <button onClick={props.onClose} className="modalButton">Close</button>
@@ -22,4 +23,4 @@ const Modal = props => {
     )
 }
 
-export default Modal;
+export default ModalF;
