@@ -27,8 +27,8 @@ function Profile() {
   function filterReviews() {
     const currentGame = setG;
     console.log(currentGame);
-    if (!currentGame) {
-      return user
+    if (!currentGame || setG === 'Games') {
+      return user.games;
     }
 
     return user.games.filter(game => game.gameName === currentGame)[0].reviews.map(review => review);
@@ -99,21 +99,24 @@ function Profile() {
         <fieldset>
           <label for="reviews"><h3>Reviews:</h3></label>
           <>
-            <select value={setG} on onChange={(e) => setGame( e.target.value )}>
+            <select className="styleDrop" value={setG} on onChange={(e) => setGame( e.target.value )}>
+              <option className="styleDrop"><p>Games</p></option>
               {user.games && user.games.map(game => (
-                <option value={game.gameName}>{game.gameName}</option>
+                <option className="styleDrop" value={game.gameName}>{game.gameName}</option>
               ))}
             </select>
           </>
         </fieldset>
       </form>
-      
+      {setG === undefined || setG === 'Games' ? (
+        null
+      ) : (
       <ul>{filterReviews().map(review => (
-          <li key={review.reviewId}>
-            &#9827; {review.username} says: {review.reviewBody} &#9830; Created at: {review.createdAt}
-          </li>))}
-        </ul>
-      ))
+        <li key={review.reviewId}>
+          &#9827; {review.username} says: {review.reviewBody} &#9830; Created at: {review.createdAt}
+        </li>))}
+      </ul>
+      )}
       
     </section>
   );
