@@ -1,6 +1,7 @@
 import React from "react";
 
 const ModalB = props => {
+    //if state isn't active, don't show modal
     if (!props.show) {
         return null;
     }

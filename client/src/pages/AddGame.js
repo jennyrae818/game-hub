@@ -102,6 +102,7 @@ function AddGame() {
           <button type="submit">Submit</button>
         </fieldset>
       </form>
+      {/* MODALS, changes state when close button is clicked */}
       <ModalS onClose={() => setShowS(false)} show={showS} />
       <ModalF onClose={() => setShowF(false)} show={showF} />
     </div>
