@@ -51,7 +51,13 @@ const resolvers = {
             return await Category.findOne({ _id: categoryId });
         },
         game: async (parent, { _id }) => {
-            return await Game.findById(_id).populate("reviews");
+            return await Game.findById(_id).populate({
+                path: "reviews",
+                populate: {
+                    path: "user",
+                    model: "User"
+                }
+            });
         },
     },
 
@@ -154,7 +160,7 @@ const resolvers = {
                     { _id: gameId },
                     {
                         $addToSet: {
-                            reviews: { reviewBody, username: context.user.username }
+                            reviews: { reviewBody, user: context.user._id }
                         }
                     },
                     {
@@ -198,7 +204,7 @@ const resolvers = {
                         $pull: {
                             reviews: {
                                 _id: reviewId,
-                                username: context.user.username
+                                user: context.user._id
                             }
                         }
                     },
