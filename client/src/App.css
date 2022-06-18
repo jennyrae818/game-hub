@@ -114,6 +114,11 @@ button:hover {
   color: navy;
 }
 
+.navbar ul {
+  margin: 0;
+  padding: 0;
+}
+
 .navbar li {
     display: inline-block;
     font-family: var(--press);
@@ -999,6 +1004,10 @@ footer img:hover {
   .navbar a {
     text-decoration: none;
     color: navy;
+  }
+  .navbar ul {
+    margin: 0;
+    padding: 0;
   }
   .navbar li {
     font-size: 1.5vw;
