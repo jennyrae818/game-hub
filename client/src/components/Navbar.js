@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import React from 'react';
+import React from "react";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 function NavBar() {
   const reloadPage = () => {
@@ -17,6 +17,7 @@ function NavBar() {
         <li>
           <Link to="/search">Search</Link>
         </li>
+        {/* IF USER IS LOGGED-IN SHOW NEW OPTIONS */}
         {Auth.loggedIn() ? (
           <>
             <li>

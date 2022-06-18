@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ModalS, ModalF } from '../components';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { CREATE_GAME } from '../utils/mutations';
@@ -10,6 +11,10 @@ function AddGame() {
   const categories = data?.categories || [];
 
   const [gameFormData, setGameFormData] = useState({ gameName: '', description: '', thumbsUp: 0, thumbsDown: 0, categories: [] });
+
+  //modal state
+  const [showS, setShowS] = useState(false);
+  const [showF, setShowF] = useState(false);
 
   //mutation
   const [createGame] = useMutation(CREATE_GAME);
@@ -36,7 +41,9 @@ function AddGame() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Since mutation function is async, wrap in a 'try...catch' to catch any network errors from throwing due to a failed request
     try {
+      // Execute mutation and pass in defined parameter data as variables
       const newGame = await createGame({
         variables: { ...gameFormData },
       });
@@ -47,8 +54,13 @@ function AddGame() {
         gameName: '', description: '', categories: [], thumbsUp: 0, thumbsDown: 0
       });
 
+      //show modal
+      setShowS(true);
+
     } catch (err) {
       console.error(err);
+      //show modal
+      setShowF(true);
     }
   };
 
@@ -58,10 +70,9 @@ function AddGame() {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <label for="category">
-            <h3>Select a Cateogry:</h3>
+            <h3>Select a Category:</h3>
             <p>(or multiple)</p>
           </label>
-
           <select value={gameFormData.categories} id="selectedCategory" name="categories" multiple={true} onChange={handleInput}>
             {categories && categories.map(category => (
               <option key={category._id} value={category._id}>{category.categoryName}</option>
@@ -80,18 +91,20 @@ function AddGame() {
             <div className="rating">
               <label>
                 <input type="radio" name="rating" className="like" value="like" onChange={handleInput}/>
-                &nbsp; &#9787; Like &nbsp; &nbsp;</label>
+                &nbsp; &#128077; Like &nbsp; &nbsp;</label>
               <label>
-                <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleInput}/>
-                &nbsp; &#9785; Dislike </label>
+                <input type="radio" name="rating" className="dislike" value="dislike" onChange={handleInput} />
+                &nbsp; &#128078; Dislike </label>
             </div>
           </label>
           <p></p>
 
           <button type="submit">Submit</button>
         </fieldset>
-
       </form>
+      {/* MODALS, changes state when close button is clicked */}
+      <ModalS onClose={() => setShowS(false)} show={showS} />
+      <ModalF onClose={() => setShowF(false)} show={showF} />
     </div>
   );
 }

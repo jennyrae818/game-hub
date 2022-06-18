@@ -4,14 +4,18 @@ const categorySeeds = require("./categorySeeds.js");
 
 db.once("open", async () => {
     try {
+        // Clean Category in database
         await Category.deleteMany({});
 
+        // Bulk create category in database
         const categorySeed = await Category.insertMany(categorySeeds);
 
         console.log("----CATEGORIES SEEDED----");
-        
+
+        // Clean Game database
         await Game.deleteMany({});
 
+        // Bulk create games
         await Game.insertMany([
             {
                 gameName: "Tag",

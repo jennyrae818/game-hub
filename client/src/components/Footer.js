@@ -1,59 +1,50 @@
-import React from 'react';
-//import '../styles/style.css';
+import React from "react";
 
 
 function Footer() {
   return (
     <footer className="footer">
-    <div class="row">
 
-    <div class="column">
-      <div class="pacman">
-      <div class="pacman__eye"></div>
-      <div class="pacman__mouth"></div>
-      <div class="pacman__food"></div> 
-      </div>   
-    </div>
+      <div className="row">
 
-    <div class="column">
-      <a href="https://github.com/jennyrae818" target="_blank" rel="noreferrer noopener"><img src="../images/pacman_orange.png" alt="Jenny Github" className="icon"/></a>
-    </div>
+        {/* BLUE PAC-MAN ANIMATION */}
+        <div className="column">
+          <div className="pacman">
+            <div className="pacman__eye"></div>
+            <div className="pacman__mouth"></div>
+            <div className="pacman__food"></div> 
+          </div>   
+        </div>
 
-    <div class="column">
-      <a href="https://github.com/aditore" target="_blank" rel="noreferrer noopener"><img src="../images/pacman_blue.png" alt="Anthony Github" className="icon"/></a>
-    </div>
+        {/* GITHUB LINKS */}
+        <div className="column">
+          <a href="https://github.com/jennyrae818" target="_blank" rel="noreferrer noopener"><img src="../images/pacman_orange.png" alt="Jenny Github" className="icon"/></a>
+        </div>
 
-    <div class="column">
-      <a href="https://github.com/marycpriyanka" target="_blank" rel="noreferrer noopener"><img src="../images/pacman_pink.png" alt="Priyanka Github" className="icon"/></a>
-    </div>
+        <div className="column">
+          <a href="https://github.com/aditore" target="_blank" rel="noreferrer noopener"><img src="../images/pacman_blue.png" alt="Anthony Github" className="icon"/></a>
+        </div>
 
-    <div class="column">
-      <a href="https://github.com/becca6758" target="_blank" rel="noreferrer noopener"><img src="../images/pacman_red.png" alt="Rebecca Github" className="icon"/></a>
-    </div>
+        <div className="column">
+          <a href="https://github.com/marycpriyanka" target="_blank" rel="noreferrer noopener"><img src="../images/pacman_pink.png" alt="Priyanka Github" className="icon"/></a>
+        </div>
+
+        <div className="column">
+          <a href="https://github.com/becca6758" target="_blank" rel="noreferrer noopener"><img src="../images/pacman_red.png" alt="Rebecca Github" className="icon"/></a>
+        </div>
     
+        {/* PINK PACMAN ANIMATION */}
+        <div className="column">
+            <div className="pacman2">
+            <div className="pacman2_food"></div>
+            <div className="pacman2_eye"></div>
+            <div className="pacman2_mouth"></div>
+          </div>   
+        </div>
 
-    <div class="column">
-      <div class="pacman2">
-      <div class="pacman__eye"></div>
-      <div class="pacman__mouth"></div>
-      <div class="pacman__food"></div> 
-    </div>   
-
-    
-
-    </div>
-
-    </div>
-
-{/*   
-    <div class="pacman">
-      <div class="pacman-top"></div>
-      <div class="pacman-bottom"></div>
-      <div class="feed"></div>
       </div>
-    */}
 
-  </footer>
+    </footer>
   );
 }
 
