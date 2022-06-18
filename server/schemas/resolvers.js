@@ -55,7 +55,7 @@ const resolvers = {
                 path: "reviews",
                 populate: {
                     path: "user",
-                    model: "User"
+                    select: "-password"
                 }
             });
         },
