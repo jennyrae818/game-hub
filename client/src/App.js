@@ -6,7 +6,7 @@ import './App.css';
 import {
   Header,
   Navbar,
-  Footer
+  Footer,
 } from './components';
 import {
   AddGame,
@@ -18,6 +18,7 @@ import {
   Register,
   Search
 } from './pages';
+import ScrollToTop from './components/ScrollToTop';
 
 
 const httpLink = createHttpLink({
@@ -62,6 +63,7 @@ function App() {
         <Route path="search" element={<Search />} />
         <Route/>
       </Routes>
+      <ScrollToTop />
       </main>
       <Footer />
     </>
