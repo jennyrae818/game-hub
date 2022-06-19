@@ -84,7 +84,10 @@ export const QUERY_SINGLE_GAME = gql`
             reviews {
                 reviewId
                 reviewBody
-                username
+                user {
+                    _id
+                    username
+                }
                 createdAt
             }
         }

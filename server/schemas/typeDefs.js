@@ -29,7 +29,7 @@ type Game {
 type Review {
     reviewId: ID
     reviewBody: String
-    username: String
+    user: User
     createdAt: String
 }
     
