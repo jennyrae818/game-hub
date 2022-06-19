@@ -25,13 +25,14 @@ function Profile() {
   function filterReviews() {
     const currentGame = setG;
     
+    console.log(setG);
     if (!currentGame || setG === 'Games') {
       return user.games;
     }
-
-    return user.games.filter(game => game.gameName === currentGame)[0].reviews.filter(review => review.username === user.username);
+    console.log(user.games);
+    return user.games.filter(game => game.gameName === currentGame)[0].reviews.filter(review => review.user._id === user._id);
   }
-  
+  console.log(filterReviews());  
 
   //mutation
   const [removeGameFromUser] = useMutation(REMOVE_GAME_FROM_USER);
@@ -46,8 +47,10 @@ function Profile() {
       return false;
     }
 
+    
     //await remove game
     try {
+      setGame(false);
       await removeGameFromUser({
         variables: { gameId }
       });  
@@ -95,26 +98,26 @@ function Profile() {
       {/* Dropdown for reviews */}
       <form>
         <fieldset>
-          <label for="reviews"><h3>Reviews:</h3></label>
+          <label htmlFor="reviews"><h3>Reviews:</h3></label>
           <>
-            <select className="styleDrop" value={setG} on onChange={(e) => setGame( e.target.value )}>
-              <option className="styleDrop"><p>Games</p></option>
+            <select className="styleDrop" value={setG} on="true" onChange={(e) => setGame( e.target.value )}>
+              <option className="styleDrop">Games</option>
               {user.games && user.games.map(game => (
-                <option className="styleDrop" value={game.gameName}>{game.gameName}</option>
+                <option className="styleDrop" key={game.gameName} value={game.gameName}>{game.gameName}</option>
               ))}
             </select>
           </>
         </fieldset>
       </form>
       {/* map reviews for user */}
-      {setG === undefined || setG === "Games" ? (
+      {setG === undefined || setG === "Games" || setG === false ? (
         <>
-          <h3>Please select a game you wish to see {userParam ? `${user.userName}'s` : 'your'} reviews on!</h3>
+          <h3>Please select a game you wish to see {userParam ? `${user.username}'s` : 'your'} reviews on!</h3>
         </>
       ) : (
       <ul>{filterReviews().map(review => (
         <li key={review.reviewId}>
-          &#9827; {review.username} says: {review.reviewBody} &#9830; Created at: {review.createdAt}
+          &#9827; {userParam ? `${user.username}` : `${user.username}`} says: {review.reviewBody} &#9830; Created at: {review.createdAt}
         </li>))}
       </ul>
       )}

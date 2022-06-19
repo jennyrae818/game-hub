@@ -1739,3 +1739,7 @@ footer img:hover {
   border-bottom: solid #000;
 }
 
+.styleDrop {
+  color: #00ffff;
+  background-color: #000;
+}

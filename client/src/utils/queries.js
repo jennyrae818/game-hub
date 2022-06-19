@@ -19,7 +19,9 @@ export const QUERY_SINGLE_USER = gql`
                 reviews {
                     reviewId
                     reviewBody
-                    username
+                    user {
+                        _id
+                    }
                     createdAt
                 }
             }
@@ -55,7 +57,9 @@ export const QUERY_ME = gql`
                 reviews {
                     reviewId
                     reviewBody
-                    username
+                    user {
+                        _id
+                    }
                     createdAt
                 }
             }
