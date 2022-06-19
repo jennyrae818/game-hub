@@ -18,21 +18,18 @@ function Profile() {
   const user = data?.me || data?.user || {}; 
   
   //set game state for reviews
-  const [setG, setGame] = useState();
+  const [currentGame, setGame] = useState();
 
 
   //filter reviews to get users game reviews
   function filterReviews() {
-    const currentGame = setG;
-    
-    console.log(setG);
-    if (!currentGame || setG === 'Games') {
+    if (!currentGame || currentGame === 'Games') {
       return user.games;
     }
     console.log(user.games);
     return user.games.filter(game => game.gameName === currentGame)[0].reviews.filter(review => review.user._id === user._id);
   }
-  console.log(filterReviews());  
+   
 
   //mutation
   const [removeGameFromUser] = useMutation(REMOVE_GAME_FROM_USER);
@@ -100,7 +97,7 @@ function Profile() {
         <fieldset>
           <label htmlFor="reviews"><h3>Reviews:</h3></label>
           <>
-            <select className="styleDrop" value={setG} on="true" onChange={(e) => setGame( e.target.value )}>
+            <select className="styleDrop" value={currentGame} on="true" onChange={(e) => setGame( e.target.value )}>
               <option className="styleDrop">Games</option>
               {user.games && user.games.map(game => (
                 <option className="styleDrop" key={game.gameName} value={game.gameName}>{game.gameName}</option>
@@ -110,7 +107,7 @@ function Profile() {
         </fieldset>
       </form>
       {/* map reviews for user */}
-      {setG === undefined || setG === "Games" || setG === false ? (
+      {currentGame === undefined || currentGame === "Games" || currentGame === false ? (
         <>
           <h3>Please select a game you wish to see {userParam ? `${user.username}'s` : 'your'} reviews on!</h3>
         </>
