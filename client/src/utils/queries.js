@@ -16,6 +16,14 @@ export const QUERY_SINGLE_USER = gql`
                     _id
                     categoryName
                 }
+                reviews {
+                    reviewId
+                    reviewBody
+                    user {
+                        _id
+                    }
+                    createdAt
+                }
             }
         }
     }
@@ -45,6 +53,14 @@ export const QUERY_ME = gql`
                 categories {
                     _id
                     categoryName
+                }
+                reviews {
+                    reviewId
+                    reviewBody
+                    user {
+                        _id
+                    }
+                    createdAt
                 }
             }
         }
@@ -84,7 +100,10 @@ export const QUERY_SINGLE_GAME = gql`
             reviews {
                 reviewId
                 reviewBody
-                username
+                user {
+                    _id
+                    username
+                }
                 createdAt
             }
         }

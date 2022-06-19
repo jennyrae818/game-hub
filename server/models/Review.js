@@ -14,9 +14,10 @@ const reviewSchema = new Schema(
             // 300 characters maximum
             maxlength: 300
         },
-        username: {
-            type: String,
+        user: {
+            type: Schema.Types.ObjectId,
             required: true,
+            ref: "User"
         },
         createdAt: {
             type: Date,

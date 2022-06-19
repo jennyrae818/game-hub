@@ -236,7 +236,7 @@ function Game() {
             <>
               <ul>{game.reviews.map(review => (
                 <li key={review.reviewId}>
-                  &#9827; {review.username} says: {review.reviewBody} &#9830; Created at: {review.createdAt}
+                  <Link to={`/profile/${review.user._id}`}>&#9827; {review.user.username}</Link> says: {review.reviewBody} &#9830; Created at: {review.createdAt}
                 </li>))}
               </ul>
             </>
