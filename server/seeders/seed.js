@@ -1,5 +1,5 @@
 const db = require("../config/connection");
-const { Category, Game } = require("../models");
+const { Category, Game, User } = require("../models");
 const categorySeeds = require("./categorySeeds.js");
 
 db.once("open", async () => {
@@ -86,6 +86,10 @@ db.once("open", async () => {
         ]);
 
         console.log("----GAMES SEEDED----");
+
+        await User.deleteMany({});
+
+        console.log("----USERS DELETED----");
 
     } catch (err) {
         console.log(err);

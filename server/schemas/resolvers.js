@@ -15,7 +15,7 @@ const resolvers = {
                             options: { sort: { "usersPlaying": -1 } },
                             populate: {
                                 path: "categories"
-                            }
+                            }                           
                         });
 
                 return userData;

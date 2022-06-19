@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { QUERY_ME, QUERY_SINGLE_USER } from "../utils/queries";
 import { REMOVE_GAME_FROM_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 function Profile() {
+  const location = useLocation();
   //get userId from URL
   const { userId: userParam } = useParams();
 
@@ -16,6 +17,20 @@ function Profile() {
 
   const user = data?.me || data?.user || {}; 
   
+  //set game state for reviews
+  const [currentGame, setGame] = useState();
+
+
+  //filter reviews to get users game reviews
+  function filterReviews() {
+    if (!currentGame || currentGame === 'Games') {
+      return user.games;
+    }
+    console.log(user.games);
+    return user.games.filter(game => game.gameName === currentGame)[0].reviews.filter(review => review.user._id === user._id);
+  }
+   
+
   //mutation
   const [removeGameFromUser] = useMutation(REMOVE_GAME_FROM_USER);
 
@@ -29,8 +44,10 @@ function Profile() {
       return false;
     }
 
+    
     //await remove game
     try {
+      setGame(false);
       await removeGameFromUser({
         variables: { gameId }
       });  
@@ -72,8 +89,36 @@ function Profile() {
             <td>{game.usersPlaying}</td>
             <td>{game.rating}</td>
           </tr>
-        ))}
+        ))}        
       </table>
+      
+      {/* Dropdown for reviews */}
+      <form>
+        <fieldset>
+          <label htmlFor="reviews"><h3>Reviews:</h3></label>
+          <>
+            <select className="styleDrop" value={currentGame} on="true" onChange={(e) => setGame( e.target.value )}>
+              <option className="styleDrop">Games</option>
+              {user.games && user.games.map(game => (
+                <option className="styleDrop" key={game.gameName} value={game.gameName}>{game.gameName}</option>
+              ))}
+            </select>
+          </>
+        </fieldset>
+      </form>
+      {/* map reviews for user */}
+      {currentGame === undefined || currentGame === "Games" || currentGame === false ? (
+        <>
+          <h3>Please select a game you wish to see {userParam ? `${user.username}'s` : 'your'} reviews on!</h3>
+        </>
+      ) : (
+      <ul>{filterReviews().map(review => (
+        <li key={review.reviewId}>
+          &#9827; {userParam ? `${user.username}` : `${user.username}`} says: {review.reviewBody} &#9830; Created at: {review.createdAt}
+        </li>))}
+      </ul>
+      )}
+        
     </section>
   );
 }
