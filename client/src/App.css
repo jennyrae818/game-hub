@@ -794,8 +794,8 @@ fieldset {
   background-color: #551B54;
   border: 2px solid var(--orange);
   border-radius: 50%;
-  height: 25px;
-  width: 25px;
+  height: 15px;
+  width: 15px;
   color: var(--orange);
   cursor: pointer;
   animation: movebtn 3s ease-in-out infinite;
