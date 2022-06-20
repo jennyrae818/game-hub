@@ -576,7 +576,7 @@ fieldset {
   padding: 20px;
 }
 
-.profile h3 {
+.profile h3, .category h3 {
   color: #00ffff;
   text-align: center;
   font-size: 35px;

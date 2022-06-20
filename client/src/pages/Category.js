@@ -3,21 +3,27 @@ import { useQuery } from '@apollo/client';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { QUERY_GAMES } from '../utils/queries';
+import { QUERY_GAMES, QUERY_SINGLE_CATEGORY } from '../utils/queries';
 
 function Category() {
   const location = useLocation();
+  const currentCategory = location.state.currentCategoryId;
 
   const { loading, data } = useQuery(QUERY_GAMES);
   const games = data?.games || [];
 
+  //single category data
+  const { data: categoryData } = useQuery(QUERY_SINGLE_CATEGORY, {
+    variables: { _id: currentCategory }
+  });
+  const category = categoryData?.category || {};
+
   // Filters the games according to the category id
   function filterProducts() {
-    const currentCategory = location.state.currentCategoryId;
-
     if (!currentCategory) {
       return games;
     }
+
     return games.filter(
       (game) => game.categories.some(category => category._id === currentCategory)
     );
@@ -26,7 +32,7 @@ function Category() {
   return (
     <section className="category">
       <h2>  Search Results Page  </h2>
-      <h3> --CATEGORY NAME-- </h3>
+      <h3> --{category.categoryName}-- </h3>
       <table>
         <tr>
           <th>Game</th>

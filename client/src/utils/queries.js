@@ -120,8 +120,8 @@ export const QUERY_CATEGORIES = gql`
 `;
 
 export const QUERY_SINGLE_CATEGORY = gql`
-    query getSingleCategory($categoryId: ID!) {
-        category(categoryId: $categoryId) {
+    query getSingleCategory($_id: ID!) {
+        category(_id: $_id) {
             _id
             categoryName
         }

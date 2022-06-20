@@ -47,8 +47,8 @@ const resolvers = {
 
             return await User.find(params).populate("games");
         },
-        category: async (parent, { categoryId }) => {
-            return await Category.findOne({ _id: categoryId });
+        category: async (parent, { _id }) => {
+            return await Category.findById(_id);
         },
         game: async (parent, { _id }) => {
             return await Game.findById(_id).populate({
