@@ -30,7 +30,6 @@ function Profile() {
     return user.games.filter(game => game.gameName === currentGame)[0].reviews.filter(review => review.user._id === user._id);
   }
    
-  console.log(filterReviews());
   //mutation
   const [removeGameFromUser] = useMutation(REMOVE_GAME_FROM_USER);
 
