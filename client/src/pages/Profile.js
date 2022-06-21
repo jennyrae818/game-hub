@@ -26,11 +26,11 @@ function Profile() {
     if (!currentGame || currentGame === 'Games') {
       return user.games;
     }
-    console.log(user.games);
+  
     return user.games.filter(game => game.gameName === currentGame)[0].reviews.filter(review => review.user._id === user._id);
   }
    
-
+  console.log(filterReviews());
   //mutation
   const [removeGameFromUser] = useMutation(REMOVE_GAME_FROM_USER);
 
@@ -95,30 +95,37 @@ function Profile() {
       {/* Dropdown for reviews */}
       <form>
         <fieldset>
-          <label htmlFor="reviews"><h3>Reviews:</h3></label>
-          <>
+          <label htmlFor="reviews"><h3 className="reviewH3">Reviews:</h3></label>
+          <div className="reviewDropCenter">
             <select className="styleDrop" value={currentGame} on="true" onChange={(e) => setGame( e.target.value )}>
               <option className="styleDrop">Games</option>
               {user.games && user.games.map(game => (
                 <option className="styleDrop" key={game.gameName} value={game.gameName}>{game.gameName}</option>
               ))}
             </select>
-          </>
+          </div>
         </fieldset>
       </form>
       {/* map reviews for user */}
       {currentGame === undefined || currentGame === "Games" || currentGame === false ? (
-        <>
+        <div className="borderReview">
           <h3>Please select a game you wish to see {userParam ? `${user.username}'s` : 'your'} reviews on!</h3>
-        </>
+        </div>
       ) : (
-      <ul>{filterReviews().map(review => (
-        <li key={review.reviewId}>
-          &#9827; {userParam ? `${user.username}` : `${user.username}`} says: {review.reviewBody} &#9830; Created at: {review.createdAt}
-        </li>))}
-      </ul>
+        <>
+        {filterReviews().length === 0 ? (
+          <div className="borderReview">        
+            <h3>No reviews from {userParam ? `${user.username}` : `you`} for this game yet.</h3>
+          </div>
+        ) : (
+          <ul className="reviewUl">{filterReviews().map(review => (
+            <li className="listReview" key={review.reviewId}>
+              {review.reviewBody} &#9830; {review.createdAt}
+            </li>))}
+          </ul>
+        )}
+        </>
       )}
-        
     </section>
   );
 }
