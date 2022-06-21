@@ -166,7 +166,7 @@ button:hover {
   background-color: var(--orange);
 }
 
-.addGame p {
+.addGame p, .category p {
   color: var(--blue);
   font-family: var(--alt);
   font-size: 20px;
@@ -239,6 +239,12 @@ button:hover {
   font-size: 16px;
   padding: 20px;
   text-align: center;
+}
+
+.category h3 {
+  font-family: var(--press);
+  color: var(--pink);
+  font-size: 20px;
 }
 
 .category table, th, td {
@@ -562,7 +568,6 @@ fieldset {
 .login input[type=text]:focus {
   border: 3px solid var(--alt);
 }
- 
 
 
 
@@ -576,7 +581,7 @@ fieldset {
   padding: 20px;
 }
 
-.profile h3, .category h3 {
+.profile h3 {
   color: #00ffff;
   text-align: center;
   font-size: 35px;

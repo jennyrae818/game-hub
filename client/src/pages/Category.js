@@ -33,6 +33,7 @@ function Category() {
     <section className="category">
       <h2>  Search Results Page  </h2>
       <h3> --{category.categoryName}-- </h3>
+      <p> {category.description} </p>
       <table>
         <tr>
           <th>Game</th>
