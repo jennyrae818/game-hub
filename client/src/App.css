@@ -1742,4 +1742,32 @@ footer img:hover {
 .styleDrop {
   color: #00ffff;
   background-color: #000;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.reviewDropCenter {
+  text-align: center;
+}
+
+.borderReview {
+  border: solid var(--red);
+}
+
+.reviewH3 {
+  margin: 25px;
+}
+
+.listReview {
+  border: dashed var(--orange);
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.reviewUl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
