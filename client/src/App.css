@@ -780,21 +780,21 @@ fieldset {
   z-index: 20;
 }
 .icon-style{
-  background-color: #551B54;
-  border: 2px solid var(--orange);
+  background-color: black;
+  border: 2px solid var(--red);
   border-radius: 50%;
   height: 25px;
   width: 25px;
-  color: var(--orange);
+  color: var(--red);
   cursor: pointer;
   animation: movebtn 3s ease-in-out infinite;
   transition: all .5s ease-in-out;
 }
 .icon-style:hover{
   animation: none;
-  background: var(--orange);
-  color: #551B54;
-  border: 2px solid #551B54;
+  background: var(--red);
+  color: black;
+  border: 2px solid black;
 }
 
 
@@ -1554,7 +1554,7 @@ footer img:hover {
   }
 
   .icon-style{
-    background-color: #551B54;
+    background-color: navy;
     border: 1px solid var(--orange);
     border-radius: 50%;
     height: 10px;
