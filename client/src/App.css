@@ -1771,11 +1771,22 @@ footer img:hover {
 }
 
 .borderReview {
-  border: solid var(--red);
+  margin: auto;
+  border: dashed var(--red);
+  padding-left: 10px;
+  padding-right: 10px;
+  width: fit-content;
 }
 
 .reviewH3 {
   margin: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+
+.profileH3 {
+  margin: 0;
 }
 
 .listReview {
@@ -1783,6 +1794,7 @@ footer img:hover {
   width: fit-content;
   padding-left: 10px;
   padding-right: 10px;
+  font-size: 35px;
 }
 
 .reviewUl {

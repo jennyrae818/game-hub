@@ -103,8 +103,8 @@ function Profile() {
           <div className="reviewDropCenter">
             <select className="styleDrop" value={currentGame} on="true" onChange={(e) => setGame( e.target.value )}>
               <option className="styleDrop">Games</option>
-              {gameData.games && gameData.games.map(game => (
-                <option className="styleDrop" key={game.gameName} value={game.gameName}>{game.gameName}</option>
+              {games && games.map(game => (
+                <option className="styleDrop" key={game._id} value={game.gameName}>{game.gameName}</option>
               ))}
             </select>
           </div>
@@ -113,13 +113,13 @@ function Profile() {
       {/* map reviews for user */}
       {currentGame === undefined || currentGame === "Games" || currentGame === false ? (
         <div className="borderReview">
-          <h3>Please select a game you wish to see {userParam ? `${user.username}'s` : 'your'} reviews on!</h3>
+          <h3 className="profileH3">Please select a game you wish to see {userParam ? `${user.username}'s` : 'your'} reviews on!</h3>
         </div>
       ) : (
         <>
         {filterReviews().length === 0 ? (
           <div className="borderReview">        
-            <h3>No reviews from {userParam ? `${user.username}` : `you`} for this game yet.</h3>
+            <h3 className="profileH3">No reviews from {userParam ? `${user.username}` : `you`} for this game yet.</h3>
           </div>
         ) : (
           <ul className="reviewUl">{filterReviews().map(review => (
