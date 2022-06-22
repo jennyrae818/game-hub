@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { QUERY_ME, QUERY_SINGLE_USER } from "../utils/queries";
+import { QUERY_GAMES, QUERY_ME, QUERY_SINGLE_USER } from "../utils/queries";
 import { REMOVE_GAME_FROM_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
@@ -15,7 +15,10 @@ function Profile() {
     variables: { userId: userParam }
   });
 
+  const { data: gameData } = useQuery(QUERY_GAMES);
+
   const user = data?.me || data?.user || {}; 
+  const games = gameData?.games || {};
   
   //set game state for reviews
   const [currentGame, setGame] = useState();
@@ -24,10 +27,10 @@ function Profile() {
   //filter reviews to get users game reviews
   function filterReviews() {
     if (!currentGame || currentGame === 'Games') {
-      return user.games;
+      return games;
     }
   
-    return user.games.filter(game => game.gameName === currentGame)[0].reviews.filter(review => review.user._id === user._id);
+    return games.filter(game => game.gameName === currentGame)[0].reviews.filter(review => review.user._id === user._id);
   }
    
   //mutation
@@ -98,8 +101,8 @@ function Profile() {
           <div className="reviewDropCenter">
             <select className="styleDrop" value={currentGame} on="true" onChange={(e) => setGame( e.target.value )}>
               <option className="styleDrop">Games</option>
-              {user.games && user.games.map(game => (
-                <option className="styleDrop" key={game.gameName} value={game.gameName}>{game.gameName}</option>
+              {games && games.map(game => (
+                <option className="styleDrop" key={game._id} value={game.gameName}>{game.gameName}</option>
               ))}
             </select>
           </div>
@@ -108,13 +111,13 @@ function Profile() {
       {/* map reviews for user */}
       {currentGame === undefined || currentGame === "Games" || currentGame === false ? (
         <div className="borderReview">
-          <h3>Please select a game you wish to see {userParam ? `${user.username}'s` : 'your'} reviews on!</h3>
+          <h3 className="profileH3">Please select a game you wish to see {userParam ? `${user.username}'s` : 'your'} reviews on!</h3>
         </div>
       ) : (
         <>
         {filterReviews().length === 0 ? (
           <div className="borderReview">        
-            <h3>No reviews from {userParam ? `${user.username}` : `you`} for this game yet.</h3>
+            <h3 className="profileH3">No reviews from {userParam ? `${user.username}` : `you`} for this game yet.</h3>
           </div>
         ) : (
           <ul className="reviewUl">{filterReviews().map(review => (

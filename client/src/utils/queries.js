@@ -79,7 +79,15 @@ query getGames {
             categories {
                 _id
                 categoryName
-              }
+            }
+            reviews {
+                reviewId
+                reviewBody
+                user {
+                    _id
+                }
+                createdAt
+            }
         }
     }
 `;
