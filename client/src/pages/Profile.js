@@ -20,8 +20,6 @@ function Profile() {
   const user = data?.me || data?.user || {}; 
   const games = gameData?.games || {};
   
-  console.log(gameData);
-  console.log(games);
   //set game state for reviews
   const [currentGame, setGame] = useState();
 
