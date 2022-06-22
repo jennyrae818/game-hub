@@ -12,6 +12,7 @@ type User {
 type Category {
     _id: ID
     categoryName: String
+    description: String
 }
 
 type Game {

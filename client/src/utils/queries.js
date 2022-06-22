@@ -132,6 +132,7 @@ export const QUERY_SINGLE_CATEGORY = gql`
         category(_id: $_id) {
             _id
             categoryName
+            description
         }
     }
 `;
